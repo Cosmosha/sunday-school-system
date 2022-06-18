@@ -1,0 +1,87 @@
+
+footer strong a{
+    color: grey;
+    font-weight: 550;
+}
+
+footer strong a:hover{
+    font-weight: 580;
+    color: rgba(33, 22, 22, 0.467);
+    
+}
+
+.login-footer strong, .login-footer strong a {
+    color: grey;
+    font-size: small;
+    font-weight: 600;
+    text-align: center;
+}
+
+.login-footer strong a:hover{
+    font-weight: 580;
+    color: rgba(33, 22, 22, 0.467);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.h-title {
+    font-weight: 800;
+    padding-bottom: 5px;
+}
+
+.profile-text .mdi-settings:hover{
+    color: black;
+}
+
+.danger-i{
+    font-weight: 900 !important; 
+}
+
+.profile-text .power-off:hover, .danger-i:hover {
+    /* font-size: 18px; */
+    color: red !important;
+}
+
+.white-i:hover{
+    color: #fff !important;
+}
+
+.dark-i:hover{
+    color: #000 !important;
+    cursor: pointer !important;
+}
+
+.table-hover tbody tr:hover td {
+    background: #0275d8;
+    color: #fff;
+  }
+
+
+ header .avatar{
+     background: white !important;
+     padding: 50%;
+     color: #000 !important;
+     /* font-weight:bold; */
+     
+  }
+
+
+@media (min-width: 768px) {
+
+    .modal-md {
+        width: 90%;
+       max-width:800px !important;
+      }
+
+    .modal-lg {
+      width: 90%;
+     max-width:1200px !important;
+    }
+
+    
+  }
