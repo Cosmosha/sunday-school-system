@@ -288,7 +288,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Gender: <span class="text-danger">*</span></label>
-                                                            <select name="editgender" id="editgender" required="" class="form-control text-capitalize" required>
+                                                            <select name="editgender" id="editgender" required="" class="form-control tgender text-capitalize" required>
                                                                 <option value="">Select Gender</option>
                                                                 <option value="male">Male</option>
                                                                 <option value="female">Female</option>         
