@@ -122,12 +122,12 @@ class ModelTeachers{
     // ─── DELETE  TEACHER ─────────────────────────────────────────────────────
     //
 
-    public static function  mdlDeleteTeacher($table, $data, $church_id){
+    public static function mdlDeleteTeacher($table, $data){
 
         $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE teacher_id = :teacher_id AND church_id = :church_id");
 
-        $stmt -> bindParam(":teacher_id", $data, PDO::PARAM_STR);
-        $stmt -> bindParam(":church_id", $church_id, PDO::PARAM_INT);
+        $stmt -> bindParam(":teacher_id", $data["teacher_id"], PDO::PARAM_INT);
+        $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             

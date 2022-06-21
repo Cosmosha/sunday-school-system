@@ -97,6 +97,11 @@ $(document).ready(function(){
 
 
 
+});
+
+
+$(document).ready(function(){
+  
 
     //
     // ────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
@@ -174,9 +179,13 @@ $(document).ready(function(){
     $(".teacherTable tbody").on("click", "i.btnDeleteTeacher", function(){
 
         var deleteTeacher = $(this).attr("deleteTeacher");  
+        var churchid = $(this).attr("churchid");
+        console.log("deleteTeacher", deleteTeacher);
+        console.log("churchid", churchid);
 
         var datas = new FormData();
         datas.append("deleteTeacher", deleteTeacher);
+        datas.append("churchid", churchid);
 
 
         const swalWithBootstrapButtons = Swal.mixin({
@@ -198,21 +207,48 @@ $(document).ready(function(){
           cancelButtonText: 'No, cancel!',
           confirmButtonText: 'Yes, delete it!',      
           // reverseButtons: true
-        }).then((result) => {
+        }).then(function(result) {
+
           if (result.value) {
+  
+  
+              $.ajax({
+  
+                      url: "ajax/teachers.ajax.php",
+                      method: "POST",
+                      data: datas,
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      success: function(result) {
+                        console.log("result", result);
+                         
+                        swalWithBootstrapButtons.fire({
 
-            window.location = "index.php?root=teachers&deleteTeacherid="+deleteTeacher;
+                          icon: "success",
+                          title: "Deleted!",
+                          text: "Record has been removed.",
+                          showConfirmButton: true,
+                          confirmButtonText: "Okay",
+                          closeOnConfirm: false,
+  
+                       }).then((result) => {
 
-          } 
-        })
+                        if (result.value) {
+                            location.reload();
+                        }
+
+                       });
+  
+                      }
+                  });
+
+          }
+  
+      })
 
 
 
     });
 
-
-
-
-
 });
-

@@ -35,7 +35,7 @@ class ClassTeachers{
 
                 
                 // ACTION BUTTONS
-                $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditTeacher' idTeacher='".$teacher[$i]["teacher_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteTeacher' name='btnDeleteTeacher' deleteTeacher='".$teacher[$i]["teacher_id"]."' aria-hidden='true'></i>";   
+                $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditTeacher' idTeacher='".$teacher[$i]["teacher_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteTeacher' name='btnDeleteTeacher' deleteTeacher='".$teacher[$i]["teacher_id"]."' churchid='".$teacher[$i]["church_id"]."' aria-hidden='true'></i>";   
 
             
                 // Teacher fullname

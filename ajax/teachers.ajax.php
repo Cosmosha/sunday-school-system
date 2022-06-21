@@ -1,7 +1,7 @@
 <?php 
 
-require_once "../controllers/teachers.controller.php";
 require_once "../models/teachers.model.php";
+require_once "../controllers/teachers.controller.php";
 
 class ajaxTeacher{
 
@@ -28,24 +28,22 @@ class ajaxTeacher{
     //
 
     public $deleteTeacher;
+    public $churchid;
     public function ajaxDeleteTeacher(){
 
 
         $table = "teacher";
-        $data = $this->deleteTeacher;
-        $church_id = $_SESSION["churchid"];
+        $teacher_id = $this->deleteTeacher;
+        $church_id = $this->churchid;
+        $data = array('teacher_id' => $teacher_id, 
+                        'church_id' => $church_id);
 
-        $result = ModelTeachers::mdlDeleteTeacher($table,$data,$church_id);
+        $result = ModelTeachers::mdlDeleteTeacher($table,$data);
 
         if ($result) {
             # code...
-                var_dump($result);
-                echo'
-                    <script>
-                    window.location = "index.php?root="";
+            var_dump($data);
 
-                    </script>
-                ';
         }else {
             # code...
             echo 'something is wrong';
@@ -84,6 +82,7 @@ if (isset($_POST["deleteTeacher"])) {
 
     $delete = new ajaxTeacher();
     $delete->deleteTeacher = $_POST["deleteTeacher"];
+    $delete->churchid = $_POST["churchid"];
     $delete->ajaxDeleteTeacher();
 
 }
