@@ -174,17 +174,10 @@ $(document).ready(function(){
     $(".teacherTable tbody").on("click", "i.btnDeleteTeacher", function(){
 
         var deleteTeacher = $(this).attr("deleteTeacher");  
-        var deletePhone = $(this).attr("deletePhone");  
-        var deletePhoto = $(this).attr("deletePhoto"); 
-
-        console.log("deleteTeacher", deleteTeacher);
-        console.log("deletePhone", deletePhone);
-        console.log("deletePhoto", deletePhoto);
 
         var datas = new FormData();
         datas.append("deleteTeacher", deleteTeacher);
-        datas.append("deletePhone", deletePhone);
-        datas.append("deletePhoto", deletePhoto);
+
 
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
@@ -207,8 +200,8 @@ $(document).ready(function(){
           // reverseButtons: true
         }).then((result) => {
           if (result.value) {
-            
-            window.location = "index.php?root=teachers&deleteTeacherid="+deleteTeacher+"&deletePhone="+deletePhone+"&deletePhoto="+deletePhoto;
+
+            window.location = "index.php?root=teachers&deleteTeacherid="+deleteTeacher;
 
           } 
         })

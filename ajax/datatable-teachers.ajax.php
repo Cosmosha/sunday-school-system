@@ -33,6 +33,10 @@ class ClassTeachers{
                 # code...
 
 
+                
+                // ACTION BUTTONS
+                $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditTeacher' idTeacher='".$teacher[$i]["teacher_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteTeacher' name='btnDeleteTeacher' deleteTeacher='".$teacher[$i]["teacher_id"]."' aria-hidden='true'></i>";   
+
             
                 // Teacher fullname
                 $teachername = $teacher[$i]["teacher_firstname"] ." " .$teacher[$i]["teacher_lastname"];
@@ -74,9 +78,6 @@ class ClassTeachers{
                 $class = $classid;
 
                 
-                // ACTION BUTTONS
-                $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditTeacher' idTeacher='".$teacher[$i]["teacher_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteTeacher' name='deleteTeacher' deleteTeacher='".$teacher[$i]["teacher_id"]."' deletePhone='".$teacher[$i]["teacher_phone"]."'  deletePhoto='".$teacher[$i]["teacher_photo"]."' aria-hidden='true'></i>";   
-
 
                 $jsonData .='[
                     "'.($i + 1).'",

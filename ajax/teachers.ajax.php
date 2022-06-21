@@ -40,6 +40,12 @@ class ajaxTeacher{
         if ($result) {
             # code...
                 var_dump($result);
+                echo'
+                    <script>
+                    window.location = "index.php?root="";
+
+                    </script>
+                ';
         }else {
             # code...
             echo 'something is wrong';
