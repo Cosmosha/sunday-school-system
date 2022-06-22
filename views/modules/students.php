@@ -230,8 +230,8 @@
 
                                     <?php
                                     
-                                        $teacher = new ControllerStudent();
-                                        $teacher -> ctrAddStudent();
+                                        $teacher = new ControllerTeacher();
+                                        $teacher -> ctrAddTeacher();
                                     
                                     ?>
 
