@@ -180,12 +180,19 @@ $(document).ready(function(){
 
         var deleteTeacher = $(this).attr("deleteTeacher");  
         var churchid = $(this).attr("churchid");
-        console.log("deleteTeacher", deleteTeacher);
+        var deletePhoto = $(this).attr("deletePhoto");
+        var deletePhone = $(this).attr("deletePhone");
+
+        console.log("deleteTeacher", deleteTeacher); 
         console.log("churchid", churchid);
+        console.log("deletePhoto", deletePhoto);
+        console.log("deletePhone", deletePhone);
 
         var datas = new FormData();
         datas.append("deleteTeacher", deleteTeacher);
         datas.append("churchid", churchid);
+        datas.append("deletePhoto", deletePhoto);
+        datas.append("deletePhone", deletePhone);
 
 
         const swalWithBootstrapButtons = Swal.mixin({
