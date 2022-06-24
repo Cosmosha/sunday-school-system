@@ -14,7 +14,13 @@ class Connection{
 
         $link -> exec("set names utf8");
 
-        return $link;
+        if ($link == false) {
+            # code...
+            return false;
+        }else {
+            # code...
+            return $link;
+        }
 
     }
 

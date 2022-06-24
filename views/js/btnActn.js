@@ -97,11 +97,7 @@ $(document).ready(function(){
 
 
 
-});
 
-
-$(document).ready(function(){
-  
 
     //
     // ────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
@@ -221,41 +217,42 @@ $(document).ready(function(){
   
               $.ajax({
   
-                      url: "ajax/teachers.ajax.php",
-                      method: "POST",
-                      data: datas,
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      success: function(result) {
-                        console.log("result", result);
-                         
-                        swalWithBootstrapButtons.fire({
+                url: "ajax/teachers.ajax.php",
+                method: "POST",
+                data: datas,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(result) {
+                  console.log("result", result);
+                    
+                  swalWithBootstrapButtons.fire({
 
-                          icon: "success",
-                          title: "Deleted!",
-                          text: "Record has been removed.",
-                          showConfirmButton: true,
-                          confirmButtonText: "Okay",
-                          closeOnConfirm: false,
-  
-                       }).then((result) => {
+                    icon: "success",
+                    title: "Deleted!",
+                    text: "Record has been removed.",
+                    showConfirmButton: true,
+                    confirmButtonText: "Okay",
+                    closeOnConfirm: false,
 
-                        if (result.value) {
-                            location.reload();
-                        }
+                  }).then((result) => {
 
-                       });
-  
-                      }
+                  if (result.value) {
+                      location.reload();
+                  }
+
                   });
+
+                }
+            });
 
           }
   
       })
 
-
-
     });
 
+
 });
+
+
