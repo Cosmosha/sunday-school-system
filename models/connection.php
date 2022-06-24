@@ -10,18 +10,17 @@ class Connection{
 
     static public function connect(){
             
-        $link = new PDO("mysql:host=localhost; dbname=attendance","root", "born2Glory");
+        try {
+            //code...
+            $link = new PDO("mysql:host=localhost; dbname=attendance","root", "born2Glory");
 
-        $link -> exec("set names utf8");
+            $link -> exec("set names utf8");
 
-        if ($link == false) {
-            # code...
-            return false;
-        }else {
-            # code...
             return $link;
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo "Error Server Connection : " . $th->getMessage();
         }
-
     }
 
 

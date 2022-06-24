@@ -212,39 +212,42 @@ $(document).ready(function(){
           // reverseButtons: true
         }).then(function(result) {
 
+       
+
           if (result.value) {
   
+            window.location = "index.php?root=teachers&deleteTeacher="+deleteTeacher+"deletePhoto="+deletePhoto+"deletePhone="+deletePhone;
   
-              $.ajax({
+            //   $.ajax({
   
-                url: "ajax/teachers.ajax.php",
-                method: "POST",
-                data: datas,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(result) {
-                  console.log("result", result);
+            //     url: "ajax/teachers.ajax.php",
+            //     method: "POST",
+            //     data: datas,
+            //     cache: false,
+            //     contentType: false,
+            //     processData: false,
+            //     success: function(result) {
+            //       console.log("result", result);
                     
-                  swalWithBootstrapButtons.fire({
+            //       swalWithBootstrapButtons.fire({
 
-                    icon: "success",
-                    title: "Deleted!",
-                    text: "Record has been removed.",
-                    showConfirmButton: true,
-                    confirmButtonText: "Okay",
-                    closeOnConfirm: false,
+            //         icon: "success",
+            //         title: "Deleted!",
+            //         text: "Record has been removed.",
+            //         showConfirmButton: true,
+            //         confirmButtonText: "Okay",
+            //         closeOnConfirm: false,
 
-                  }).then((result) => {
+            //       }).then((result) => {
 
-                  if (result.value) {
-                      location.reload();
-                  }
+            //       if (result.value) {
+            //           location.reload();
+            //       }
 
-                  });
+            //       });
 
-                }
-            });
+            //     }
+            // });
 
           }
   

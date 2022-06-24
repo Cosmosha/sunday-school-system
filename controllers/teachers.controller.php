@@ -392,16 +392,19 @@ class ControllerTeacher{
             # code...
             
             $table = "teacher";
-            $data = $_GET["deleteTeacher"];
+            $teacher_id = $_GET["deleteTeacher"];
             $church_id = $_SESSION["churchid"];
 
-            if ($_GET["deletePhoto"] != "") {
-                # code...
+            $data = array('teacher_id' => $teacher_id, 
+                            'church_id'=>$church_id);
+
+            if (!empty($_GET["deletePhoto"])) {
+                # code...s
                 unlink($_GET["deletePhoto"]);   
                 rmdir('views/img/teachers/'.$_GET["deletePhone"]);
             }
 
-            $result = ModelTeachers::mdlDeleteTeacher($table, $data, $church_id);
+            $result = ModelTeachers::mdlDeleteTeacher($table, $data);
 
             if ($result == "ok") {
                 # code...

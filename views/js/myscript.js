@@ -31,16 +31,16 @@ $(function()
                 {
                     sessionStorage.removeItem("lastTimeStamp");
                     window.location = "logout";
-                    return (false);
+                    return false;
                 
-                } else {
-                    // console.log(currentTime + " - "+ pastTime + " - "+ timeDiff + " - " + minPast + " Min Pas");
-                }
+                 } //else {
+                //     // console.log(currentTime + " - "+ pastTime + " - "+ timeDiff + " - " + minPast + " Min Pas");
+                // }
                 
             }
 
 
-            if (window.location.pathname != "/sundayschool/logout") {
+            if (window.location.pathname !== "/sundayschool/logout") {
                 setAction();
                 return false;
             }
