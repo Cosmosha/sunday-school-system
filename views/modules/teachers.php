@@ -39,7 +39,7 @@
                     
                     <div class="row form-group text-right">
                         <div class="col-md-5 align-self-center">
-                                <h6 class="text-left p-t-10">List of Teachers</h6>
+                                <h6 class="text-left p-t-10 text-capitalize">Teachers details</h6>
                         </div>
                         <div class="col-md-7 align-self-center">
                                 <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"> <i class="fa fa-user-plus"></i> Add Teacher</button>

@@ -4,12 +4,12 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Class Room</h3>
+            <h3 class="text-themecolor">Utilities</h3>
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                <li class="breadcrumb-item active">Room Details</li>
+                <li class="breadcrumb-item active">System Users</li>
             </ol>
         </div>
         <!-- <div>
@@ -39,23 +39,24 @@
                     
                     <div class="row form-group text-right">
                         <div class="col-md-5 align-self-center">
-                                <h6 class="text-left p-t-10 text-capitalize">room details</h6>
+                                <h6 class="text-left p-t-10 text-capitalize">System users</h6>
                         </div>
                         <div class="col-md-7 align-self-center">
-                                <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-plus"></i> Add Class</button>
+                                <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-plus"></i> Add User</button>
                         </div>
                     </div>
                     
 
                     <div class="table-responsive m-t-40">
                         
-                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase classroomTable">
+                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase userTable">
                             <thead>
                                 <tr >
                                     <th>NO.</th>
-                                    <th>Class Name</th>
-                                    <th>Room Capacity(Max)</th>
-                                    <th>Action</th>                                              
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th> 
+                                    <th>Last Login</th>                                              
                                 </tr>
                             </thead>
 
@@ -64,7 +65,7 @@
                     </div>
 
                     <!-- Add Classroom Modal Content -->
-                    <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <!-- <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <form role="form" id="classform" method="POST">
@@ -106,11 +107,11 @@
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /.modal -->
 
                     <!-- Edit Classroom Modal Content -->
-                    <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <!-- <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <form role="form" id="classform" method="POST">
@@ -151,7 +152,7 @@
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /.modal -->
 
 
