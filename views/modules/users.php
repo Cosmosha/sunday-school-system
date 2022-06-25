@@ -56,7 +56,8 @@
                                     <th>User Name</th>
                                     <th>Email</th>
                                     <th>Status</th> 
-                                    <th>Last Login</th>                                              
+                                    <th>Last Login</th> 
+                                    <th>Action</th>                                             
                                 </tr>
                             </thead>
 

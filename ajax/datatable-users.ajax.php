@@ -10,7 +10,7 @@
 require_once "../controllers/users.controller.php";
 require_once "../models/users.model.php";
 
-class Users {
+class UsersTable {
 
     //
     // ─── SHOW JSON USERS TABLE ──────────────────────────────────────────────────────
@@ -37,14 +37,13 @@ class Users {
                 // ACTION BUTTONS
                 //
 
-                $status = " <input type='checkbox' checked='' data-on-color='success' data-off-color='danger' data-on-text='Active' data-off-text='In-active'>";
+                $status = "<button class='btn btn-sm btn-rounded btn-success' id='ustatus'>Active</button>";
                 $actionBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditUser' idUser='".$user[$i]["user_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteUser' name='btnDeleteUser' deleteUser='".$user[$i]["user_id"]."' aria-hidden='true'></i>";     
 
                 $jsonData .='[
                     "'.($i + 1).'",
                     "'.$user[$i]["user_name"].'",
                     "'.$user[$i]["user_email"].'",
-                    "'.$user[$i]["Password"].'",
                     "'.$status.'",
                     "'.$user[$i]["last_login"].'",
                     "'.$actionBtn.'"
@@ -61,3 +60,6 @@ class Users {
     }
 
 }
+
+$getJsonData = new UsersTable();
+$getJsonData -> showUsersTable();
