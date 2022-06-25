@@ -73,7 +73,6 @@ class ControllerClassRoom{
 
 
 
-
     //
     // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
     //
@@ -94,7 +93,7 @@ class ControllerClassRoom{
     //
     // ─── EDIT CLASSROOM ─────────────────────────────────────────────────────────────
     //
-    
+
     static public function ctrEditCLass(){
 
         if (isset($_POST["idClass"])) {
