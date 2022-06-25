@@ -3,24 +3,6 @@
 
 class ControllerClassRoom{
 
-
-    //
-    // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
-    //
-
-    public static function ctrShowClassList($item, $value){
-
-        $table = "class";
-
-        $result = ModelClassRoom::mdlShowClassList($table, $item, $value);
-
-        return $result;
-
-    }
-
-
-
-
     //
     // ─── ADD CLASSROOM ─────────────────────────────────────────────────────────────
     //
@@ -88,14 +70,31 @@ class ControllerClassRoom{
         }
 
     }
-    
+
+
+
+
+    //
+    // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
+    //
+
+    public static function ctrShowClassList($item, $value){
+
+        $table = "class";
+
+        $result = ModelClassRoom::mdlShowClassList($table, $item, $value);
+
+        return $result;
+
+    }
+
 
 
 
     //
     // ─── EDIT CLASSROOM ─────────────────────────────────────────────────────────────
     //
-
+    
     static public function ctrEditCLass(){
 
         if (isset($_POST["idClass"])) {
@@ -146,6 +145,8 @@ class ControllerClassRoom{
         }
 
     }
+
+
 
 
     //

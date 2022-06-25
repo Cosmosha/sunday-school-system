@@ -2,6 +2,8 @@
 
 class ControllerUsers{
 
+
+
   //
   // ─── USER LOGIN ─────────────────────────────────────────────────────────────────
   //
@@ -122,6 +124,22 @@ class ControllerUsers{
             
 
         }
+
+    }
+
+
+
+  //
+  // ─── SHOW USER LIST ───────────────────────────────────────────────────────
+  //
+
+    public static function ctrShowUsersList($item, $value){
+
+        $table = "user";
+
+        $result = ModelUsers::MdlShowUsers($table, $item, $value);
+
+        return $result;
 
     }
 
