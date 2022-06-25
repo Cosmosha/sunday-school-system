@@ -36,6 +36,19 @@ $(document).ready(function(){
 	} );
 
 
+	//
+	// ─── LOAD USERS JSON DATATABLE ──────────────────────────────────────────────
+	//
+
+	$('.userTable').DataTable( {
+	    "ajax":"./ajax/datatable-users.ajax.php",
+	    "deferRender": true,
+	    "retrieve": true,
+	    "processing": true ,
+
+	} );
+
+
 
 });
 
