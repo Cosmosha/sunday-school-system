@@ -207,6 +207,63 @@
 
                                             </div>
 
+                                            
+                                            <div class="row">
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Profile Status: <span class="text-danger">*</span></label>
+                                                        
+                                                        <select name="tprofile" id="tprofile" required="" class="form-control text-capitalize" required>
+                                                         <option value= "" >Select Profile</option>
+                                                            <?php  
+
+
+                                                                $table = "profile";
+                                                                $item = null;
+                                                                $value = null;
+
+                                                                $profile = ModelUsers::MdlShowUsers($table, $item, $value);
+
+                                                                foreach ($profile as $key => $value) {
+                                                                    # code...
+                                                                    echo '<option value="'.$value["profile_id"].'">'.$value["profile_name"].'</option>';
+                                                                }
+                                                            
+                                                            ?>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                    <div class="col-6">
+
+                                                        <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Status: <span class="text-danger">*</span></label>
+                                                        <select name="tstatus" id="tstatus" required="" class="form-control text-capitalize" required>
+                                                         <option value= "" >Select availability status</option>
+                                                            <?php  
+                                                           
+                                                                $table = "availability";
+                                                                $item = null;
+                                                                $value = null;
+
+                                                                $profile = ModelUsers::MdlShowUsers($table, $item, $value);
+
+                                                                foreach ($profile as $key => $value) {
+                                                                    # code...
+                                                                    echo '<option value="'.$value["status_id"].'">'.$value["status_name"].'</option>';
+                                                                }
+                                                                                                                            
+                                                            ?>
+                                                        </select>
+                                                        </div> 
+
+                                                    </div>
+
+                                            </div>
+
 
 
                                             <div class="row">
@@ -383,6 +440,64 @@
                                                         </div> 
 
                                                     </div>
+
+                                            </div>
+
+
+
+                                            <div class="row">
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Profile: <span class="text-danger">*</span></label>
+                                                        
+                                                        <select name="editprofile" id="editprofile" required="" class="form-control text-capitalize" required>
+                                                         <option value= "" >Select Profile</option>
+                                                            <?php  
+
+
+                                                                $table = "profile";
+                                                                $item = null;
+                                                                $value = null;
+
+                                                                $profile = ModelUsers::MdlShowUsers($table, $item, $value);
+
+                                                                foreach ($profile as $key => $value) {
+                                                                    # code...
+                                                                    echo '<option value="'.$value["profile_id"].'">'.$value["profile_name"].'</option>';
+                                                                }
+                                                            
+                                                            ?>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Status: <span class="text-danger">*</span></label>
+                                                    <select name="editpermissionrole" id="editpermissionrole" required="" class="form-control text-capitalize" required>
+                                                        <option value= "" >Select availability Status</option>
+                                                        <?php  
+
+                                                            $table = "availability";
+                                                            $item = null;
+                                                            $value = null;
+
+                                                            $profile = ModelUsers::MdlShowUsers($table, $item, $value);
+
+                                                            foreach ($profile as $key => $value) {
+                                                                # code...
+                                                                echo '<option value="'.$value["status_id"].'">'.$value["status_name"].'</option>';
+                                                            }
+                                                                                                                        
+                                                        ?>
+                                                    </select>
+                                                    </div> 
+
+                                                </div>
 
                                             </div>
 
