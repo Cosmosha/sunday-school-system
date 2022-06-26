@@ -478,7 +478,7 @@
 
                                                     <div class="form-group">
                                                     <label for="recipient-name" class="control-label">Status: <span class="text-danger">*</span></label>
-                                                    <select name="editpermissionrole" id="editpermissionrole" required="" class="form-control text-capitalize" required>
+                                                    <select name="editstatus" id="editstatus" required="" class="form-control text-capitalize" required>
                                                         <option value= "" >Select availability Status</option>
                                                         <?php  
 
