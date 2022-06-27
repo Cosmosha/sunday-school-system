@@ -98,7 +98,7 @@ class ModelTeachers{
         $stmt->bindParam(":teacher_photo", $data["teacher_photo"], PDO::PARAM_STR);
         $stmt->bindParam(":teacher_doj", $data["teacher_doj"], PDO::PARAM_STR);
         $stmt->bindParam(":class_class_id", $data["class_class_id"], PDO::PARAM_INT);
-        $stmt->bindParam(":profile_id", $data["status_id"], PDO::PARAM_INT);
+        $stmt->bindParam(":profile_id", $data["profile_id"], PDO::PARAM_INT);
         $stmt->bindParam(":status_id", $data["status_id"], PDO::PARAM_INT);
         $stmt->bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 

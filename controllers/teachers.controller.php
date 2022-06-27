@@ -221,7 +221,7 @@ class ControllerTeacher{
                 $editoccupation = $_POST["editoccupation"];
                 $editclassroom = $_POST["editclassroom"];
                 $editdoj = $_POST["editdoj"];
-                $editprofile = $_POST["editprofile"];;
+                $editprofile = $_POST["editprofile"];
                 $editstatus = $_POST["editstatus"];
 
 
@@ -358,7 +358,7 @@ class ControllerTeacher{
                                     'status_id'=>$editstatus,
                                     'church_id'=>$church_id);
                         
-                        var_dump($data);
+                        //var_dump($data);
 
                         $answer = ModelTeachers::mdlUpdateTeacher($table, $data);
 
@@ -366,7 +366,7 @@ class ControllerTeacher{
                         if ($answer == "ok") {
                             # code...
 
-                            SweetAlert::alertSaved();
+                            SweetAlert::alertUpdate();
                             
                         }else {
                             # code...

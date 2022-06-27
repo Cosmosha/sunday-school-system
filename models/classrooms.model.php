@@ -34,6 +34,44 @@ class ModelClassRoom{
         }
 
 
+
+    //
+    // ─── SHOW Status, Profile, and Other Info ─────────────────────────────────────────────────────────────────
+    //
+
+        static public function mdlShowInfo($table, $item, $value){
+
+            if ($item !=null) {
+                # code...
+
+                
+                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item  ");
+
+                $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+
+                $stmt -> execute();
+
+                return $stmt -> fetch();
+
+            }else {
+                # code...
+
+                $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+
+                $stmt -> execute();
+                
+                return $stmt -> fetchAll();
+            }
+
+
+                $stmt -> close();
+
+                $stmt = null;
+            
+        }
+
+
+        
     //
     // ─── SHOW USERS ─────────────────────────────────────────────────────────────────
     //

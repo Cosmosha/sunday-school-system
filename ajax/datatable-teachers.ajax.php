@@ -75,6 +75,40 @@ class ClassTeachers{
                     }
                 }
 
+                // Get Profile Name From DB Using profle id
+
+                $table = "profile";
+                $profiles = $teacher[$i]["profile_id"];
+            
+                $pro = ModelClassRoom::mdlShowInfo($table, $item, $value);
+
+                foreach ($pro as $key => $value) {
+                    # code...
+                    if ($value["profile_id"] == $profiles) {
+                        # code...
+                        $profileid = $value["profile_name"];
+                    }
+                }
+
+                //Get Status Name From DB Using Status Id
+
+                $table = "availability";
+                $stat = $teacher[$i]["status_id"];
+            
+                $stats = ModelClassRoom::mdlShowInfo($table, $item, $value);
+
+                foreach ($stats as $key => $value) {
+                    # code...
+                    if ($value["status_id"] == $stat) {
+                        # code...
+                        $statusid = $value["status_name"];
+                    }
+                }
+
+                $status = $statusid;
+
+                $profile = $profileid;
+
                 $class = $classid;
 
 
@@ -86,12 +120,12 @@ class ClassTeachers{
                     "'.($i + 1).'",
                     "'.$teachername.'",
                     "'.$teacher[$i]["teacher_gender"].'",
-                    "System Administrator",
+                    "'.$profile.'",
                     "'.$photo.'",
                     "'.$teacher[$i]["teacher_occupation"].'",
                     "'.$phone.'",
                     "'.$class.'",
-                    "Active",
+                    "'.$status.'",
                     "'.$editBtn.'"
                 ],';
 
