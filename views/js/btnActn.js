@@ -158,10 +158,10 @@ $(document).ready(function(){
             }else {
     
               var rootImage = "views/img/teachers/default/default.png";
-              $('.preview').attr("src", rootImage);
-              
-          }
-            
+              $('.preview').attr("src", rootImage);             
+            }
+
+          
 
         }
 
