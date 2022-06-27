@@ -77,13 +77,15 @@ class ClassTeachers{
 
                 $class = $classid;
 
+
+
+
                 
 
                 $jsonData .='[
                     "'.($i + 1).'",
                     "'.$teachername.'",
                     "'.$teacher[$i]["teacher_gender"].'",
-                    "'.$teacher[$i]["teacher_email"].'",
                     "'.$photo.'",
                     "'.$teacher[$i]["teacher_occupation"].'",
                     "'.$phone.'",

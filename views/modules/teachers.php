@@ -55,7 +55,6 @@
                                     <th>NO.</th>
                                     <th>Name</th>
                                     <th>Gender</th>
-                                    <th>Email</th> 
                                     <th>Photo</th>
                                     <th>Occupation</th>
                                     <th>Phone</th>
