@@ -55,10 +55,12 @@
                                     <th>NO.</th>
                                     <th>Name</th>
                                     <th>Gender</th>
+                                    <th>Profile</th>
                                     <th>Photo</th>
                                     <th>Occupation</th>
                                     <th>Phone</th>
-                                    <th>Class</th>  
+                                    <th>Class</th> 
+                                    <th>Status</th> 
                                     <th>Action</th>                                              
                                 </tr>
                             </thead>

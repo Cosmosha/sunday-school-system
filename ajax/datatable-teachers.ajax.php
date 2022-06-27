@@ -86,10 +86,12 @@ class ClassTeachers{
                     "'.($i + 1).'",
                     "'.$teachername.'",
                     "'.$teacher[$i]["teacher_gender"].'",
+                    "System Administrator",
                     "'.$photo.'",
                     "'.$teacher[$i]["teacher_occupation"].'",
                     "'.$phone.'",
                     "'.$class.'",
+                    "Active",
                     "'.$editBtn.'"
                 ],';
 
