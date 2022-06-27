@@ -141,8 +141,8 @@ $(document).ready(function(){
             $("#editoccupation").val(result["teacher_occupation"]);
             $("#editclassroom").val(result["class_class_id"]);
             $("#currentPic").val(result["teacher_photo"]);
-            $("#editprofile").val(result["profile"]);
-            $("#editstatus").val(result["status"]);
+            $("#editprofile").val(result["profile_id"]);
+            $("#editstatus").val(result["status_id"]);
 
 
             if (result["teacher_photo"] !="") { 

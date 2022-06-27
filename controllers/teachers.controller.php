@@ -30,7 +30,7 @@ class ControllerTeacher{
             # code...
 
             if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["tgender"]) && !empty($_POST["temail"]) && !empty($_POST["tphone"]) 
-                && !empty($_POST["toccupation"]) && !empty($_POST["tdoj"]) && !empty($_POST["tclassname"])) {
+                && !empty($_POST["toccupation"]) && !empty($_POST["tdoj"]) && !empty($_POST["tclassname"]) && !empty($_POST["tprofile"])  && !empty($_POST["tstatus"])) {
                 # code...
 
                 $fname = trim($_POST["fname"]);
@@ -41,6 +41,8 @@ class ControllerTeacher{
                 $toccupation = $_POST["toccupation"];
                 $tclass = $_POST["tclassname"];
                 $tdoj = $_POST["tdoj"];
+                $tprofile = $_POST["tprofile"];
+                $tstatus = $_POST["tstatus"];
                 
                 
                 if (filter_var($temail, FILTER_VALIDATE_EMAIL)  && preg_match('/^[a-zA-Z ]+$/', $fname) && preg_match('/^[a-zA-Z ]+$/', $lname) 
@@ -151,6 +153,8 @@ class ControllerTeacher{
                         'class_class_id' => $tclass,
                         'teacher_doj' => $doj,
                         'teacher_photo' => $tphoto,
+                        'status_id'=>$tstatus,
+                        'profile_id'=>$tprofile,
                         'church_id' => $_SESSION["churchid"]);
 
                          var_dump($data);
@@ -204,7 +208,7 @@ class ControllerTeacher{
             # code...
 
             if (!empty($_POST["editfname"]) && !empty($_POST["editlname"]) && !empty($_POST["editgender"]) && !empty($_POST["editemail"]) 
-                 && !empty($_POST["editoccupation"]) && !empty($_POST["editphone"]) && !empty($_POST["editclassroom"]) && !empty($_POST["editdoj"]) ) {
+                 && !empty($_POST["editoccupation"]) && !empty($_POST["editphone"]) && !empty($_POST["editclassroom"]) && !empty($_POST["editdoj"]) && !empty($_POST["editprofile"]) && !empty($_POST["editstatus"]) ) {
                 # code...
 
                 // var_dump($_POST);
@@ -217,6 +221,8 @@ class ControllerTeacher{
                 $editoccupation = $_POST["editoccupation"];
                 $editclassroom = $_POST["editclassroom"];
                 $editdoj = $_POST["editdoj"];
+                $editprofile = $_POST["editprofile"];;
+                $editstatus = $_POST["editstatus"];
 
 
                 if (filter_var($editemail, FILTER_VALIDATE_EMAIL)  && preg_match('/^[a-zA-Z ]+$/', $editfname) && preg_match('/^[a-zA-Z ]+$/', $editlname) 
@@ -348,7 +354,11 @@ class ControllerTeacher{
                                     'class_class_id'=> $editclassroom,
                                     'teacher_photo'=> $photo,
                                     'teacher_id'=> $_POST["idTeacher"],
+                                    'profile_id'=>$editprofile,
+                                    'status_id'=>$editstatus,
                                     'church_id'=>$church_id);
+                        
+                        var_dump($data);
 
                         $answer = ModelTeachers::mdlUpdateTeacher($table, $data);
 
