@@ -261,4 +261,9 @@ $(document).ready(function(){
 
 });
 
+$(document).on("click", "button#reset", function(){
 
+  var rootImage = "views/img/teachers/default/default.png";
+  $('.preview').attr("src", rootImage);
+
+})

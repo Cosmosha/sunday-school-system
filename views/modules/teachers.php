@@ -286,7 +286,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary waves-effect ">Save Details</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                        <button type="reset" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
                                     <?php
@@ -525,7 +525,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary waves-effect ">Update Details</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                        <button type="reset" class="btn btn-default waves-effect" id="reset" data-dismiss="modal">Close</button>
                                     </div>
 
                                     <?php
