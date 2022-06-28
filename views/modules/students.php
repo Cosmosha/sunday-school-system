@@ -232,7 +232,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Home Address: <span class="text-danger">*</span></label>
-                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-capitalize" name="saddress" placeholder="Home Address" id="recipient-name" required>
+                                                        <input type="text" onkeypress="validateEntry(event)" class="form-control text-capitalize" name="saddress" placeholder="Home Address" id="recipient-name" required>
                                                     </div>
 
                                                 </div>
@@ -291,8 +291,8 @@
 
                                     <?php
                                     
-                                        $teacher = new ControllerStudents();
-                                        $teacher -> ctrAddStrudent();
+                                        $teacher = new ControllerTeacher();
+                                        $teacher -> ctrAddTeacher();
                                     
                                     ?>
 
