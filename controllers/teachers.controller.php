@@ -6,7 +6,7 @@ class ControllerTeacher{
 
     
     //
-    // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
+    // ─── SHOW TEACHER LIST ───────────────────────────────────────────────────────
     //
 
     public static function ctrShowTeacherList($item, $value){

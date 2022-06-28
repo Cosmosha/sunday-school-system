@@ -48,6 +48,7 @@
                             <thead>
                                 <tr>
                                     <th>NO.</th>
+                                    <th>Stud. ID</th>
                                     <th>Name</th>
                                     <th>Gender</th>
                                     <th>School</th> 
