@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../models/connection.php";
+require_once "connection.php";
 
 
 class ModelStudents{
@@ -41,6 +41,9 @@ class ModelStudents{
             $stmt = null;
 
     }
+
+
+    
 
 
 }
