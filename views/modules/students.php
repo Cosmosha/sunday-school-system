@@ -149,17 +149,81 @@
 
                                                 </div>
 
-                                                    <div class="col-6">
+                                                <div class="col-6">
 
-                                                        <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Class/Form: <span class="text-danger">*</span></label>
-                                                        <input type="number" onkeypress="validateNum(event)" class="form-control" name="class" placeholder="Enter Class Number" id="recipient-name" maxlength="4" required>
-                                                        </div>
-
+                                                    <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Class/Form: <span class="text-danger">*</span></label>
+                                                    <input type="number" onkeypress="validateNum(event)" class="form-control" name="class" placeholder="Enter Class Number" id="recipient-name" maxlength="4" required>
                                                     </div>
+
+                                                </div>
 
                                             </div>
 
+
+                                            
+                                            <div class="row">
+
+                                                <div class="col-6">
+                                                            
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">School: <span class="text-danger">*</span></label>
+                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-capitalize" name="school" placeholder="Name of School" id="recipient-name" required>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">School Location (Region): <span class="text-danger">*</span></label>
+                                                        
+                                                        <select name="sregion" id="sregion" required="" class="form-control text-capitalize" required>
+                                                            <!-- <option value= "" >Select Profile</option> -->
+                                                            <?php  
+
+
+                                                                $table = "region";
+                                                                $item = null;
+                                                                $value = null;
+
+                                                                $profile = ModelClassRoom::mdlShowInfo($table, $item, $value);
+
+                                                                foreach ($profile as $key => $value) {
+                                                                    # code...
+                                                                    echo '<option value="'.$value["region_id"].'">'.$value["region_name"].'</option>';
+                                                                }
+                                                            
+                                                            ?>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="row">
+
+                                                <div class="col-6">
+                                                              
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Guardian: <span class="text-danger">*</span></label>
+                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-capitalize" name="gname" placeholder="Guardian Name" id="recipient-name" required>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Phone: <span class="text-danger">*</span></label>
+                                                        <input type="tel" onkeypress="validateNum(event)" class="form-control" name="sphone" placeholder="Phone must be 10 digits" id="recipient-name" minlength="10"  maxlength="10" required>
+                                                     </div>
+
+                                                </div>
+
+                                            </div>
 
 
                                             <div class="row">
@@ -167,24 +231,8 @@
                                                 <div class="col-6">
 
                                                     <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Class Assign: <span class="text-danger">*</span></label>
-                                                        
-                                                        <select name="tclassname" id="tclassname" required="" class="form-control text-capitalize" required>
-                                                         <option value= "" >Select Class</option>
-                                                        <?php  
-
-                                                            $item = null;
-                                                            $value = null;
-                                                        
-                                                            $class = ControllerClassRoom::ctrShowClassList($item, $value);
-
-                                                            foreach ($class as $key => $value) {
-                                                                # code...
-                                                                echo '<option value="'.$value["class_id"].'">'.$value["class_name"].'</option>';
-                                                            }
-                                                        
-                                                        ?>
-                                                        </select>
+                                                        <label for="recipient-name" class="control-label">Home Address: <span class="text-danger">*</span></label>
+                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-capitalize" name="saddress" placeholder="Home Address" id="recipient-name" required>
                                                     </div>
 
                                                 </div>
@@ -192,14 +240,25 @@
                                                     <div class="col-6">
 
                                                         <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Date Of Join: <span class="text-danger">*</span></label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" onkeypress="validateNum(event)" id="datepicker-autoclose" name="tdoj" placeholder="mm/dd/yyyy" required>
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text"><i class="icon-calender"></i></span>
-                                                            </div>
+                                                            <label for="recipient-name" class="control-label">Class Assign: <span class="text-danger">*</span></label>
+                                                            
+                                                            <select name="tclassname" id="tclassname" required="" class="form-control text-capitalize" required>
+                                                            <option value= "" >Select Sunday School Class</option>
+                                                            <?php  
+
+                                                                $item = null;
+                                                                $value = null;
+                                                            
+                                                                $class = ControllerClassRoom::ctrShowClassList($item, $value);
+
+                                                                foreach ($class as $key => $value) {
+                                                                    # code...
+                                                                    echo '<option value="'.$value["class_id"].'">'.$value["class_name"].'</option>';
+                                                                }
+                                                            
+                                                            ?>
+                                                            </select>
                                                         </div>
-                                                        </div> 
 
                                                     </div>
 
@@ -232,8 +291,8 @@
 
                                     <?php
                                     
-                                        $teacher = new ControllerTeacher();
-                                        $teacher -> ctrAddTeacher();
+                                        $teacher = new ControllerStudents();
+                                        $teacher -> ctrAddStrudent();
                                     
                                     ?>
 

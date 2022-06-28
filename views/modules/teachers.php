@@ -225,7 +225,7 @@
                                                                 $item = null;
                                                                 $value = null;
 
-                                                                $profile = ModelUsers::MdlShowUsers($table, $item, $value);
+                                                                $profile = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
                                                                 foreach ($profile as $key => $value) {
                                                                     # code...
@@ -250,7 +250,7 @@
                                                                 $item = null;
                                                                 $value = null;
 
-                                                                $profile = ModelUsers::MdlShowUsers($table, $item, $value);
+                                                                $profile = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
                                                                 foreach ($profile as $key => $value) {
                                                                     # code...

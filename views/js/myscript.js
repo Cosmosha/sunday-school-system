@@ -40,11 +40,13 @@ $(function()
             }
 
 
-            if (window.location.pathname !== "/sundayschool/logout") {
-                setAction();
-                return false;
-            }else{
+            if (window.location.pathname == "/sundayschool/logout") {
+                
                 window.stop();
+                return false;
+                
+            }else{
+                setAction();
             }
 
 
