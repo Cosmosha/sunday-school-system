@@ -292,8 +292,8 @@
 
                                     <?php
                                     
-                                        $teacher = new ControllerTeacher();
-                                        $teacher -> ctrAddTeacher();
+                                        $student = new ControllerStudents();
+                                        $student->ctrAddStrudent();
                                     
                                     ?>
 

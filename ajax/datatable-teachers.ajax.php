@@ -11,7 +11,7 @@ require_once "../models/teachers.model.php";
 require_once "../controllers/classrooms.controller.php";
 require_once "../models/classrooms.model.php";
 
-class ClassTeachers{
+class Teachers{
 
     //
     // ─── SHOW JSON CLASSROOM TABLE ───────────────────────────────────────────────────
@@ -130,6 +130,7 @@ class ClassTeachers{
                     ],';
 
                 } 
+
             $jsonData = substr($jsonData, 0, -1);
 
             $jsonData .= '] 
@@ -149,7 +150,7 @@ class ClassTeachers{
 // ─────────────────────────────────────────────────── INITIATE TEACHERS TABLE FUNCTION ─────
 //
 
-    $getJsonData = new ClassTeachers();
+    $getJsonData = new Teachers();
     $getJsonData -> ajaxTeachersTable();
 
 

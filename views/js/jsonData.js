@@ -55,10 +55,10 @@ $(document).ready(function(){
 
 	$('.studentTable').DataTable({
 
-		"ajax":"'./ajax/datatable-student.ajax.php",
-		"deferRender": true,
-		"retrieve": true,
-		"pocessing": true,
+		"ajax":"./ajax/datatable-students.ajax.php",
+	    "deferRender": true,
+	    "retrieve": true,
+	    "processing": true ,
 
 	});
 

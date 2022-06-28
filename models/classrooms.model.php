@@ -7,7 +7,7 @@ class ModelClassRoom{
  
 
     //
-    // ─── CREATE CLASS ROOM  ─────────────────────────────────────────────────────────────
+    // ─── ADD CLASS ROOM  ─────────────────────────────────────────────────────────────
     //
 
         public static function mdlAddClassRoom($table, $data){
