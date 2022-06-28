@@ -3,23 +3,30 @@
 
 class ControllerStudents {
 
-    static public function ctrAddStrudent() {
 
-            
     //
     // ─── SHOW STUDENT LIST ───────────────────────────────────────────────────────
     //
 
-        public static function ctrShowStudentList($item, $value){
+    public static function ctrShowStudentList($item, $value){
 
-            $table = "student";
+        $table = "student";
 
-            $result = ModelStudents::mdlShowStudents($table,$item,$value);
+        $result = ModelStudents::mdlShowStudents($table,$item,$value);
 
-            return $result;
+        return $result;
 
-        }
+    }
 
+
+    //
+    // ─── ADD STUDENT DETAIL ─────────────────────────────────────────────────────────
+    //
+
+    static public function ctrAddStrudent() {
+
+            
+    
     }
 
 }

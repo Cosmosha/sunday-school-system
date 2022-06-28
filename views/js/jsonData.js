@@ -49,6 +49,20 @@ $(document).ready(function(){
 	} );
 
 
+	//
+	// ─── LOAD STUDENT JSON DATA TABLE ───────────────────────────────────────────────
+	//
+
+	$('.studentTable').DataTable({
+
+		"ajax":"'./ajax/datatable-student.ajax.php",
+		"deferRender": true,
+		"retrieve": true,
+		"pocessing": true,
+
+	});
+
+
 
 });
 
