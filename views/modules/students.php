@@ -71,7 +71,7 @@
                                 <form role="form" id="classform" method="POST" enctype="multipart/form-data">
 
                                 <div class="modal-header bg-info">
-                                    <h4 class="modal-title text-white" id="myModalLabel"> Add Teacher Details </h4>
+                                    <h4 class="modal-title text-white" id="myModalLabel"> Add Student Details </h4>
                                     <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 
@@ -105,10 +105,10 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Gender: <span class="text-danger">*</span></label>
-                                                            <select name="tgender" id="recipient-name" class="form-control tgender text-capitalize" id="tgender" required>
+                                                            <select name="sgender" id="recipient-name" class="form-control sgender text-capitalize" id="sgender" required>
                                                                 <option value="">Select Gender</option>
-                                                                <option value="male">Male</option>
-                                                                <option value="female">Female</option>         
+                                                                <option value="boy">Boy</option>
+                                                                <option value="girl">Girl</option>         
                                                             </select>
                                                     </div>
 
@@ -117,8 +117,13 @@
                                                     <div class="col-6">
 
                                                         <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
-                                                        <input type="email" onkeypress="validateEntry(event)" class="form-control text-lowercase" name="temail" placeholder="example@gmail.com" id="recipient-name" required>
+                                                            <label for="recipient-name" class="control-label">Date Of Birth: <span class="text-danger">*</span></label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" onkeypress="validateNum(event)" id="datepicker-autoclose" name="sdob" placeholder="mm/dd/yyyy" required>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="icon-calender"></i></span>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -131,17 +136,14 @@
                                                 <div class="col-6">
 
                                                     <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Occupation: <span class="text-danger">*</span></label>
-                                                        <select name="toccupation" id="toccupation" required="" class="form-control text-capitalize" required>
-                                                            <option value="">Select Profession</option>
-                                                            <option value="Teacher">Teacher</option>
-                                                            <option value="Lawyer">Lawyer</option>
-                                                            <option value="Nurse">Nurse</option>
-                                                            <option value="System Administrator">System Administrator</option>
-                                                            <option value="Computer Programmer">Computer Programmer</option>
-                                                            <option value="Banker">Banker</option>
-                                                            <option value="Accountant">Accountant</option>
-                                                            
+                                                        <label for="recipient-name" class="control-label">Student Level: <span class="text-danger">*</span></label>
+                                                        <select name="slevel" id="toccupation" required="" class="form-control text-capitalize" required>
+                                                            <option value="">Select Level</option>
+                                                            <option value="Nurseryy">Nursery</option>
+                                                            <option value="Primary">Primary</option>
+                                                            <option value="Junior High">Junior High</option>
+                                                            <option value="Senior High">Senior High</option>
+                                                            <option value="Others">Others</option>                                                          
                                                         </select>
                                                     </div>
 
@@ -150,8 +152,8 @@
                                                     <div class="col-6">
 
                                                         <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Phone: <span class="text-danger">*</span></label>
-                                                        <input type="tel" onkeypress="validateNum(event)" class="form-control" name="tphone" placeholder="Phone must be 10 digits" id="recipient-name" minlength="10"  maxlength="10" required>
+                                                        <label for="recipient-name" class="control-label">Class/Form: <span class="text-danger">*</span></label>
+                                                        <input type="number" onkeypress="validateNum(event)" class="form-control" name="class" placeholder="Enter Class Number" id="recipient-name" maxlength="4" required>
                                                         </div>
 
                                                     </div>

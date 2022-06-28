@@ -44,8 +44,7 @@ $(function()
                 setAction();
                 return false;
             }else{
-                return true;
-                e.preventDefault();
+                window.stop();
             }
 
 
@@ -229,6 +228,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
+    //Set Gender Image for Teachers
 
     $(".tgender").change(function(){
 
@@ -254,7 +254,32 @@ $(document).ready(function(){
     
     });
 
-    // $(".newPics").val("mensot");
+    // Set Gender Image for Student
+
+    $(".sgender").change(function(){
+
+        var gender = $(this).val();
+        
+        if (gender == "boy") {
+            
+            var rootImage = "views/img/students/default/boy.png";
+            $(".preview").attr("src", rootImage);
+
+        }else if(gender == "girl") {
+            
+            var rootImage = "views/img/students/default/girl.png";
+            $(".preview").attr("src", rootImage);
+
+        }else {
+
+            var rootImage = "views/img/students/default/default.png";
+            $(".preview").attr("src", rootImage);
+
+        }
+
+    });
+
+
 
 });
 
