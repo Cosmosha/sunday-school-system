@@ -42,7 +42,7 @@ $(function()
 
             if (window.location.pathname == "/menosoft-sundaysch/logout") {
                 
-                window.stop();
+               // window.stop();
                 return false;
                 
             }else{

@@ -136,7 +136,7 @@ $(document).ready(function(){
             $("#editphone").val("0"+result["teacher_phone"]);
             $(".editdoj").val(result["teacher_doj"]);
             $("#editoccupation").val(result["teacher_occupation"]);
-            $("#editclassroom").val(result["class_class_id"]);
+            $("#editclassroom").val(result["class_id"]);
             $("#currentPic").val(result["teacher_photo"]);
             $("#editprofile").val(result["profile_id"]);
             $("#editstatus").val(result["status_id"]);

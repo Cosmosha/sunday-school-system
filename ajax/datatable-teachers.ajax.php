@@ -63,7 +63,7 @@ class Teachers{
 
 
                     //Get class name using class id
-                    $classrm = $teacher[$i]["class_class_id"];
+                    $classrm = $teacher[$i]["class_id"];
                 
                     $class = ControllerClassRoom::ctrShowClassList($item, $value);
 

@@ -11,8 +11,8 @@ class ModelTeachers{
 
     static public function mdlAddTeachers($table, $data){
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table(teacher_firstname, teacher_lastname, teacher_gender, teacher_occupation, teacher_email, teacher_phone, teacher_photo, teacher_doj, class_class_id, profile_id, status_id, church_id)
-        VALUES(:teacher_firstname, :teacher_lastname, :teacher_gender, :teacher_occupation, :teacher_email, :teacher_phone, :teacher_photo, :teacher_doj, :class_class_id, :profile_id, :status_id, :church_id)");
+        $stmt = Connection::connect()->prepare("INSERT INTO $table(teacher_firstname, teacher_lastname, teacher_gender, teacher_occupation, teacher_email, teacher_phone, teacher_photo, teacher_doj, class_id, profile_id, status_id, church_id)
+        VALUES(:teacher_firstname, :teacher_lastname, :teacher_gender, :teacher_occupation, :teacher_email, :teacher_phone, :teacher_photo, :teacher_doj, :class_id, :profile_id, :status_id, :church_id)");
 
         $stmt->bindParam(":teacher_firstname", $data["teacher_firstname"], PDO::PARAM_STR);
         $stmt->bindParam(":teacher_lastname", $data["teacher_lastname"], PDO::PARAM_STR);
@@ -22,7 +22,7 @@ class ModelTeachers{
         $stmt->bindParam(":teacher_phone", $data["teacher_phone"], PDO::PARAM_STR);
         $stmt->bindParam(":teacher_photo", $data["teacher_photo"], PDO::PARAM_STR);
         $stmt->bindParam(":teacher_doj", $data["teacher_doj"], PDO::PARAM_STR);
-        $stmt->bindParam(":class_class_id", $data["class_class_id"], PDO::PARAM_INT);
+        $stmt->bindParam(":class_id", $data["class_id"], PDO::PARAM_INT);
         $stmt->bindParam(":profile_id", $data["profile_id"], PDO::PARAM_INT);
         $stmt->bindParam(":status_id", $data["status_id"], PDO::PARAM_INT);
         $stmt->bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
@@ -86,7 +86,7 @@ class ModelTeachers{
 
         $stmt = Connection::connect()->prepare("UPDATE $table SET teacher_firstname = :teacher_firstname,  teacher_lastname = :teacher_lastname,
          teacher_gender = :teacher_gender, teacher_occupation = :teacher_occupation, teacher_email = :teacher_email, teacher_phone = :teacher_phone,
-         teacher_photo = :teacher_photo, teacher_doj = :teacher_doj, class_class_id = :class_class_id, profile_id = :profile_id, status_id = :status_id  WHERE teacher_id = :teacher_id AND church_id = :church_id");
+         teacher_photo = :teacher_photo, teacher_doj = :teacher_doj, class_id = :class_id, profile_id = :profile_id, status_id = :status_id  WHERE teacher_id = :teacher_id AND church_id = :church_id");
 
         $stmt -> bindParam(":teacher_id", $data["teacher_id"], PDO::PARAM_INT);
         $stmt->bindParam(":teacher_firstname", $data["teacher_firstname"], PDO::PARAM_STR);
@@ -97,7 +97,7 @@ class ModelTeachers{
         $stmt->bindParam(":teacher_phone", $data["teacher_phone"], PDO::PARAM_STR);
         $stmt->bindParam(":teacher_photo", $data["teacher_photo"], PDO::PARAM_STR);
         $stmt->bindParam(":teacher_doj", $data["teacher_doj"], PDO::PARAM_STR);
-        $stmt->bindParam(":class_class_id", $data["class_class_id"], PDO::PARAM_INT);
+        $stmt->bindParam(":class_id", $data["class_id"], PDO::PARAM_INT);
         $stmt->bindParam(":profile_id", $data["profile_id"], PDO::PARAM_INT);
         $stmt->bindParam(":status_id", $data["status_id"], PDO::PARAM_INT);
         $stmt->bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);

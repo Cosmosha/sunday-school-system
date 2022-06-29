@@ -12,7 +12,7 @@ class Connection{
             
         try {
             //code...
-            $link = new PDO("mysql:host=localhost; dbname=attendance","root", "born2Glory");
+            $link = new PDO("mysql:host=localhost; dbname=sundaysch","root", "born2Glory");
 
             $link -> exec("set names utf8");
 
