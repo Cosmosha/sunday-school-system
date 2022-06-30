@@ -21,13 +21,12 @@ class CreateFile{
     }
 
 
-    public function ImageFolder(){
-
+    public function ImageCreateFolder(){
         
-        if (isset($_FILES[$this->newPhoto]["tmp_name"])) {
+        if (isset($this->newPhoto["tmp_name"])) {
             # code...
         
-            list($width, $height) = getimagesize($_FILES[$this->newPhoto]["tmp_name"]);
+            list($width, $height) = getimagesize($this->newPhoto["tmp_name"]);
         
             $newWidth = 500;
             $newHeight = 500;
@@ -44,7 +43,7 @@ class CreateFile{
             function depending on the image type
             =============================================*/
         
-            if ($_FILES[$this->newPhoto]["type"] == "image/jpeg"){
+            if ($this->newPhoto["type"] == "image/jpeg"){
                 # code...
         
                 /*=============================================
@@ -55,7 +54,7 @@ class CreateFile{
         
                 $photo = $this->folderloation."".$this->picId."/".$randomNumber.".jpg";
         
-                $Imagesrc = imagecreatefromjpeg($_FILES[$this->newPhoto]["tmp_name"]);
+                $Imagesrc = imagecreatefromjpeg($this->newPhoto["tmp_name"]);
         
                 $destination = imagecreatetruecolor($newWidth, $newHeight);
         
@@ -65,24 +64,30 @@ class CreateFile{
         
             }
         
-            if ($_FILES[$this->newPhoto]["type"] == "image/png") {
+            if ($this->newPhoto["type"] == "image/png") {
                 # code...
         
                 $randomNumber = mt_rand(100,999);
         
                 $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
         
-                $Imagesrc = imagecreatefrompng($_FILES[$this->newPhoto]["tmp_name"]);
-        
+                $Imagesrc = imagecreatefrompng($this->newPhoto["tmp_name"]);
+
+                $dsting = imagecreate($newWidth, $newHeight);
+    
                 $destination = imagecreatetruecolor($newWidth, $newHeight);
-        
+    
                 imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-        
-                imagepng($destination, $photo);
+
+                imagepng($destination, $photo, 0);
         
             }
+
+            return $photo;
         
         }
     }
+
+    
 
 }

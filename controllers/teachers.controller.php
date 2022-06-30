@@ -76,8 +76,8 @@ class ControllerTeacher{
                     if ($tphone != $phone && $temail != $email) {
                         # code...
 
-                        $tphoto = "";
-                    
+                         $tphoto = "";
+
                         //
                         // CREATE FOLDER FOR IMAGE FILES
                         //
@@ -159,7 +159,7 @@ class ControllerTeacher{
 
                          var_dump($data);
 
-                        $result = ModelTeachers::mdlAddTeachers($table, $data);
+                         $result = ModelTeachers::mdlAddTeachers($table, $data);
 
                         if ($result == "ok") {
                             # code...

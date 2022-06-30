@@ -138,7 +138,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Student Level: <span class="text-danger">*</span></label>
-                                                        <select name="slevel" id="toccupation" required="" class="form-control text-capitalize" required>
+                                                        <select name="slevel" id="slevel" required="" class="form-control text-capitalize" required>
                                                             <option value="">Select Level</option>
                                                             <option value="Nurseryy">Nursery</option>
                                                             <option value="Primary">Primary</option>
@@ -154,7 +154,7 @@
 
                                                     <div class="form-group">
                                                     <label for="recipient-name" class="control-label">Class/Form: <span class="text-danger">*</span></label>
-                                                    <input type="number" onkeypress="validateNum(event)" class="form-control" name="class" placeholder="Enter Class Number" id="recipient-name" maxlength="4" required>
+                                                    <input type="number" onkeypress="validateNum(event)" class="form-control" name="sclass" placeholder="Enter Class Number" id="recipient-name" maxlength="3" required>
                                                     </div>
 
                                                 </div>
