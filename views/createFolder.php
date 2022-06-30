@@ -12,6 +12,8 @@ class CreateFile{
     public $newPhoto;
     public $folderloation;
     public $picId;
+    public $photo;
+
 
     public function __construct($newPhoto, $folderloation, $picId)
     {
@@ -57,9 +59,9 @@ class CreateFile{
                 $Imagesrc = imagecreatefromjpeg($this->newPhoto["tmp_name"]);
         
                 $destination = imagecreatetruecolor($newWidth, $newHeight);
-        
+
                 imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-        
+
                 imagejpeg($destination, $photo);
         
             }
@@ -72,20 +74,98 @@ class CreateFile{
                 $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
         
                 $Imagesrc = imagecreatefrompng($this->newPhoto["tmp_name"]);
+    
+            	$destination = imagecreatetruecolor($newWidth, $newHeight);
 
-                $dsting = imagecreate($newWidth, $newHeight);
-    
-                $destination = imagecreatetruecolor($newWidth, $newHeight);
-    
                 imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
-                imagepng($destination, $photo, 0);
+                imagepng($destination, $photo);
         
             }
 
             return $photo;
         
         }
+    }
+
+
+
+    public function ImageEditFolder(){
+
+       $photo = $this->photo;
+
+       
+        if(isset($this->newPhoto["tmp_name"]) && !empty($this->newPhoto["tmp_name"])){
+
+            list($width, $height) = getimagesize($this->newPhoto["tmp_name"]);
+            
+            $newWidth = 500;
+            $newHeight = 500;
+
+            /*=============================================
+            Let's create the folder for each user
+            =============================================*/
+
+            $folder = $this->folderloation."".$this->picId;
+
+            /*=============================================
+            we ask first if there's an existing image in the database
+            =============================================*/
+
+            if (!empty($this->photo)){
+                
+                unlink($this->photo);
+
+            }else{
+
+                mkdir($folder, 0755);
+
+            }
+
+            /*=============================================
+            PHP functions depending on the image
+            =============================================*/
+
+            if($this->newPhoto["type"] == "image/jpeg"){
+
+                /*We save the image in the folder*/
+
+                $randomNumber = mt_rand(100,999);
+                
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".jpg";
+                
+                $srcImage = imagecreatefromjpeg($this->newPhoto["tmp_name"]);
+                
+                $destination = imagecreatetruecolor($newWidth, $newHeight);
+
+                imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+                imagejpeg($destination, $photo);
+
+            }
+            
+            if ($this->newPhoto["type"] == "image/png") {
+
+                /*We save the image in the folder*/
+
+                $randomNumber = mt_rand(100,999);
+                
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
+                
+                $srcImage = imagecreatefrompng($this->newPhoto["tmp_name"]);
+                
+                $destination = imagecreatetruecolor($newWidth, $newHeight);
+
+                imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+                imagepng($destination, $photo);
+            }
+
+            return $photo;
+
+        }
+
+
     }
 
     

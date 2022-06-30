@@ -81,66 +81,15 @@ class ControllerTeacher{
                         //
                         // CREATE FOLDER FOR IMAGE FILES
                         //
-    
-                        if (isset($_FILES["newPhoto"]["tmp_name"])) {
-                            # code...
-    
-                            list($width, $height) = getimagesize($_FILES["newPhoto"]["tmp_name"]);
-    
-                            $newWidth = 500;
-                            $newHeight = 500;
-    
-                             /*=============================================
-                                 Create folder for each Image
-                             =============================================*/
-    
-                             $folder = "views/img/teachers/".$tphone;
-                             
-                             mkdir($folder, 0755);
-    
-                            /*=============================================
-                              function depending on the image type
-                             =============================================*/
-    
-                            if ($_FILES["newPhoto"]["type"] == "image/jpeg"){
-                                # code...
-    
-                                /*=============================================
-                                 Save Image inside a folder
-                                 =============================================*/
-    
-                                $randomNumber = mt_rand(100,999);
-    
-                                $tphoto = "views/img/teachers/".$tphone."/".$randomNumber.".jpg";
-    
-                                $Imagesrc = imagecreatefromjpeg($_FILES["newPhoto"]["tmp_name"]);
-    
-                                $destination = imagecreatetruecolor($newWidth, $newHeight);
-    
-                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-    
-                                imagejpeg($destination, $tphoto);
-    
-                            }
-    
-                            if ($_FILES["newPhoto"]["type"] == "image/png") {
-                                # code...
-    
-                                $randomNumber = mt_rand(100,999);
-    
-                                $tphoto = "views/img/teachers/".$tphone."/".$randomNumber.".png";
-    
-                                $Imagesrc = imagecreatefrompng($_FILES["newPhoto"]["tmp_name"]);
-    
-                                $destination = imagecreatetruecolor($newWidth, $newHeight);
-    
-                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-    
-                                imagepng($destination, $tphoto);
-    
-                            }
-    
-                        }
+                        
+                        $newPhoto = $_FILES["newPhoto"];
+
+                        $folderlocation = "views/img/teachers/";
+                        $picId = $tphone;
+
+                        $setFolder = new CreateFile($newPhoto, $folderlocation, $picId);
+                        $tphoto = $setFolder->ImageCreateFolder();
+                        
 
                         $doj = date('Y-m-d', strtotime($tdoj));
                    
@@ -157,7 +106,7 @@ class ControllerTeacher{
                         'profile_id'=>$tprofile,
                         'church_id' => $_SESSION["churchid"]);
 
-                         var_dump($data);
+                        // var_dump($data);
 
                          $result = ModelTeachers::mdlAddTeachers($table, $data);
 
@@ -265,82 +214,19 @@ class ControllerTeacher{
                                  VALIDATE PHOTO IMAGES
                              =============================================*/
 
-                         $photo = $_POST["currentPic"];
-                        
-                        if (isset($_FILES["editPhoto"]["tmp_name"]) && !empty($_FILES["editPhoto"] ["tmp_name"])) {
-                            # code...
-                            
-                            list($width, $height) = getimagesize($_FILES["editPhoto"]["tmp_name"]);
+                             $newPhoto = $_FILES["editPhoto"];
+                             $folderloation = "views/img/teachers/";
+                             $picId= $editphone;
 
-                            $newWidth = 500;
-                            $newHeight = 500;
+                             $editImage = new CreateFile($newPhoto, $folderloation, $picId);
 
-                           
-                            /*=============================================
-                                Create folder for each Image
-                            =============================================*/
+                             $editImage->photo = $_POST["currentPic"]; 
 
-                                $folder = "views/img/teachers/".$editphone;
+                             $photo = $editImage->ImageEditFolder();
 
-                            /*=============================================
-                             Check If there's an existing image from database
-                             =============================================*/
 
-                             if (!empty($_POST["currentPic"])) {
-                                 # code...
-
-                                unlink($_POST["currentPic"]);
-
-                             }else {
-                                 # code...
-                                
-                                mkdir($folder, 0755);
-
-                             }
-
-                              /*=============================================
-                              function depending on the image type
-                             =============================================*/
-    
-                            if ($_FILES["editPhoto"]["type"] == "image/jpeg"){
-                                # code...
-    
-                                /*=============================================
-                                 Save Image inside a folder
-                                 =============================================*/
-    
-                                $randomNumber = mt_rand(100,999);
-    
-                                $photo = "views/img/teachers/".$editphone."/".$randomNumber.".jpg";
-    
-                                $Imagesrc = imagecreatefromjpeg($_FILES["editPhoto"]["tmp_name"]);
-    
-                                $destination = imagecreatetruecolor($newWidth, $newHeight);
-    
-                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-    
-                                imagejpeg($destination, $photo);
-    
-                            }
-    
-                            if ($_FILES["newPhoto"]["type"] == "image/png") {
-                                # code...
-    
-                                $randomNumber = mt_rand(100,999);
-    
-                                $photo = "views/img/teachers/".$editphone."/".$randomNumber.".png";
-    
-                                $Imagesrc = imagecreatefrompng($_FILES["editPhoto"]["tmp_name"]);
-    
-                                $destination = imagecreatetruecolor($newWidth, $newHeight);
-    
-                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-    
-                                imagepng($destination, $photo);
-    
-                            }
-
-                        }
+                        // $photo = $_POST["currentPic"];
+                    
 
                         $doj = date('Y-m-d', strtotime($editdoj));
 

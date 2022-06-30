@@ -22,7 +22,7 @@ require_once "models/students.model.php";
 //
 
 require_once "views/alert.php";
-// require_once "views/createFolder.php";
+require_once "views/createFolder.php";
 
 $template = new ControllerTemplate();
 $template -> ctrTemplate();
