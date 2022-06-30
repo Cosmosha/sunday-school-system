@@ -9,12 +9,25 @@
 
 class CreateFile{
 
-    static public function ImageFolder($newPhoto, $folderloation, $picId){
+    public $newPhoto;
+    public $folderloation;
+    public $picId;
 
-        if (isset($_FILES[$newPhoto]["tmp_name"])) {
+    public function __construct($newPhoto, $folderloation, $picId)
+    {
+        $this->newPhoto = $newPhoto;
+        $this->folderloation = $folderloation;
+        $this->picId = $picId;
+    }
+
+
+    public function ImageFolder(){
+
+        
+        if (isset($_FILES[$this->newPhoto]["tmp_name"])) {
             # code...
         
-            list($width, $height) = getimagesize($_FILES[$newPhoto]["tmp_name"]);
+            list($width, $height) = getimagesize($_FILES[$this->newPhoto]["tmp_name"]);
         
             $newWidth = 500;
             $newHeight = 500;
@@ -23,7 +36,7 @@ class CreateFile{
                 Create folder for each Image
             =============================================*/
         
-            $folder = $folderloation.$picId;
+            $folder = $this->folderloation."".$this->picId;
             
             mkdir($folder, 0755);
         
@@ -31,7 +44,7 @@ class CreateFile{
             function depending on the image type
             =============================================*/
         
-            if ($_FILES[$newPhoto]["type"] == "image/jpeg"){
+            if ($_FILES[$this->newPhoto]["type"] == "image/jpeg"){
                 # code...
         
                 /*=============================================
@@ -40,9 +53,9 @@ class CreateFile{
         
                 $randomNumber = mt_rand(100,999);
         
-                $photo = $folderloation.$picId."/".$randomNumber.".jpg";
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".jpg";
         
-                $Imagesrc = imagecreatefromjpeg($_FILES[$newPhoto]["tmp_name"]);
+                $Imagesrc = imagecreatefromjpeg($_FILES[$this->newPhoto]["tmp_name"]);
         
                 $destination = imagecreatetruecolor($newWidth, $newHeight);
         
@@ -52,14 +65,14 @@ class CreateFile{
         
             }
         
-            if ($_FILES["newPhoto"]["type"] == "image/png") {
+            if ($_FILES[$this->newPhoto]["type"] == "image/png") {
                 # code...
         
                 $randomNumber = mt_rand(100,999);
         
-                $photo = $folderloation.$picId."/".$randomNumber.".png";
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
         
-                $Imagesrc = imagecreatefrompng($_FILES[$newPhoto]["tmp_name"]);
+                $Imagesrc = imagecreatefrompng($_FILES[$this->newPhoto]["tmp_name"]);
         
                 $destination = imagecreatetruecolor($newWidth, $newHeight);
         
