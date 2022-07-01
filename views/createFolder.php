@@ -65,22 +65,22 @@ class CreateFile{
                 imagejpeg($destination, $photo);
         
             }
-        
+            
             if ($this->newPhoto["type"] == "image/png") {
-                # code...
-        
-                $randomNumber = mt_rand(100,999);
-        
-                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
-        
-                $Imagesrc = imagecreatefrompng($this->newPhoto["tmp_name"]);
-    
-            	$destination = imagecreatetruecolor($newWidth, $newHeight);
 
-                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                /*We save the image in the folder*/
+
+                $randomNumber = mt_rand(100,999);
+                
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
+                
+                $srcImage = imagecreatefrompng($this->newPhoto["tmp_name"]);
+                
+                $destination = imagecreatetruecolor($newWidth, $newHeight);
+
+                imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
                 imagepng($destination, $photo);
-        
             }
 
             return $photo;
