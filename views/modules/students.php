@@ -188,9 +188,9 @@
                                                                 $item = null;
                                                                 $value = null;
 
-                                                                $profile = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                                                                $region = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
-                                                                foreach ($profile as $key => $value) {
+                                                                foreach ($region as $key => $value) {
                                                                     # code...
                                                                     echo '<option value="'.$value["region_id"].'">'.$value["region_name"].'</option>';
                                                                 }
@@ -243,7 +243,7 @@
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="control-label">Class Assign: <span class="text-danger">*</span></label>
                                                             
-                                                            <select name="tclassname" id="tclassname" required="" class="form-control text-capitalize" required>
+                                                            <select name="sclassname" id="sclassname" required="" class="form-control text-capitalize" required>
                                                             <option value= "" >Select Sunday School Class</option>
                                                             <?php  
 
