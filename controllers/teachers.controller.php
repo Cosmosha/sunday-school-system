@@ -6,7 +6,7 @@ class ControllerTeacher{
 
     
     //
-    // ─── SHOW TEACHER LIST ───────────────────────────────────────────────────────
+    // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
     //
 
     public static function ctrShowTeacherList($item, $value){
@@ -30,7 +30,7 @@ class ControllerTeacher{
             # code...
 
             if (!empty($_POST["fname"]) && !empty($_POST["lname"]) && !empty($_POST["tgender"]) && !empty($_POST["temail"]) && !empty($_POST["tphone"]) 
-                && !empty($_POST["toccupation"]) && !empty($_POST["tdoj"]) && !empty($_POST["tclassname"]) && !empty($_POST["tprofile"])  && !empty($_POST["tstatus"])) {
+                && !empty($_POST["toccupation"]) && !empty($_POST["tdoj"]) && !empty($_POST["tclassname"])) {
                 # code...
 
                 $fname = trim($_POST["fname"]);
@@ -41,8 +41,6 @@ class ControllerTeacher{
                 $toccupation = $_POST["toccupation"];
                 $tclass = $_POST["tclassname"];
                 $tdoj = $_POST["tdoj"];
-                $tprofile = $_POST["tprofile"];
-                $tstatus = $_POST["tstatus"];
                 
                 
                 if (filter_var($temail, FILTER_VALIDATE_EMAIL)  && preg_match('/^[a-zA-Z ]+$/', $fname) && preg_match('/^[a-zA-Z ]+$/', $lname) 
@@ -76,20 +74,71 @@ class ControllerTeacher{
                     if ($tphone != $phone && $temail != $email) {
                         # code...
 
-                         $tphoto = "";
-
+                        $tphoto = "";
+                    
                         //
                         // CREATE FOLDER FOR IMAGE FILES
                         //
-                        
-                        $newPhoto = $_FILES["newPhoto"];
-
-                        $folderlocation = "views/img/teachers/";
-                        $picId = $tphone;
-
-                        $setFolder = new CreateFile($newPhoto, $folderlocation, $picId);
-                        $tphoto = $setFolder->ImageCreateFolder();
-                        
+    
+                        if (isset($_FILES["newPhoto"]["tmp_name"])) {
+                            # code...
+    
+                            list($width, $height) = getimagesize($_FILES["newPhoto"]["tmp_name"]);
+    
+                            $newWidth = 500;
+                            $newHeight = 500;
+    
+                             /*=============================================
+                                 Create folder for each Image
+                             =============================================*/
+    
+                             $folder = "views/img/teachers/".$tphone;
+                             
+                             mkdir($folder, 0755);
+    
+                            /*=============================================
+                              function depending on the image type
+                             =============================================*/
+    
+                            if ($_FILES["newPhoto"]["type"] == "image/jpeg"){
+                                # code...
+    
+                                /*=============================================
+                                 Save Image inside a folder
+                                 =============================================*/
+    
+                                $randomNumber = mt_rand(100,999);
+    
+                                $tphoto = "views/img/teachers/".$tphone."/".$randomNumber.".jpg";
+    
+                                $Imagesrc = imagecreatefromjpeg($_FILES["newPhoto"]["tmp_name"]);
+    
+                                $destination = imagecreatetruecolor($newWidth, $newHeight);
+    
+                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+                                imagejpeg($destination, $tphoto);
+    
+                            }
+    
+                            if ($_FILES["newPhoto"]["type"] == "image/png") {
+                                # code...
+    
+                                $randomNumber = mt_rand(100,999);
+    
+                                $tphoto = "views/img/teachers/".$tphone."/".$randomNumber.".png";
+    
+                                $Imagesrc = imagecreatefrompng($_FILES["newPhoto"]["tmp_name"]);
+    
+                                $destination = imagecreatetruecolor($newWidth, $newHeight);
+    
+                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+                                imagepng($destination, $tphoto);
+    
+                            }
+    
+                        }
 
                         $doj = date('Y-m-d', strtotime($tdoj));
                    
@@ -102,13 +151,11 @@ class ControllerTeacher{
                         'class_id' => $tclass,
                         'teacher_doj' => $doj,
                         'teacher_photo' => $tphoto,
-                        'status_id'=>$tstatus,
-                        'profile_id'=>$tprofile,
                         'church_id' => $_SESSION["churchid"]);
 
-                        // var_dump($data);
+                         var_dump($data);
 
-                         $result = ModelTeachers::mdlAddTeachers($table, $data);
+                        $result = ModelTeachers::mdlAddTeachers($table, $data);
 
                         if ($result == "ok") {
                             # code...
@@ -157,7 +204,7 @@ class ControllerTeacher{
             # code...
 
             if (!empty($_POST["editfname"]) && !empty($_POST["editlname"]) && !empty($_POST["editgender"]) && !empty($_POST["editemail"]) 
-                 && !empty($_POST["editoccupation"]) && !empty($_POST["editphone"]) && !empty($_POST["editclassroom"]) && !empty($_POST["editdoj"]) && !empty($_POST["editprofile"]) && !empty($_POST["editstatus"]) ) {
+                 && !empty($_POST["editoccupation"]) && !empty($_POST["editphone"]) && !empty($_POST["editclassroom"]) && !empty($_POST["editdoj"]) ) {
                 # code...
 
                 // var_dump($_POST);
@@ -214,19 +261,82 @@ class ControllerTeacher{
                                  VALIDATE PHOTO IMAGES
                              =============================================*/
 
-                             $newPhoto = $_FILES["editPhoto"];
-                             $folderloation = "views/img/teachers/";
-                             $picId= $editphone;
+                         $photo = $_POST["currentPic"];
+                        
+                        if (isset($_FILES["editPhoto"]["tmp_name"]) && !empty($_FILES["editPhoto"] ["tmp_name"])) {
+                            # code...
+                            
+                            list($width, $height) = getimagesize($_FILES["editPhoto"]["tmp_name"]);
 
-                             $editImage = new CreateFile($newPhoto, $folderloation, $picId);
+                            $newWidth = 500;
+                            $newHeight = 500;
 
-                             $editImage->photo = $_POST["currentPic"]; 
+                           
+                            /*=============================================
+                                Create folder for each Image
+                            =============================================*/
 
-                             $photo = $editImage->ImageEditFolder();
+                                $folder = "views/img/teachers/".$editphone;
 
+                            /*=============================================
+                             Check If there's an existing image from database
+                             =============================================*/
 
-                        // $photo = $_POST["currentPic"];
-                    
+                             if (!empty($_POST["currentPic"])) {
+                                 # code...
+
+                                unlink($_POST["currentPic"]);
+
+                             }else {
+                                 # code...
+                                
+                                mkdir($folder, 0755);
+
+                             }
+
+                              /*=============================================
+                              function depending on the image type
+                             =============================================*/
+    
+                            if ($_FILES["editPhoto"]["type"] == "image/jpeg"){
+                                # code...
+    
+                                /*=============================================
+                                 Save Image inside a folder
+                                 =============================================*/
+    
+                                $randomNumber = mt_rand(100,999);
+    
+                                $photo = "views/img/teachers/".$editphone."/".$randomNumber.".jpg";
+    
+                                $Imagesrc = imagecreatefromjpeg($_FILES["editPhoto"]["tmp_name"]);
+    
+                                $destination = imagecreatetruecolor($newWidth, $newHeight);
+    
+                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+                                imagejpeg($destination, $photo);
+    
+                            }
+    
+                            if ($_FILES["newPhoto"]["type"] == "image/png") {
+                                # code...
+    
+                                $randomNumber = mt_rand(100,999);
+    
+                                $photo = "views/img/teachers/".$editphone."/".$randomNumber.".png";
+    
+                                $Imagesrc = imagecreatefrompng($_FILES["editPhoto"]["tmp_name"]);
+    
+                                $destination = imagecreatetruecolor($newWidth, $newHeight);
+    
+                                imagecopyresized($destination, $Imagesrc, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+                                imagepng($destination, $photo);
+    
+                            }
+
+                        }
 
                         $doj = date('Y-m-d', strtotime($editdoj));
 
@@ -243,8 +353,6 @@ class ControllerTeacher{
                                     'profile_id'=>$editprofile,
                                     'status_id'=>$editstatus,
                                     'church_id'=>$church_id);
-                        
-                        //var_dump($data);
 
                         $answer = ModelTeachers::mdlUpdateTeacher($table, $data);
 
@@ -252,7 +360,7 @@ class ControllerTeacher{
                         if ($answer == "ok") {
                             # code...
 
-                            SweetAlert::alertUpdate();
+                            SweetAlert::alertSaved();
                             
                         }else {
                             # code...
@@ -288,19 +396,16 @@ class ControllerTeacher{
             # code...
             
             $table = "teacher";
-            $teacher_id = $_GET["deleteTeacher"];
+            $data = $_GET["deleteTeacher"];
             $church_id = $_SESSION["churchid"];
 
-            $data = array('teacher_id' => $teacher_id, 
-                            'church_id'=>$church_id);
-
-            if (!empty($_GET["deletePhoto"])) {
-                # code...s
+            if ($_GET["deletePhoto"] != "") {
+                # code...
                 unlink($_GET["deletePhoto"]);   
                 rmdir('views/img/teachers/'.$_GET["deletePhone"]);
             }
 
-            $result = ModelTeachers::mdlDeleteTeacher($table, $data);
+            $result = ModelTeachers::mdlDeleteTeacher($table, $data, $church_id);
 
             if ($result == "ok") {
                 # code...
