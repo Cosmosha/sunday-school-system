@@ -250,9 +250,9 @@
                                                                 $item = null;
                                                                 $value = null;
 
-                                                                $profile = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                                                                $status = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
-                                                                foreach ($profile as $key => $value) {
+                                                                foreach ($status as $key => $value) {
                                                                     # code...
                                                                     echo '<option value="'.$value["status_id"].'">'.$value["status_name"].'</option>';
                                                                 }
