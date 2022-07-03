@@ -74,7 +74,7 @@ class ControllerStudents {
                             $photoID = $fname.".".$lname."-".$dob;
 
                             $newPhoto = $_FILES["newPhoto"];
-                            $folderloation = "views/img/teachers/";
+                            $folderloation = "views/img/students/";
                             $picId = $photoID;
 
                             $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
