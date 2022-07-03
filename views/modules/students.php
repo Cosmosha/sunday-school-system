@@ -51,12 +51,13 @@
                                     <th>Stud. ID</th>
                                     <th>Name</th>
                                     <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>Photo</th>
                                     <th>School</th> 
-                                    <th>Age</th> 
-                                    <th>Class</th>
                                     <th>Guardian</th>
                                     <th>Phone</th>
                                     <th>House Address</th>  
+                                    <th>Class</th>
                                     <th>Action</th>                                              
                                 </tr>
                             </thead>

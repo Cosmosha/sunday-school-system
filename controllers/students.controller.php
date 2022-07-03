@@ -61,11 +61,54 @@ class ControllerStudents {
                             # code...
 
                             SweetAlert::alertDuplicateItem();
+
                         }else {
                             # code...
 
+                            $photo = "";
+
+                            $dob = date('Y-m-d', strtotime($dob));
+
+                            $firstname = substr($fname, 0, 1);
+                            $fname = ucfirst($firstname);
+                            $photoID = $fname.".".$lname."-".$dob;
+
+                            $newPhoto = $_FILES["newPhoto"];
+                            $folderloation = "views/img/teachers/";
+                            $picId = $photoID;
+
+                            $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
+                            $photo = $studentImaage -> ImageCreateFolder();
 
                             
+
+                            $data = array('student_firstname'=>$fname,
+                                    'student_lastname'=>$lname,
+                                    'gender'=>$gender,
+                                    'dob'=>$dob,
+                                    'student_level'=>$level,
+                                    'class_form'=>$class,
+                                    'school_name'=>$school,
+                                    'region_id'=>$region,
+                                    'guardian_name'=>$gname,
+                                    'phone'=>$phone,
+                                    'home_address'=>$address,
+                                    'class_id'=>$asignedclass,
+                                    'church_id'=>$churchid,
+                                    'student_photo'=>$photo
+
+                            );
+
+                            $result = ModelStudents::mdlAddStudent($table, $data);
+
+                            if($result == "ok"){
+
+                                SweetAlert::alertSaved();
+
+                            }else {
+
+                                print_r("Oops! Server Insert Error!");
+                            }
 
 
                         }
