@@ -99,7 +99,9 @@ class ControllerStudents {
 
                             );
 
-                            $result = ModelStudents::mdlAddStudent($table, $data);
+                            var_dump($data);
+
+                            // $result = ModelStudents::mdlAddStudent($table, $data);
 
                             if($result == "ok"){
 
