@@ -44,7 +44,7 @@
 
                     <div class="table-responsive m-t-40">
                         
-                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTable">
+                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTables">
                             <thead>
                                 <tr>
                                     <th>NO.</th>
@@ -85,7 +85,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">First Name: <span class="text-danger">*</span></label>
-                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-uppercase" name="fname" placeholder="first name" id="recipient-name" required>
+                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-uppercase" name="student_fname" placeholder="first name" id="recipient-name" required>
                                                     </div>
 
                                                 </div>
@@ -94,7 +94,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Surname: <span class="text-danger">*</span></label>
-                                                        <input type="text" onkeypress="validateInput(event)"  class="form-control text-uppercase" name="lname" placeholder="Surname" id="recipient-name" required>
+                                                        <input type="text" onkeypress="validateInput(event)"  class="form-control text-uppercase" name="student_lname" placeholder="Surname" id="recipient-name" required>
                                                     </div>
 
                                                     </div>
