@@ -112,6 +112,7 @@ class ControllerStudents {
             
                         SweetAlert::alertErrorFilelds();
                         print_r("Oops! Server Insert Error!");
+                        echo $result;
                     }
 
 
