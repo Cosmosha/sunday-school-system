@@ -100,7 +100,7 @@ class ControllerStudents {
                             'student_photo'=>$photo
                     );
             
-                    var_dump($data);
+                    //var_dump($data);
             
                     $result = ModelStudents::mdlAddStudent($table, $data);
             
@@ -112,8 +112,9 @@ class ControllerStudents {
             
                         SweetAlert::alertErrorFilelds();
                         print_r("Oops! Server Insert Error!");
-                        echo $result;
+                        var_dump($result);
                     }
+                    
 
 
                 }

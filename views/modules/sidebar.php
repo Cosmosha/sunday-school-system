@@ -93,7 +93,7 @@
                                 <li><a href="app-compose.html">Compose Mail</a></li> -->
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right">90</span> </span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right">  <?php  $table = "student";  $student = ModelStudents::mdlShowStudentRow($table); echo $student?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="students"> Students List </a></li>
                                 <!-- <li><a href="ui-user-card.html">User Cards</a></li> -->
