@@ -44,7 +44,7 @@
 
                     <div class="table-responsive m-t-40">
                         
-                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTables">
+                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTable">
                             <thead>
                                 <tr>
                                     <th>NO.</th>

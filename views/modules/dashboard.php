@@ -42,12 +42,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
+                                 <?php $percnt = ($student / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male-female text-info"></i></h2>
-                                    <h3 class="">2456</h3>
-                                    <h6 class="card-subtitle">Number of Students</h6></div>
+                                    <h3 class=""><?php  $table = "student";  $student = ModelStudents::mdlShowStudentRow($table); echo $student?></h3>
+                                    <h6 class="card-subtitle">Number of Students | Percentage : <span class="m-l-5 font-weight-bold"> <?php echo $percnt?>% </span></h6>
+                                </div>
                                 <div class="col-12">
                                     <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $percnt?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>

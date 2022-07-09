@@ -364,7 +364,7 @@ class ControllerTeacher{
                         if ($answer == "ok") {
                             # code...
 
-                            SweetAlert::alertSaved();
+                            SweetAlert::alertUpdate();
                             
                         }else {
                             # code...

@@ -7,8 +7,10 @@
 //
 
 
-require_once "../controllers/users.controller.php";
-require_once "../models/users.model.php";
+require_once "../controllers/students.controller.php";
+require_once "../models/students.model.php";
+require_once "../controllers/classrooms.controller.php";
+require_once "../models/classrooms.model.php";
 
 class StudentTable {
 
@@ -29,31 +31,104 @@ class StudentTable {
             
             "data": [';
 
-            for ($i=0; $i < count($student); $i++) { 
-                # code...
+                for ($i=0; $i < count($student); $i++) { 
+                    # code...
 
 
-                //
-                // ACTION BUTTONS
-                //
+                    
+                    // ACTION BUTTONS
+                    $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditstudent' idstudent='".$student[$i]["student_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeletestudent' name='btnDeletestudent' deletestudent='".$student[$i]["student_id"]."' churchid='".$student[$i]["church_id"]."' deletePhoto='".$student[$i]["student_photo"]."' deletePhone='".$student[$i]["student_phone"]."'  aria-hidden='true'></i>";   
 
-                $status = "<button class='btn btn-sm btn-rounded btn-success' id='ustatus'>Active</button>";
-                $actionBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditStudent' idUser='".$student[$i]["student_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteStudent' name='btnDeleteUser' deleteStudent='".$student[$i]["student_id"]."' aria-hidden='true'></i>";     
+                
+                    // student fullname
+                    $studentname = $student[$i]["student_firstname"] ." " .$student[$i]["student_lastname"];
 
-                $jsonData .='[
-                    "1",
-                    "s",
-                    "s",
-                    "d",
-                    "3",
-                    "1"
-                ],';
+                    //student image
+                    if ($student[$i]["student_photo"] != "") {
+                        # code...
 
-            } 
+                        $photo = "<img src='".$student[$i]["student_photo"]."' width='40px'>";
+
+                    }elseif ($student[$i]["student_photo"] == "" && $student[$i]["gender"]=="boy") {
+                        # code...
+
+                        $photo = "<img src='views/img/students/default/boy.png' width='40px'>";
+
+                    }elseif ($student[$i]["student_photo"] == "" && $student[$i]["gender"]=="girl") {
+                        # code...
+
+                        $photo = "<img src='views/img/students/default/girl.png' width='40px'>";
+
+                    }
+
+                    $phone = "0".$student[$i]["phone"];
+
+
+                    //Get class name using class id
+                    $classrm = $student[$i]["class_id"];
+                
+                    $class = ControllerClassRoom::ctrShowClassList($item, $value);
+
+                    foreach ($class as $key => $value) {
+                        # code...
+                        if ($value["class_id"] == $classrm) {
+                            # code...
+                            $classid = $value["class_name"];
+                        }
+                    }
+
+                    
+
+                    //Get Status Name From DB Using Status Id
+
+                    // $table = "availability";
+                    // $stat = $student[$i]["status_id"];
+                
+                    // $stats = ModelClassRoom::mdlShowInfo($table, $item, $value);
+
+                    // foreach ($stats as $key => $value) {
+                    //     # code...
+                    //     if ($value["status_id"] == $stat) {
+                    //         # code...
+                    //         $statusid = $value["status_name"];
+                    //     }
+                    // }
+
+                    $status = $statusid;
+
+                    $profile = $profileid;
+
+                    $class = $classid;
+
+
+                    $stud_ID = "CTKMC/CM/00";
+
+                    $age = 1;
+
+                    
+
+                    $jsonData .='[
+                        "'.($i + 1).'",
+                        "'.$stud_ID. ($i + 1).'",
+                        "'.$studentname.'",
+                        "'.$student[$i]["gender"].'",
+                        "'.$age.'",
+                        "'.$photo.'",
+                        "'.$student[$i]["school_name"].'",
+                        "'.$student[$i]["guardian_name"].'",
+                        "'.$phone.'",
+                        "'.$student[$i]["home_address"].'",
+                        "'.$class.'",
+                        "'.$editBtn.'"
+                    ],';
+
+                } 
+
             $jsonData = substr($jsonData, 0, -1);
 
             $jsonData .= '] 
         }';   
+ 
 
         echo $jsonData;
 
