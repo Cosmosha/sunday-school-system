@@ -42,10 +42,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
+                                <?php $item =""; $value=""; $table = "student";  $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value);?>
                                  <?php $percnt = ($student / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male-female text-info"></i></h2>
-                                    <h3 class=""><?php  $table = "student";  $student = ModelStudents::mdlShowStudentRow($table); echo $student?></h3>
-                                    <h6 class="card-subtitle">Number of Students | Percentage : <span class="m-l-5 font-weight-bold"> <?php echo $percnt?>% </span></h6>
+                                    <h3 class=""><?php  echo $student ?></h3>
+                                    <h6 class="card-subtitle">Number of Students <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo $percnt?>% </span></h6>
                                 </div>
                                 <div class="col-12">
                                     <div class="progress">
@@ -62,12 +63,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
+                                <?php $item ="gender"; $value="boy"; $table = "student";  $boys = ModelStudents::mdlShowStudentCountRow($table,$item,$value);?>
+                                <?php $boyPercnt = ($boys / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male text-purple"></i></h2>
-                                    <h3 class="">245</h3>
-                                    <h6 class="card-subtitle">Number of Boys</h6></div>
+                                    <h3 class=""><?php echo $boys?></h3>
+                                    <h6 class="card-subtitle">Number of Boys <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo $boyPercnt?>% </span></h6></div>
                                 <div class="col-12">
                                     <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 56%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $boyPercnt?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -79,12 +82,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
+                                <?php $item ="gender"; $value="girl"; $table = "student";  $girls = ModelStudents::mdlShowStudentCountRow($table,$item,$value);?>
+                                <?php $girlPercnt = ($girls / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-female text-warning"></i></h2>
-                                    <h3 class="">580</h3>
-                                    <h6 class="card-subtitle">Number of Girls</h6></div>
+                                    <h3 class=""><?php echo $girls?></h3>
+                                    <h6 class="card-subtitle">Number of Girls <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo $girlPercnt?>% </span></h6></div>
                                 <div class="col-12">
                                     <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 76%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $girlPercnt?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>

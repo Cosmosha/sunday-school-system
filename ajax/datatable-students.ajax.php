@@ -64,6 +64,13 @@ class StudentTable {
                     $phone = "0".$student[$i]["phone"];
 
 
+                    $table = "student";
+                    $item1 = "dob";
+                    $value1 = $student[$i]["dob"];
+
+                    $sAge = ModelStudents::mdlShowAge($table, $item1, $value1);
+
+
                     //Get class name using class id
                     $classrm = $student[$i]["class_id"];
                 
@@ -96,14 +103,13 @@ class StudentTable {
 
                     $status = $statusid;
 
-                    $profile = $profileid;
 
                     $class = $classid;
 
 
                     $stud_ID = "CTKMC/CM/00";
 
-                    $age = 1;
+                    $age = $sAge;
 
                     
 

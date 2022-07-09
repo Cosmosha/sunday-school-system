@@ -42,7 +42,7 @@ class ModelStudents{
 		
 		}
 
-		//$stmt->close();
+		$stmt->close();
 		$stmt = null;
 
     }
@@ -90,16 +90,45 @@ class ModelStudents{
     // ─── Get Total Number Of Students ───────────────────────────────────────────────
 
     
-    static public function mdlShowStudentRow($table){
+    static public function mdlShowStudentCountRow($table, $item, $value){
 
-        
-        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table");
+        if ($item != null) {
 
-        $stmt -> execute();
-        
-        return $stmt -> fetchColumn();
+            # code...
+            $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE $item = :$item  ");
+
+            $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+
+            $stmt -> execute();
+
+            return $stmt -> fetchColumn();
+        } else {
+            # code...
+            $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table");
+
+            $stmt -> execute();
+            
+            return $stmt -> fetchColumn();
+
+        }
 
         $stmt -> close();
+
+        $stmt = null;
+
+    }
+
+    public static function mdlShowAge($table, $item, $value){
+
+        $stmt = Connection::connect()->prepare("SELECT TIMESTAMPDIFF(YEAR, $item, CURDATE()) FROM $table WHERE $item = :$item");
+      
+        $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+        
+        $stmt -> execute();
+
+        return $stmt ->fetchColumn();
+
+         $stmt -> close();
 
         $stmt = null;
 
