@@ -61,14 +61,14 @@ class ControllerStudents {
                 foreach ($students as $key => $student) {
                     # code...
 
-                    if (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
-                        && $student["church_id"] == $churchid) {
+                    if (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["dob"] == $dob && $student["phone"] == $phone
+                          && $student["church_id"] == $churchid) {
                         # code...
 
                         SweetAlert::alertDuplicateItem();
                         return false;
 
-                    } elseif (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["dob"] == $dob && $student["phone"] == $phone
+                    } elseif (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                             && $student["church_id"] == $churchid) {
                         # code...
 
