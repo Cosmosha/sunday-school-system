@@ -37,8 +37,8 @@ class ModelStudents{
 		}else{
 
 			return "error";
-            // $act = $stmt->errorInfo();
-            // return $act;
+            $act = $stmt->errorInfo();
+            return $act;
 		
 		}
 

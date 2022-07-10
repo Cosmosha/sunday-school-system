@@ -1,9 +1,8 @@
 <?php 
 
 
-class ControllerStudents {
-
-
+class ControllerStudents {  
+    
     //
     // ─── SHOW STUDENT LIST ───────────────────────────────────────────────────────
     //
@@ -55,70 +54,83 @@ class ControllerStudents {
 
                 $dob = date('Y-m-d', strtotime($sdob));
 
-                $student = ModelStudents::mdlShowStudents($table, $item, $value);
+                $students = ModelStudents::mdlShowStudents($table, $item, $value);
                 
                 //var_dump($student);
 
-                if (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $value["dob"] != $dob && $value["phone"] == $phone
-                    && $value["class_id"] == $asignedclass && $student["church_id"] == $churchid) {
+                foreach ($students as $key => $student) {
                     # code...
 
-                    SweetAlert::alertDuplicateItem();
-                    echo 'something is not right';
+                    if (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
+                        && $student["church_id"] == $churchid) {
+                        # code...
 
-                }
-                else {
-                    # code...
-                    $photo = "";
+                        SweetAlert::alertDuplicateItem();
+                        return false;
 
-                    $firstname = substr($fname, 0, 1);
-                    $fstname = ucfirst($firstname);
-                    $photoID = $fstname.".".$lname."-".$dob;
-            
-                    $newPhoto = $_FILES["newPhoto"];
-                    $folderloation = "views/img/students/";
-                    $picId = $photoID;
-            
-                    $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
-                    $photo = $studentImaage -> ImageCreateFolder();
-            
-                    
-            
-                    $data = array('student_firstname'=>$fname,
-                            'student_lastname'=>$lname,
-                            'gender'=>$gender,
-                            'dob'=>$dob,
-                            'student_level'=>$level,
-                            'class_form'=>$class,
-                            'school_name'=>$school,
-                            'region_id'=>$region,
-                            'guardian_name'=>$gname,
-                            'phone'=>$phone,
-                            'home_address'=>$address,
-                            'class_id'=>$asignedclass,
-                            'church_id'=>$churchid,
-                            'student_photo'=>$photo
-                    );
-            
-                    //var_dump($data);
-            
-                    $result = ModelStudents::mdlAddStudent($table, $data);
-            
-                    if($result == "ok"){
-            
-                        SweetAlert::alertSaved();
-            
-                    }else {
-            
-                        SweetAlert::alertErrorFilelds();
-                        print_r("Oops! Server Insert Error!");
-                        var_dump($result);
+                    } elseif (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["dob"] == $dob && $student["phone"] == $phone
+                            && $student["church_id"] == $churchid) {
+                        # code...
+
+                        SweetAlert::alertDuplicateItem();
+                        return false;
+
+                    } else {
+                        # code...
+                        $photo = "";
+
+                        $firstname = substr($fname, 0, 1);
+                        $fstname = ucfirst($firstname);
+                        $photoID = $fstname.".".$lname."-".$dob;
+                
+                        $newPhoto = $_FILES["newPhoto"];
+                        $folderloation = "views/img/students/";
+                        $picId = $photoID;
+                
+                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
+                        $photo = $studentImaage -> ImageCreateFolder();
+                
+                        
+                
+                        $data = array('student_firstname'=>$fname,
+                                'student_lastname'=>$lname,
+                                'gender'=>$gender,
+                                'dob'=>$dob,
+                                'student_level'=>$level,
+                                'class_form'=>$class,
+                                'school_name'=>$school,
+                                'region_id'=>$region,
+                                'guardian_name'=>$gname,
+                                'phone'=>$phone,
+                                'home_address'=>$address,
+                                'class_id'=>$asignedclass,
+                                'church_id'=>$churchid,
+                                'student_photo'=>$photo
+                        );
+                
+                        //var_dump($data);
+                
+                        $result = ModelStudents::mdlAddStudent($table, $data);
+                
+                        if($result == "ok"){
+                
+                            SweetAlert::alertSaved();
+                
+                        }else {
+                
+                            SweetAlert::alertErrorFilelds();
+                            // print_r("Oops! Server Insert Error!");
+                            // var_dump($result);
+                        }
+                        
+                        
+
                     }
-                    
-
+                
+                    return false;
 
                 }
-                 
+
 
             }else {
                 # code...
@@ -142,11 +154,41 @@ class ControllerStudents {
     }
 
 
+    
 
-    private function insert_student(){
+    public static function ctrEditStudent(){
 
-       
+        if (!empty($_POST["edit_fname"]) && !empty($_POST["edit_lname"]) && !empty($_POST["edit_gender"]) && !empty($_POST["edit_dob"]) && !empty($_POST["edit_level"]) 
+            && !empty($_POST["edit_class"]) && !empty($_POST["edit_school"]) && !empty($_POST["edit_region"]) && !empty($_POST["edit_gname"]) && !empty($_POST["edit_phone"]) && !empty($_POST["edit_address"] 
+            && !empty($_POST["edit_classname"])) ) {
+            # code...
 
-    }
+            $fname = trim($_POST["student_fname"]);
+            $lname = trim($_POST["student_lname"]);
+            $gender = $_POST["sgender"];
+            $sdob = $_POST["sdob"];
+            $level = $_POST["slevel"];
+            $class = $_POST["sclass"];
+            $school =trim($_POST["school"]);
+            $region = $_POST["sregion"];
+            $gname = trim($_POST["gname"]);
+            $phone = $_POST["sphone"];
+            $address = trim($_POST["saddress"]);
+            $asignedclass = $_POST["sclassname"]; 
+            $churchid = $_SESSION["churchid"];
+
+            
+            if (preg_match('/^[a-zA-Z ]+$/', $fname) && preg_match('/^[a-zA-Z ]+$/', $lname) && preg_match('/^[a-zA-Z ]+$/', $school) && preg_match('/^[a-zA-Z ]+$/', $gname) 
+              && preg_match('/^[0-9]+$/', $class) && preg_match('/^[0-9]+$/', $phone) ) {
+
+
+            }
+            
+
+        }
+
+   }
+
+
 
 }

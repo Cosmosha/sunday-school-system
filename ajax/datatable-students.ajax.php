@@ -115,7 +115,7 @@ class StudentTable {
 
                     $jsonData .='[
                         "'.($i + 1).'",
-                        "'.$stud_ID. ($i + 1).'",
+                        "'.$stud_ID. $student[$i]["student_id"].'",
                         "'.$studentname.'",
                         "'.$student[$i]["gender"].'",
                         "'.$age.'",

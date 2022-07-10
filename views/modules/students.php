@@ -121,7 +121,7 @@
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="control-label">Date Of Birth: <span class="text-danger">*</span></label>
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" onkeypress="validateNum(event)" id="datepicker-autoclose" name="dob" placeholder="mm/dd/yyyy" required>
+                                                                <input type="text" class="form-control" onkeypress="validateNum(event)" id="datepicker-autoclose" name="sdob" placeholder="mm/dd/yyyy" required>
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text"><i class="icon-calender"></i></span>
                                                                 </div>
@@ -288,7 +288,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary waves-effect ">Save Details</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                        <button type="reset" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
                                     <?php
@@ -314,7 +314,7 @@
                                 <form role="form" id="studentform" method="POST" enctype="multipart/form-data">
 
                                 <div class="modal-header bg-info">
-                                    <h4 class="modal-title text-white" id="myModalLabel"> Add Student Details </h4>
+                                    <h4 class="modal-title text-white" id="myModalLabel"> Edit Student Details </h4>
                                     <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 
@@ -327,6 +327,7 @@
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">First Name: <span class="text-danger">*</span></label>
                                                         <input type="text" onkeypress="validateInput(event)" class="form-control text-uppercase" name="edit_fname" placeholder="first name" id="recipient-name" required>
+                                                        <input type="hidden" name="idStudent" value="" id="idStudent" required>
                                                     </div>
 
                                                 </div>
@@ -348,7 +349,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Gender: <span class="text-danger">*</span></label>
-                                                            <select name="edit_gender" id="recipient-name" class="form-control sgender text-capitalize" id="edit_geneder" required>
+                                                            <select name="edit_gender" id="recipient-name" class="form-control sgender text-capitalize" id="edit_gender" required>
                                                                 <option value="">Select Gender</option>
                                                                 <option value="boy">Boy</option>
                                                                 <option value="girl">Girl</option>         
@@ -529,13 +530,13 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary waves-effect ">Update Details</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                        <button type="reset" class="btn btn-default waves-effect" id="reset" data-dismiss="modal">Close</button>
                                     </div>
 
                                     <?php
                                     
-                                        $student = new ControllerStudents();
-                                        $student->ctrAddStrudent();
+                                        $editstudent = new ControllerStudents();
+                                        $editstudent->ctrEditStudent();
                                     
                                     ?>
 

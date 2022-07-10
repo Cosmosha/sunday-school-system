@@ -253,6 +253,7 @@ class ControllerTeacher{
                          } 
                     }
                    
+                    var_dump($result);
 
                     if (!empty($phone) && $result["teacher_id"] != $_POST["idTeacher"]) {
                         # code...
@@ -400,8 +401,10 @@ class ControllerTeacher{
             # code...
             
             $table = "teacher";
-            $data = $_GET["deleteTeacher"];
+            $id = $_GET["deleteTeacher"];
             $church_id = $_SESSION["churchid"];
+            $data = array('teacher_id'=>$id,
+                         'church_id'=> $church_id);
 
             if ($_GET["deletePhoto"] != "") {
                 # code...
@@ -409,7 +412,7 @@ class ControllerTeacher{
                 rmdir('views/img/teachers/'.$_GET["deletePhone"]);
             }
 
-            $result = ModelTeachers::mdlDeleteTeacher($table, $data, $church_id);
+            $result = ModelTeachers::mdlDeleteTeacher($table, $data);
 
             if ($result == "ok") {
                 # code...

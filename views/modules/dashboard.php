@@ -46,11 +46,11 @@
                                  <?php $percnt = ($student / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male-female text-info"></i></h2>
                                     <h3 class=""><?php  echo $student ?></h3>
-                                    <h6 class="card-subtitle">Number of Students <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo $percnt?>% </span></h6>
+                                    <h6 class="card-subtitle">Number of Students <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo number_format( (float)$percnt, 0,'.','');?>% </span></h6>
                                 </div>
                                 <div class="col-12">
                                     <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $percnt?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $percnt;?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                                 <?php $boyPercnt = ($boys / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male text-purple"></i></h2>
                                     <h3 class=""><?php echo $boys?></h3>
-                                    <h6 class="card-subtitle">Number of Boys <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo $boyPercnt?>% </span></h6></div>
+                                    <h6 class="card-subtitle">Number of Boys <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo number_format( (float)$boyPercnt, 0,'.','');?>% </span></h6></div>
                                 <div class="col-12">
                                     <div class="progress">
                                         <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $boyPercnt?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -86,7 +86,7 @@
                                 <?php $girlPercnt = ($girls / $student) * 100; ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-female text-warning"></i></h2>
                                     <h3 class=""><?php echo $girls?></h3>
-                                    <h6 class="card-subtitle">Number of Girls <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo $girlPercnt?>% </span></h6></div>
+                                    <h6 class="card-subtitle">Number of Girls <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo number_format( (float)$girlPercnt, 0,'.','');?>% </span></h6></div>
                                 <div class="col-12">
                                     <div class="progress">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $girlPercnt?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
