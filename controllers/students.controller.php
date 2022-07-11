@@ -240,7 +240,7 @@ class ControllerStudents {
                             
                          );
 
-                         var_dump($data);
+                        // var_dump($data);
 
                          $result = ModelStudents::mdlUpdateStudent($table, $data);
 
