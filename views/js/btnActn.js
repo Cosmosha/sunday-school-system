@@ -267,7 +267,7 @@ $(document).ready(function(){
 
     $(".studentTable").on("click", "i.btnEditstudent", function(){
 
-      var idStudent = $(this).attr("idTeacher");
+      var idStudent = $(this).attr("idstudent");
       console.log("idStudent", idStudent);
 
       var datas = new FormData();
@@ -286,34 +286,41 @@ $(document).ready(function(){
 
            // console.log("result", result);
 
-            $("#editfname").val(result["teacher_firstname"]);
-            $("#idTeacher").val(result["teacher_id"]);
-            $("#editlname").val(result["teacher_lastname"]);
-            $("#editgender").val(result["teacher_gender"]);
-            $("#editemail").val(result["teacher_email"]);
-            $("#editphone").val("0"+result["teacher_phone"]);
-            $(".editdoj").val(result["teacher_doj"]);
-            $("#editoccupation").val(result["teacher_occupation"]);
-            $("#editclassroom").val(result["class_id"]);
+            $("#edit_fname").val(result["student_firstname"]);
+            $("#edit_lname").val(result["student_lastname"]);
+            $("#idStudent").val(result["student_id"]);
+            $("#edit_gender").val(result["gender"]);
+            $(".edit_dob").val(result["dob"]);
+            $("#edit_level").val(result["student_level"]);
+            $("#edit_phone").val("0"+result["phone"]);
+            $("#edit_class").val(result["class_form"]);
+            $("#edit_school").val(result["school_name"]);
+            $("#edit_region").val(result["region_id"]);
             $("#currentPic").val(result["student_photo"]);
-            $("#editprofile").val(result["profile_id"]);
-            $("#editstatus").val(result["status_id"]);
+            $("#edit_gname").val(result["guardian_name"]);
+            $("#edit_address").val(result["home_address"]);
+            $("#edit_classname").val(result["class_id"]);
 
 
-            if (result["student_photo"] !="") { 
+            if (result["student_photo"] != "") {
 
               $('.preview').attr('src', result["student_photo"]);
               
-            }else if (result["student_photo"] == "" && result["student_photo"] == "boy") {
+            }else if (result["student_photo"] == "" && result["gender"] == "boy") {
+
               var rootImage = "views/img/students/default/boy.png";
-              $('.preview').attr("src", rootImage);
-            }else if (result["student_photo"] == "" && result["student_photo"] == "girl") {
+              $(".preview").attr("src", rootImage);
+              
+            }else if (result["student_photo"] == "" && result["gender"] == "girl") {
+
               var rootImage = "views/img/students/default/girl.png";
               $(".preview").attr("src", rootImage);
+              
             }else {
-    
+
               var rootImage = "views/img/students/default/default.png";
-              $('.preview').attr("src", rootImage);             
+              $(".preview").attr("src", rootImage);
+
             }
 
         }

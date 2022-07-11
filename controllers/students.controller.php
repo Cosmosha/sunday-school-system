@@ -189,19 +189,25 @@ class ControllerStudents {
                 $dob = date('Y-m-d', strtotime($sdob));
 
                 $students = ModelStudents::mdlShowStudents($table, $item, $value);
+                
 
                 foreach ($students as $key => $student) {
                     # code...
+
+                    echo "for can be readcher";
 
                     if ($student["student_id"] != $_POST["idStudent"]  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["dob"] == $dob && $student["phone"] == $phone
                           && $student["church_id"] == $churchid) {
                         # code...
 
                         SweetAlert::alertDuplicateItem();
+                        var_dump($student["Student_id"]);
                         return false;
 
                     }else {
                         # code...
+
+                        echo "working";
 
                         $photo = $_POST["currentPic"];
 
@@ -214,7 +220,7 @@ class ControllerStudents {
                         $picId = $photoID;
 
                         $studentImaage = new CreateFile($newPhoto, $folderloation, $picId, $photo);
-                       $edit_photo = $studentImaage->ImageEditFolder();
+                        $edit_photo = $studentImaage->ImageEditFolder();
 
                         $data = array('student_firstname'=>$fname,
                             'student_lastname'=>$lname,
@@ -233,6 +239,8 @@ class ControllerStudents {
                             'student-id'=> $_POST["idStudent"]
                             
                          );
+
+                         var_dump($data);
 
                          $result = ModelStudents::mdlUpdateStudent($table, $data);
 

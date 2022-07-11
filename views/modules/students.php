@@ -326,8 +326,8 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">First Name: <span class="text-danger">*</span></label>
-                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-uppercase" name="edit_fname" placeholder="first name" id="recipient-name" required>
-                                                        <input type="hidden" name="idStudent" value="" id="idStudent" required>
+                                                        <input type="text" onkeypress="validateInput(event)" class="form-control text-uppercase"  id="edit_fname" name="edit_fname" placeholder="first name" id="recipient-name" required>
+                                                        <input type="hidden" name="idstudent" value="" id="idstudent" required>
                                                     </div>
 
                                                 </div>
@@ -349,7 +349,7 @@
 
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Gender: <span class="text-danger">*</span></label>
-                                                            <select name="edit_gender" id="recipient-name" class="form-control sgender text-capitalize" id="edit_gender" required>
+                                                            <select id="edit_gender" name="edit_gender" id="recipient-name" class="form-control sgender text-capitalize" required>
                                                                 <option value="">Select Gender</option>
                                                                 <option value="boy">Boy</option>
                                                                 <option value="girl">Girl</option>         
@@ -363,7 +363,7 @@
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="control-label">Date Of Birth: <span class="text-danger">*</span></label>
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control editdob" onkeypress="validateNum(event)" id="datepicker" name="edit_dob" id="edit_dob" placeholder="mm/dd/yyyy" required>
+                                                                <input type="text" class="form-control edit_dob" onkeypress="validateNum(event)" id="datepicker" name="edit_dob"  placeholder="mm/dd/yyyy" required>
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text"><i class="icon-calender"></i></span>
                                                                 </div>
@@ -514,7 +514,7 @@
                                                 <div class="col-md-8">
                                                     <div class="form-group">
 
-                                                        <img src="views/img/teachers/default/default.png" alt="" class="img-thumbnail preview m-b-10" width="130px">
+                                                        <img src="views/img/students/default/default.png" alt="" class="img-thumbnail preview m-b-10" width="130px">
                                                         
                                                         <input type="file" name="newPhoto" id="newPics" class="newPics form-control"> 
                                                     
