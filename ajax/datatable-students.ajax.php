@@ -101,7 +101,7 @@ class StudentTable {
                     //     }
                     // }
 
-                    $status = $statusid;
+                    //$status = $statusid;
 
 
                     $class = $classid;

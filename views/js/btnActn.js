@@ -263,7 +263,64 @@ $(document).ready(function(){
     // ────────────────────────────────────────────────────────────────────────────────────────────────────────
     //
 
+    // ─── Edit Studendt ───────────────────────────────────────────────
 
+    $(".studentTable").on("click", "i.btnEditstudent", function(){
+
+      var idStudent = $(this).attr("idTeacher");
+      console.log("idStudent", idStudent);
+
+      var datas = new FormData();
+      datas.append("idStudent", idStudent);
+
+      $.ajax({
+
+        url: "./ajax/students.ajax.php",
+          method: "POST",
+          data: datas,
+          Cache: false,
+          contentType: false,
+          processData: false,
+          dataType: "json",
+          success: function(result){
+
+           // console.log("result", result);
+
+            $("#editfname").val(result["teacher_firstname"]);
+            $("#idTeacher").val(result["teacher_id"]);
+            $("#editlname").val(result["teacher_lastname"]);
+            $("#editgender").val(result["teacher_gender"]);
+            $("#editemail").val(result["teacher_email"]);
+            $("#editphone").val("0"+result["teacher_phone"]);
+            $(".editdoj").val(result["teacher_doj"]);
+            $("#editoccupation").val(result["teacher_occupation"]);
+            $("#editclassroom").val(result["class_id"]);
+            $("#currentPic").val(result["student_photo"]);
+            $("#editprofile").val(result["profile_id"]);
+            $("#editstatus").val(result["status_id"]);
+
+
+            if (result["student_photo"] !="") { 
+
+              $('.preview').attr('src', result["student_photo"]);
+              
+            }else if (result["student_photo"] == "" && result["student_photo"] == "boy") {
+              var rootImage = "views/img/students/default/boy.png";
+              $('.preview').attr("src", rootImage);
+            }else if (result["student_photo"] == "" && result["student_photo"] == "girl") {
+              var rootImage = "views/img/students/default/girl.png";
+              $(".preview").attr("src", rootImage);
+            }else {
+    
+              var rootImage = "views/img/students/default/default.png";
+              $('.preview').attr("src", rootImage);             
+            }
+
+        }
+
+      })
+
+    });
 
 
 

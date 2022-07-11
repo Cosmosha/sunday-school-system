@@ -15,11 +15,12 @@ class CreateFile{
     public $photo;
 
 
-    public function __construct($newPhoto, $folderloation, $picId)
+    public function __construct($newPhoto, $folderloation, $picId, $photo)
     {
         $this->newPhoto = $newPhoto;
         $this->folderloation = $folderloation;
         $this->picId = $picId;
+        $this->photo = $photo;
     }
 
 
@@ -28,6 +29,8 @@ class CreateFile{
         if (isset($this->newPhoto["tmp_name"])) {
             # code...
         
+            $photo = "";
+            
             list($width, $height) = getimagesize($this->newPhoto["tmp_name"]);
         
             $newWidth = 500;
@@ -90,83 +93,83 @@ class CreateFile{
 
 
 
-    // public function ImageEditFolder(){
+    public function ImageEditFolder(){
 
-    //    $photo = $this->photo;
+       $photo = $this->photo;
 
        
-    //     if(isset($this->newPhoto["tmp_name"]) && !empty($this->newPhoto["tmp_name"])){
+        if(isset($this->newPhoto["tmp_name"]) && !empty($this->newPhoto["tmp_name"])){
 
-    //         list($width, $height) = getimagesize($this->newPhoto["tmp_name"]);
+            list($width, $height) = getimagesize($this->newPhoto["tmp_name"]);
             
-    //         $newWidth = 500;
-    //         $newHeight = 500;
+            $newWidth = 500;
+            $newHeight = 500;
 
-    //         /*=============================================
-    //         Let's create the folder for each user
-    //         =============================================*/
+            /*=============================================
+            Let's create the folder for each user
+            =============================================*/
 
-    //         $folder = $this->folderloation."".$this->picId;
+            $folder = $this->folderloation."".$this->picId;
 
-    //         /*=============================================
-    //         we ask first if there's an existing image in the database
-    //         =============================================*/
+            /*=============================================
+            we ask first if there's an existing image in the database
+            =============================================*/
 
-    //         if (!empty($this->photo)){
+            if (!empty($this->photo)){
                 
-    //             unlink($this->photo);
+                unlink($this->photo);
 
-    //         }else{
+            }else{
 
-    //             mkdir($folder, 0755);
+                mkdir($folder, 0755);
 
-    //         }
+            }
 
-    //         /*=============================================
-    //         PHP functions depending on the image
-    //         =============================================*/
+            /*=============================================
+            PHP functions depending on the image
+            =============================================*/
 
-    //         if($this->newPhoto["type"] == "image/jpeg"){
+            if($this->newPhoto["type"] == "image/jpeg"){
 
-    //             /*We save the image in the folder*/
+                /*We save the image in the folder*/
 
-    //             $randomNumber = mt_rand(100,999);
+                $randomNumber = mt_rand(100,999);
                 
-    //             $photo = $this->folderloation."".$this->picId."/".$randomNumber.".jpg";
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".jpg";
                 
-    //             $srcImage = imagecreatefromjpeg($this->newPhoto["tmp_name"]);
+                $srcImage = imagecreatefromjpeg($this->newPhoto["tmp_name"]);
                 
-    //             $destination = imagecreatetruecolor($newWidth, $newHeight);
+                $destination = imagecreatetruecolor($newWidth, $newHeight);
 
-    //             imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
-    //             imagejpeg($destination, $photo);
+                imagejpeg($destination, $photo);
 
-    //         }
+            }
             
-    //         if ($this->newPhoto["type"] == "image/png") {
+            if ($this->newPhoto["type"] == "image/png") {
 
-    //             /*We save the image in the folder*/
+                /*We save the image in the folder*/
 
-    //             $randomNumber = mt_rand(100,999);
+                $randomNumber = mt_rand(100,999);
                 
-    //             $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
+                $photo = $this->folderloation."".$this->picId."/".$randomNumber.".png";
                 
-    //             $srcImage = imagecreatefrompng($this->newPhoto["tmp_name"]);
+                $srcImage = imagecreatefrompng($this->newPhoto["tmp_name"]);
                 
-    //             $destination = imagecreatetruecolor($newWidth, $newHeight);
+                $destination = imagecreatetruecolor($newWidth, $newHeight);
 
-    //             imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
-    //             imagepng($destination, $photo);
-    //         }
+                imagepng($destination, $photo);
+            }
 
-    //         return $photo;
+            return $photo;
 
-    //     }
+        }
 
 
-    // }
+    }
 
     
 

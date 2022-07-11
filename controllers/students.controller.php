@@ -87,7 +87,7 @@ class ControllerStudents {
                         $folderloation = "views/img/students/";
                         $picId = $photoID;
                 
-                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
+                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId, $photo);
                         $photo = $studentImaage -> ImageCreateFolder();
                 
                         
@@ -163,18 +163,18 @@ class ControllerStudents {
             && !empty($_POST["edit_classname"])) ) {
             # code...
 
-            $fname = trim($_POST["student_fname"]);
-            $lname = trim($_POST["student_lname"]);
-            $gender = $_POST["sgender"];
-            $sdob = $_POST["sdob"];
-            $level = $_POST["slevel"];
-            $class = $_POST["sclass"];
-            $school =trim($_POST["school"]);
-            $region = $_POST["sregion"];
-            $gname = trim($_POST["gname"]);
-            $phone = $_POST["sphone"];
-            $address = trim($_POST["saddress"]);
-            $asignedclass = $_POST["sclassname"]; 
+            $fname = trim($_POST["edit_fname"]);
+            $lname = trim($_POST["edit_lname"]);
+            $gender = $_POST["edit_gender"];
+            $sdob = $_POST["edit_dob"];
+            $level = $_POST["edit_level"];
+            $class = $_POST["edit_class"];
+            $school =trim($_POST["edit_school"]);
+            $region = $_POST["edit_region"];
+            $gname = trim($_POST["edit_gname"]);
+            $phone = $_POST["edit_phone"];
+            $address = trim($_POST["edit_address"]);
+            $asignedclass = $_POST["edit_classname"]; 
             $churchid = $_SESSION["churchid"];
 
             
@@ -182,9 +182,84 @@ class ControllerStudents {
               && preg_match('/^[0-9]+$/', $class) && preg_match('/^[0-9]+$/', $phone) ) {
 
 
+                $table = "student";
+                $item = "";
+                $value = "";
+
+                $dob = date('Y-m-d', strtotime($sdob));
+
+                $students = ModelStudents::mdlShowStudents($table, $item, $value);
+
+                foreach ($students as $key => $student) {
+                    # code...
+
+                    if ($student["student_id"] != $_POST["idStudent"]  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["dob"] == $dob && $student["phone"] == $phone
+                          && $student["church_id"] == $churchid) {
+                        # code...
+
+                        SweetAlert::alertDuplicateItem();
+                        return false;
+
+                    }else {
+                        # code...
+
+                        $photo = $_POST["currentPic"];
+
+                        $firstname = substr($fname, 0, 1);
+                        $fstname = ucfirst($firstname);
+                        $photoID = $fstname.".".$lname."-".$dob;
+                
+                        $newPhoto = $_FILES["newPhoto"];
+                        $folderloation = "views/img/students/";
+                        $picId = $photoID;
+
+                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId, $photo);
+                       $edit_photo = $studentImaage->ImageEditFolder();
+
+                        $data = array('student_firstname'=>$fname,
+                            'student_lastname'=>$lname,
+                            'gender'=>$gender,
+                            'dob'=>$dob,
+                            'student_level'=>$level,
+                            'class_form'=>$class,
+                            'school_name'=>$school,
+                            'region_id'=>$region,
+                            'guardian_name'=>$gname,
+                            'phone'=>$phone,
+                            'home_address'=>$address,
+                            'class_id'=>$asignedclass,
+                            'church_id'=>$churchid,
+                            'student_photo'=>$edit_photo,
+                            'student-id'=> $_POST["idStudent"]
+                            
+                         );
+
+                         $result = ModelStudents::mdlUpdateStudent($table, $data);
+
+                         if ($result == "ok") {
+                            # code...
+                            SweetAlert::alertUpdate();
+
+                         }else {
+                            # code...
+                            SweetAlert::alertErrorFilelds();
+                            echo "Something went wrong";
+                         }
+
+                    }
+
+                }
+
+
+            }else {
+                # code...
+                SweetAlert::alertInvalidChar();
             }
             
 
+        }else {
+            # code...
+            SweetAlert::alertErrorFilelds();
         }
 
    }

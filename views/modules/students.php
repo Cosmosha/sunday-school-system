@@ -520,6 +520,8 @@
                                                     
                                                         <label class="control-label">Upload Photo  <span class="text-danger">*</span> <small>Photo size should be less than 2 MB</small> </label>
 
+                                                        <input type="hidden" name="currentPic" id="currentPic">
+
                                                     </div>
                                                 </div>
                                             </div>
