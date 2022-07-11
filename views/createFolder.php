@@ -15,12 +15,11 @@ class CreateFile{
     public $photo;
 
 
-    public function __construct($newPhoto, $folderloation, $picId, $photo)
+    public function __construct($newPhoto, $folderloation, $picId)
     {
         $this->newPhoto = $newPhoto;
         $this->folderloation = $folderloation;
         $this->picId = $picId;
-        $this->photo = $photo;
     }
 
 
@@ -115,9 +114,9 @@ class CreateFile{
             we ask first if there's an existing image in the database
             =============================================*/
 
-            if (!empty($this->photo)){
+            if (!empty($photo)){
                 
-                unlink($this->photo);
+                unlink($photo);
 
             }else{
 

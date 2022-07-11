@@ -79,15 +79,14 @@ class ControllerStudents {
                         # code...
                         $photo = "";
 
-                        $firstname = substr($fname, 0, 1);
-                        $fstname = ucfirst($firstname);
-                        $photoID = $fstname.".".$lname."-".$dob;
+                        $photoID = $fname.".".$lname."-".$dob;
                 
                         $newPhoto = $_FILES["newPhoto"];
                         $folderloation = "views/img/students/";
                         $picId = $photoID;
                 
-                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId, $photo);
+                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
+
                         $photo = $studentImaage -> ImageCreateFolder();
                 
                         
@@ -154,124 +153,18 @@ class ControllerStudents {
     }
 
 
-    
+    //
+    // ─── DELETE STUDENT DETAIL ─────────────────────────────────────────────────────────
+    //
 
-    public static function ctrEditStudent(){
+    public static function ctrDeleteStudent(){
 
-        if (!empty($_POST["edit_fname"]) && !empty($_POST["edit_lname"]) && !empty($_POST["edit_gender"]) && !empty($_POST["edit_dob"]) && !empty($_POST["edit_level"]) 
-            && !empty($_POST["edit_class"]) && !empty($_POST["edit_school"]) && !empty($_POST["edit_region"]) && !empty($_POST["edit_gname"]) && !empty($_POST["edit_phone"]) && !empty($_POST["edit_address"] 
-            && !empty($_POST["edit_classname"])) ) {
+        if (isset($_GET["deleteStudent"])) {
             # code...
-
-            $fname = trim($_POST["edit_fname"]);
-            $lname = trim($_POST["edit_lname"]);
-            $gender = $_POST["edit_gender"];
-            $sdob = $_POST["edit_dob"];
-            $level = $_POST["edit_level"];
-            $class = $_POST["edit_class"];
-            $school =trim($_POST["edit_school"]);
-            $region = $_POST["edit_region"];
-            $gname = trim($_POST["edit_gname"]);
-            $phone = $_POST["edit_phone"];
-            $address = trim($_POST["edit_address"]);
-            $asignedclass = $_POST["edit_classname"]; 
-            $churchid = $_SESSION["churchid"];
-
-            
-            if (preg_match('/^[a-zA-Z ]+$/', $fname) && preg_match('/^[a-zA-Z ]+$/', $lname) && preg_match('/^[a-zA-Z ]+$/', $school) && preg_match('/^[a-zA-Z ]+$/', $gname) 
-              && preg_match('/^[0-9]+$/', $class) && preg_match('/^[0-9]+$/', $phone) ) {
-
-
-                $table = "student";
-                $item = "";
-                $value = "";
-
-                $dob = date('Y-m-d', strtotime($sdob));
-
-                $students = ModelStudents::mdlShowStudents($table, $item, $value);
-                
-
-                foreach ($students as $key => $student) {
-                    # code...
-
-                    echo "for can be readcher";
-
-                    if ($student["student_id"] != $_POST["idStudent"]  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
-                          && $student["church_id"] == $churchid) {
-                        # code...
-
-                        SweetAlert::alertDuplicateItem();
-                        var_dump($student["Student_id"]);
-                        return false;
-
-                    }else {
-                        # code...
-
-                        echo "working";
-
-                        $photo = $_POST["currentPic"];
-
-                        $firstname = substr($fname, 0, 1);
-                        $fstname = ucfirst($firstname);
-                        $photoID = $fstname.".".$lname."-".$dob;
-                
-                        $newPhoto = $_FILES["newPhoto"];
-                        $folderloation = "views/img/students/";
-                        $picId = $photoID;
-
-                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId, $photo);
-                        $edit_photo = $studentImaage->ImageEditFolder();
-
-                        $data = array('student_firstname'=>$fname,
-                            'student_lastname'=>$lname,
-                            'gender'=>$gender,
-                            'dob'=>$dob,
-                            'student_level'=>$level,
-                            'class_form'=>$class,
-                            'school_name'=>$school,
-                            'region_id'=>$region,
-                            'guardian_name'=>$gname,
-                            'phone'=>$phone,
-                            'home_address'=>$address,
-                            'class_id'=>$asignedclass,
-                            'church_id'=>$churchid,
-                            'student_photo'=>$edit_photo,
-                            'student-id'=> $_POST["idStudent"]
-                            
-                         );
-
-                         var_dump($data);
-
-                         $result = ModelStudents::mdlUpdateStudent($table, $data);
-
-                         if ($result == "ok") {
-                            # code...
-                            SweetAlert::alertUpdate();
-
-                         }else {
-                            # code...
-                            SweetAlert::alertErrorFilelds();
-                            echo "Something went wrong";
-                         }
-
-                    }
-
-                }
-
-
-            }else {
-                # code...
-                SweetAlert::alertInvalidChar();
-            }
-            
-
-        }else {
-            # code...
-            SweetAlert::alertErrorFilelds();
+            SweetAlert::alertDelete();
+            echo "delete Student method";
         }
 
-   }
-
-
+    }
 
 }

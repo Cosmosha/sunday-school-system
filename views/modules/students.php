@@ -327,7 +327,7 @@
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">First Name: <span class="text-danger">*</span></label>
                                                         <input type="text" onkeypress="validateInput(event)" class="form-control text-uppercase"  id="edit_fname" name="edit_fname" placeholder="first name" id="recipient-name" required>
-                                                        <input type="hidden" name="idstudent" value="" id="idstudent" required>
+                                                        <input type="hidden" id="idStudent" name="student_id" value=""  required>
                                                     </div>
 
                                                 </div>
@@ -520,7 +520,7 @@
                                                     
                                                         <label class="control-label">Upload Photo  <span class="text-danger">*</span> <small>Photo size should be less than 2 MB</small> </label>
 
-                                                        <input type="hidden" name="currentPic" id="currentPic">
+                                                        <input type="hidden" id="currentPic" name="currentPic" >
 
                                                     </div>
                                                 </div>
@@ -538,7 +538,7 @@
                                     <?php
                                     
                                         $editstudent = new ControllerStudents();
-                                        $editstudent->ctrEditStudent();
+                                        
                                     
                                     ?>
 
@@ -561,3 +561,10 @@
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
+
+    <?php  
+    
+         $delteStudent = new ControllerStudents();
+         $delteStudent ->ctrDeleteStudent();
+    
+    ?>

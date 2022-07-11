@@ -265,9 +265,10 @@ $(document).ready(function(){
 
     // ─── Edit Studendt ───────────────────────────────────────────────
 
-    $(".studentTable").on("click", "i.btnEditstudent", function(){
+    $(".studentTable tbody").on("click", "i.btnEditstudent", function(){
 
       var idStudent = $(this).attr("idstudent");
+      
       console.log("idStudent", idStudent);
 
       var datas = new FormData();
@@ -302,32 +303,65 @@ $(document).ready(function(){
             $("#edit_classname").val(result["class_id"]);
 
 
-            if (result["student_photo"] != "") {
-
-              $('.preview').attr('src', result["student_photo"]);
-              
-            }else if (result["student_photo"] == "" && result["gender"] == "boy") {
-
-              var rootImage = "views/img/students/default/boy.png";
-              $(".preview").attr("src", rootImage);
-              
-            }else if (result["student_photo"] == "" && result["gender"] == "girl") {
-
-              var rootImage = "views/img/students/default/girl.png";
-              $(".preview").attr("src", rootImage);
-              
-            }else {
-
-              var rootImage = "views/img/students/default/default.png";
-              $(".preview").attr("src", rootImage);
-
-            }
-
         }
 
       })
 
     });
+
+
+
+    // ─── Delete Student Details ──────────────────────────────────────
+
+    $(".studentTable tbody").on("click", "i.btnDeleteStudent", function(){
+
+      var deleteStudent = $(this).attr("deleteStudent");  
+      var deletePhoto = $(this).attr("deletePhoto");
+      var deleteFname = $(this).attr("deleteFname");
+      var deleteLname = $(this).attr("deleteLname");
+      var deleteDOB = $(this).attr("deleteDOB");
+      var churchid = $(this).attr("churchid");
+        
+      console.log("deleteStudent", deleteStudent);
+
+      var datas = new FormData();
+      datas.append("deleteStudent", deleteStudent);
+      datas.append("deletePhoto", deletePhoto);
+      datas.append("deleteDOB", deleteDOB);
+      datas.append("deleteFname", deleteFname);
+      datas.append("deleteLname", deleteLname);
+      datas.append("churchid", churchid);
+      
+
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+      
+            confirmButton: 'btn btn-success mb-4 mr-2',
+            cancelButton: 'btn btn-danger mb-4 mr-2',
+            icon:'mb-2 mt-5'
+      
+          },
+          buttonsStyling: false
+        })
+        
+        swalWithBootstrapButtons.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          cancelButtonText: 'No, cancel!',
+          confirmButtonText: 'Yes, delete it!',      
+          // reverseButtons: true
+        }).then((result) => {
+          if (result.value) {
+            
+            window.location = "index.php?root=students&deleteStudent="+deleteStudent+"deletePhoto="+deletePhoto+"deleteDOB="+deleteDOB+"deleteName="+deleteFname+""+deleteLname;
+
+          } 
+        })
+
+
+  });
 
 
 

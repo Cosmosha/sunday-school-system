@@ -21,6 +21,55 @@ class studentAjax{
         echo json_encode($answer);
 
     }
+
+
+    //
+    // ─── DELETE STUDENT ─────────────────────────────────────────────────────────────
+    //
+
+    public $deleteStudent;
+    public $churchid;
+    public $deletePhoto;
+    public $deletePhone;
+    public $deleteFname;
+    public $deleteLname;
+    public function ajaxDeleteStudent(){
+
+
+        $table = "teacher";
+        $student_id = $this->deleteStudent;
+        $deletePhoto = $this->deletePhoto;
+        $deleteDOB = $this->deleteDOB;
+        $deleteFname = $this->deleteFname;
+        $deleteLname = $this->deleteLname;
+        $church_id = $this->churchid;
+        $data = array('student_id' => $student_id, 
+                        'church_id' => $church_id);
+
+        
+         $photoID = $deleteFname.".".$deleteLname."-".$deleteDOB;
+
+        if ($deletePhoto != "") {
+            # code...
+            unlink($deletePhoto);   
+            rmdir('views/img/students/'.$photoID);
+        }
+
+        $result = ModelStudents::mdlDeleteStudent($table, $data);
+
+        if ($result) {
+            # code...
+            var_dump($data);
+
+        }else {
+            # code...
+            echo 'something is wrong';
+        }
+
+        echo json_encode($result);
+
+    }
+
 }
 
 //
@@ -33,5 +82,24 @@ if (isset($_POST["idStudent"])) {
     $editStudent = new studentAjax();
     $editStudent->idStudent = $_POST["idStudent"];
     $editStudent->ajaxEditStudent();
+
+}
+
+
+//
+// ──────────────────────────────────────────── INITIATE DELETE AJAX FUNCTION ─────
+//
+
+if (isset($_POST["deleteStudent"])) {
+    # code...
+
+    $delete = new studentAjax();
+    $delete->deleteStudent = $_POST["deleteStudent"];
+    $delete->churchid = $_POST["churchid"];
+    $delete->deletePhoto =$_POST["deletePhoto"];
+    $delete->deleteDOB = $_POST["deleteDOB"];
+    $delete->deleteFname =$_POST["deleteFname"];
+    $delete->deleteLname = $_POST["deleteLname"];
+    $delete->ajaxDeleteStudent();
 
 }

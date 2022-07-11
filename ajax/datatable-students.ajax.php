@@ -37,7 +37,7 @@ class StudentTable {
 
                     
                     // ACTION BUTTONS
-                    $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditstudent' idstudent='".$student[$i]["student_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeletestudent' name='btnDeletestudent' deletestudent='".$student[$i]["student_id"]."' churchid='".$student[$i]["church_id"]."' deletePhoto='".$student[$i]["student_photo"]."' deletePhone='".$student[$i]["student_phone"]."'  aria-hidden='true'></i>";   
+                    $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditstudent' idstudent='".$student[$i]["student_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteStudent' name='btnDeleteStudent' deleteStudent='".$student[$i]["student_id"]."' churchid='".$student[$i]["church_id"]."' deletePhoto='".$student[$i]["student_photo"]."' deleteDOB='".$student[$i]["dob"]."' deleteFname='".$student[$i]["student_firstname"]."' deleteLname='".$student[$i]["student_lastname"]."'  aria-hidden='true'></i>";   
 
                 
                     // student fullname
