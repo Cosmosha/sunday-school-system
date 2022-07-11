@@ -294,7 +294,7 @@
                                     <?php
                                     
                                         $student = new ControllerStudents();
-                                        $student->ctrAddStrudent();
+                                        $student->ctrAddStudent();
                                     
                                     ?>
 
@@ -538,6 +538,7 @@
                                     <?php
                                     
                                         $editstudent = new ControllerStudents();
+                                        $editstudent ->ctrEditStudent();
                                         
                                     
                                     ?>

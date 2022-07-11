@@ -22,7 +22,7 @@ class ControllerStudents {
     // ─── ADD STUDENT DETAIL ─────────────────────────────────────────────────────────
     //
 
-    public static function ctrAddStrudent() {
+    public static function ctrAddStudent() {
 
 
         if (!empty($_POST["student_fname"]) && !empty($_POST["student_lname"]) && !empty($_POST["sgender"]) && !empty($_POST["sdob"]) && !empty($_POST["slevel"]) 
@@ -153,11 +153,16 @@ class ControllerStudents {
     }
 
 
+    //
+    // ─── EDIT STUDENT DETAIL ─────────────────────────────────────────────────────────
+    //
+
     public static function ctrEditStudent(){
 
-        if (!empty($_POST["edit_fname"]) && !empty($_POST["edit_lname"]) && !empty($_POST["edit_gender"]) && !empty($_POST["edit_dob"]) && !empty($_POST["edit_level"]) 
-            && !empty($_POST["edit_class"]) && !empty($_POST["edit_school"]) && !empty($_POST["edit_region"]) && !empty($_POST["edit_gname"]) && !empty($_POST["edit_phone"]) && !empty($_POST["edit_address"] 
-            && !empty($_POST["edit_classname"])) ) {
+        				
+		if (!empty($_POST["edit_fname"]) && !empty($_POST["edit_lname"]) && !empty($_POST["edit_gender"]) && !empty($_POST["edit_dob"]) && !empty($_POST["edit_level"]) 
+			&& !empty($_POST["edit_class"]) && !empty($_POST["edit_school"]) && !empty($_POST["edit_region"]) && !empty($_POST["edit_gname"]) && !empty($_POST["edit_phone"]) && !empty($_POST["edit_address"] 
+			&& !empty($_POST["edit_classname"])) ) {
             # code...
 
             $fname = trim($_POST["edit_fname"]);
@@ -173,8 +178,9 @@ class ControllerStudents {
             $address = trim($_POST["edit_address"]);
             $asignedclass = $_POST["edit_classname"]; 
             $churchid = $_SESSION["churchid"];
+            $idStudent = $_POST["student_id"];
 
-
+            
             if (preg_match('/^[a-zA-Z ]+$/', $fname) && preg_match('/^[a-zA-Z ]+$/', $lname) && preg_match('/^[a-zA-Z ]+$/', $school) && preg_match('/^[a-zA-Z ]+$/', $gname) 
               && preg_match('/^[0-9]+$/', $class) && preg_match('/^[0-9]+$/', $phone) ) {
 
@@ -186,17 +192,15 @@ class ControllerStudents {
                 $dob = date('Y-m-d', strtotime($sdob));
 
                 $students = ModelStudents::mdlShowStudents($table, $item, $value);
-
+                
 
                 foreach ($students as $key => $student) {
                     # code...
 
-                    echo "for can be readcher";
-
-                    if ($student["student_id"] != $_POST["idStudent"]  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
+                    if ($student["student_id"] != $idStudent  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                           && $student["church_id"] == $churchid) {
                         # code...
-
+                        var_dump($idStudent);
                         SweetAlert::alertDuplicateItem();
                         var_dump($student["Student_id"]);
                         return false;
@@ -204,19 +208,18 @@ class ControllerStudents {
                     }else {
                         # code...
 
-                        echo "working";
-
                         $photo = $_POST["currentPic"];
 
                         $firstname = substr($fname, 0, 1);
                         $fstname = ucfirst($firstname);
                         $photoID = $fstname.".".$lname."-".$dob;
-
+                
                         $newPhoto = $_FILES["newPhoto"];
                         $folderloation = "views/img/students/";
                         $picId = $photoID;
 
-                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId, $photo);
+                        $studentImaage = new CreateFile($newPhoto, $folderloation, $picId);
+                        $studentImaage->photo = $photo;
                         $edit_photo = $studentImaage->ImageEditFolder();
 
                         $data = array('student_firstname'=>$fname,
@@ -233,8 +236,8 @@ class ControllerStudents {
                             'class_id'=>$asignedclass,
                             'church_id'=>$churchid,
                             'student_photo'=>$edit_photo,
-                            'student-id'=> $_POST["idStudent"]
-
+                            'student_id'=> $idStudent
+                            
                          );
 
                          var_dump($data);
@@ -251,13 +254,28 @@ class ControllerStudents {
                             echo "Something went wrong";
                          }
 
+
+
                     }
+
+                    return false;
 
                 }
 
+
+            }else {
+                # code...
+                SweetAlert::alertInvalidChar();
             }
+            
+
+        }else {
+            # code...
+            SweetAlert::alertErrorFilelds();
         }
+
     }
+
 
 
 
@@ -269,8 +287,30 @@ class ControllerStudents {
 
         if (isset($_GET["deleteStudent"])) {
             # code...
-            SweetAlert::alertDelete();
-            echo "delete Student method";
+            $table = "student";
+            $id = $_GET["deleteStudent"];
+            $church_id = $_SESSION["churchid"];
+            $data = array('student_id'=>$id,
+                         'church_id'=> $church_id);
+
+             $photoID = $_GET["deleteFname"].".".$_GET["deleteLname"]."-".$_GET["deleteDOB"];
+
+            if ($_GET["deletePhoto"] != "") {
+                # code...
+                unlink($_GET["deletePhoto"]);   
+                rmdir('views/img/teachers/'.$photoID);
+            }
+
+            $result = ModelStudents::mdlDeleteStudent($table, $data);
+
+            if ($result == "ok") {
+                # code...
+
+                SweetAlert::alertDelete();
+            }else {
+                # code...
+                echo "Something is wrong";
+            }
         }
 
     }
