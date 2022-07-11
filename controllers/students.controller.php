@@ -196,7 +196,7 @@ class ControllerStudents {
 
                     echo "for can be readcher";
 
-                    if ($student["student_id"] != $_POST["idStudent"]  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["dob"] == $dob && $student["phone"] == $phone
+                    if ($student["student_id"] != $_POST["idStudent"]  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                           && $student["church_id"] == $churchid) {
                         # code...
 
