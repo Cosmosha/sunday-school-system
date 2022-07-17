@@ -185,7 +185,7 @@ class ControllerUsers{
                 $subject = 'RESET PASSWORD REQUEST ';
                 $message = 'Dear '.ucwords($result["user_name"]).',<br> <p>A request to RESET your PASSWORD for your User Account was received<p/>
                             <p>Please discard this email if request was not sent by YOU. <p/>';
-                $message .= 'Please change your PASSWORD after using the Reset PIN below. PIN expires after login.<br>
+                $message .= 'Please change your PASSWORD after using the Reset PIN below.<br>
                 Your Generated RESET PASSWORD is <strong class="text" style="font-size: 25px; font-weight: 1200;"> '. $pass .' </strong>';
 
                 try {
