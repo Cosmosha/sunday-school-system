@@ -113,7 +113,7 @@
 
                                                 <div class="form-group">
                                                 <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
-                                                <input type="email" onkeypress="validateEntry(event)" class="form-control text-lowercase" name="user_email" id="user_email" placeholder="example@gmail.com" value="<?php echo $user["teacher_email"]?>" id="recipient-name" readonly>
+                                                <input type="email" onkeypress="validateEntry(event)" class="form-control text-lowercase" name="user_email" id="user_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
                                                 </div>
 
                                             </div>
