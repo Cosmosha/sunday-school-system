@@ -115,6 +115,8 @@
     <!-- Date Picker Plugin JavaScript -->
     <script src="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
+    <!-- Validation -->
+    <script src="assets/js/validation.js"></script>
     <!-- Date range Plugin JavaScript -->
     <!-- <script src="assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
     <script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script> -->
@@ -311,6 +313,16 @@
     });
 
 
+</script>
+
+<script>
+    ! function(window, document, $) {
+        "use strict";
+        $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(), $(".skin-square input").iCheck({
+            checkboxClass: "icheckbox_square-green",
+            radioClass: "iradio_square-green"
+        }), $(".touchspin").TouchSpin(), $(".switchBootstrap").bootstrapSwitch();
+    }(window, document, jQuery);
 </script>
 
 

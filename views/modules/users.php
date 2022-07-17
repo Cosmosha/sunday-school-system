@@ -79,20 +79,103 @@
 
                                     <div class="modal-body">
                                     
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Class Name: <span class="text-danger">*</span></label>
-                                                <input type="text" onkeypress="validateInput(event)"  class="form-control" name="class_name" id="recipient-name" required>
+
+                                        <div class="row">
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">User: <span class="text-danger">*</span></label>
+                                                        <select name="username" id="username" required="" class="form-control tgender text-capitalize" required>
+                                                            <option value="">Select From List</option>
+
+                                                            <?php 
+                                                            
+                                                                $table = "teacher";
+                                                                $item = "";
+                                                                $value = "";
+
+                                                                $teacher = ModelTeachers::mdlShowTeacher($table, $item, $value);
+
+                                                                foreach ($teacher as $key => $user) {
+                                                                    # code...
+                                                                    echo '<option value="'.$user["teacher_firstname"].' '.$user["teacher_lastname"]. '">'.$user["teacher_firstname"].' '.$user["teacher_lastname"].'</option>';
+                                                                }
+                                                            
+                                                            
+                                                            ?>    
+                                                        </select>
+                                                </div>
+
                                             </div>
 
+                                            <div class="col-6">
 
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Room Capacity: <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" name="class_capacity" id="recipient-name" required>
+                                                <div class="form-group">
+                                                <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
+                                                <input type="email" onkeypress="validateEntry(event)" class="form-control text-lowercase" name="user_email" id="user_email" placeholder="example@gmail.com" value="<?php echo $user["teacher_email"]?>" id="recipient-name" readonly>
+                                                </div>
+
                                             </div>
+
+                                        </div>   
+                                        
+                                        
+                                        <div class="row">
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Password: <span class="text-danger">*</span></label>
+                                                    
+                                                    <div class="controls">
+                                                        <input type="password" onkeypress="validateEntry(event)" name="password" class="form-control" required data-validation-required-message="This field is required">
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Confirm Password: <span class="text-danger">*</span></label>
+                                                    
+                                                    <div class="controls">
+                                                         <input type="password" name="password2" data-validation-match-match="password" class="form-control" onkeypress="validateEntry(event)" required>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                            </div>
+
+                                        </div> 
+                                        
+                                        
+                                        <div class="row">
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Permission Role: <span class="text-danger">*</span></label>
+                                                        <select name="permission" id="permission" required="" class="form-control permission text-capitalize" required>
+                                                            <option value="">Select Permission </option>
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>         
+                                                        </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-6">
+
+                                            </div>
+
+                                        </div>  
                                     
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary waves-effect">Save Class</button>
+                                        <button type="submit" class="btn btn-primary waves-effect">Add User</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
