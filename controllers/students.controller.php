@@ -66,14 +66,14 @@ class ControllerStudents {
                         # code...
 
                         SweetAlert::alertDuplicateItem();
-                        return false;
+                        break;
 
                     } elseif (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                             && $student["church_id"] == $churchid) {
                         # code...
 
                         SweetAlert::alertDuplicateItem();
-                        return false;
+                        break;
 
                     } else {
                         # code...
@@ -126,7 +126,7 @@ class ControllerStudents {
 
                     }
                 
-                    return false;
+                    break;
 
                 }
 
@@ -197,22 +197,18 @@ class ControllerStudents {
                 foreach ($students as $key => $student) {
                     # code...
 
-                    if ($student["student_id"] != $idStudent  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
+                    if (!empty($student) && $student["student_id"] != $idStudent  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                           && $student["church_id"] == $churchid) {
                         # code...
-                        var_dump($idStudent);
                         SweetAlert::alertDuplicateItem();
-                        var_dump($student["Student_id"]);
-                        return false;
+                        break;
 
                     }else {
                         # code...
 
                         $photo = $_POST["currentPic"];
 
-                        $firstname = substr($fname, 0, 1);
-                        $fstname = ucfirst($firstname);
-                        $photoID = $fstname.".".$lname."-".$dob;
+                        $photoID = $fname.".".$lname."-".$dob;
                 
                         $newPhoto = $_FILES["newPhoto"];
                         $folderloation = "views/img/students/";
@@ -293,12 +289,16 @@ class ControllerStudents {
             $data = array('student_id'=>$id,
                          'church_id'=> $church_id);
 
-             $photoID = $_GET["deleteFname"].".".$_GET["deleteLname"]."-".$_GET["deleteDOB"];
+            $deleteFname = $_GET["deleteFname"];
+            $deleteLname = $_GET["deleteLname"];
+            $deleteDOB = $_GET["deleteDOB"];
+ 
+             $photoID = $deleteFname.".".$deleteLname."-".$deleteDOB;
 
             if ($_GET["deletePhoto"] != "") {
                 # code...
                 unlink($_GET["deletePhoto"]);   
-                rmdir('views/img/teachers/'.$photoID);
+                rmdir("views/img/students/".$photoID);
             }
 
             $result = ModelStudents::mdlDeleteStudent($table, $data);

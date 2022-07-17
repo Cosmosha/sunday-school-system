@@ -114,14 +114,20 @@ class CreateFile{
             we ask first if there's an existing image in the database
             =============================================*/
 
-            if (!empty($photo)){
+            try {
+                //code...
                 
-                unlink($photo);
+                if (!empty($photo)){
+                    
+                    unlink($photo);
 
-            }else{
+                }else{
 
-                mkdir($folder, 0755);
+                    mkdir($folder, 0755);
 
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
             }
 
             /*=============================================
@@ -158,7 +164,7 @@ class CreateFile{
                 
                 $destination = imagecreatetruecolor($newWidth, $newHeight);
 
-                imagecopyresized($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                imagecopyresampled($destination, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
                 imagepng($destination, $photo);
             }

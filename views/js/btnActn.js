@@ -302,6 +302,29 @@ $(document).ready(function(){
             $("#edit_address").val(result["home_address"]);
             $("#edit_classname").val(result["class_id"]);
 
+            console.log(result["gender"]);
+
+            if (result["student_photo"] !="") { 
+
+              $('.preview').attr('src', result["student_photo"]);
+              
+            }else if (result["student_photo"] == "" && result["gender"] == "boy" ) {
+
+              var rootImage = "views/img/students/default/boy.png";
+              $('.preview').attr('src', rootImage);
+              console.log(rootImage);
+
+            }else if (result["student_photo"] == "" && result["gender"] == "girl") {
+              
+              var rootImage = "views/img/students/default/girl.png";
+              $('.preview').attr('src', rootImage);
+              
+            }else {
+    
+              var rootImage = "views/img/students/default/default.png";
+              $('.preview').attr('src', rootImage);             
+            }
+
 
         }
 

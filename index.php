@@ -7,6 +7,8 @@ require_once "controllers/teachers.controller.php";
 require_once "controllers/classrooms.controller.php";
 require_once "controllers/students.controller.php";
 
+require_once "controllers/mailscript.php";
+
 //
 // ─── LOADING DATABASE MODEL ─────────────────────────────────────────────────────
 //
@@ -23,6 +25,8 @@ require_once "models/students.model.php";
 
 require_once "views/alert.php";
 require_once "views/createFolder.php";
+
+
 
 $template = new ControllerTemplate();
 $template -> ctrTemplate();

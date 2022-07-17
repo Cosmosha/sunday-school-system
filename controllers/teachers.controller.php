@@ -364,15 +364,13 @@ class ControllerTeacher{
 
                         if ($answer == "ok") {
                             # code...
-
                             SweetAlert::alertUpdate();
                             
                         }else {
                             # code...
                             print_r("Server Side Update Error!");
                         }
-                        
-                       
+                                             
                     }
 
                 }else {
@@ -409,7 +407,7 @@ class ControllerTeacher{
             if ($_GET["deletePhoto"] != "") {
                 # code...
                 unlink($_GET["deletePhoto"]);   
-                rmdir('views/img/teachers/'.$_GET["deletePhone"]);
+                rmdir("views/img/teachers/".$_GET["deletePhone"]);
             }
 
             $result = ModelTeachers::mdlDeleteTeacher($table, $data);
