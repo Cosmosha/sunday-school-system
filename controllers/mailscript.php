@@ -45,6 +45,9 @@ class Mailier {
         }
 
 
+        $year = date("Y");
+        ;
+
         $cm = "Children's Ministry";
 
 
@@ -86,7 +89,7 @@ class Mailier {
                         Your data has been incorporated into our privacy system to manage your request </p><br>';
             $footer .= '<img src="cid:menosoft" width="500px" height="150px">';
             $mail->addEmbeddedImage(dirname(__FILE__).'/menosoft.png', 'menosoft');
-            $footer .= '<br> © Menosoft 2021 | Menosoft Technology <br>
+            $footer .= '<br> © Menosoft '.$year.' | Menosoft Technology <br>
                          Metal Cross Street 7 | Takoradi, WR | GH <br>
                         +233-27-350-9432';
             $footer .= '<br><p>Visit Our Website: <a href="http://menosoftech.com"><strong style="font-style: italic ">www.menosoftech.com</strong></a></p>';

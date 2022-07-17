@@ -66,13 +66,13 @@
                     </div>
 
                     <!-- Add Classroom Modal Content -->
-                    <!-- <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-md">
+                    <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form role="form" id="classform" method="POST">
 
                                 <div class="modal-header bg-info">
-                                    <h4 class="modal-title text-white" id="myModalLabel"> Create Class Room </h4>
+                                    <h4 class="modal-title text-white" id="myModalLabel"> Add Users </h4>
                                     <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 
@@ -97,18 +97,18 @@
                                     </div>
 
 
-                                    <?php
+                                    <!-- <?php
                                     
                                         $classroom = new ControllerClassRoom();
                                         $classroom -> ctrAddClass();
                                     
-                                    ?>
+                                    ?> -->
 
                                 </form>
                                 
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <!-- /.modal -->
 
                     <!-- Edit Classroom Modal Content -->
@@ -142,12 +142,12 @@
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
-                                    <?php
+                                    <!-- <?php
                                     
                                         $editclass = new ControllerClassRoom();
                                         $editclass -> ctrEditCLass();
                                     
-                                    ?>
+                                    ?> -->
 
                                 </form>
                                 
@@ -168,9 +168,9 @@
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
     
-    <?php
+    <!-- <?php
                                     
         $deleteClass = new ControllerClassRoom();
         $deleteClass -> ctrDeleteClass();
     
-    ?>
+    ?> -->
