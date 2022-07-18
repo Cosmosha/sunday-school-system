@@ -226,7 +226,7 @@
 
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">Name: <span class="text-danger">*</span></label>
-                                                        <select name="editusername" id="editusername" required="" class="form-control username text-capitalize" required>
+                                                        <select name="editusername" id="editusername" class="form-control username text-capitalize" required>
                                                             <option value="">Select From List</option>
 
                                                             <?php 

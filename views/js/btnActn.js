@@ -391,7 +391,7 @@ $(document).ready(function(){
   $(".userTable tbody").on("click", "i.btnEditUser", function(){
 
     
-    var idUser = $(this).val();
+    var idUser = $(this).attr("idUser");
     console.log("idUser", idUser);
 
     var datas = new FormData();
@@ -408,9 +408,13 @@ $(document).ready(function(){
         dataType: "json",
         success: function(result){
 
-         // console.log("result", result);
+         // console.log("result", result["user_id"]);
 
-          $("#user_email").val(result["user_email"]);
+          $("#editusername").val(result["user_id"]);
+          $("#edituser_email").val(result["user_email"]);
+          $("#editpassword").val(result["password"]);
+          $("#editconfirmPass").val(result["password"]);
+          $("#editpermission").val(result["permission_id"]);
 
 
       }
