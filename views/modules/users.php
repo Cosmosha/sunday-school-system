@@ -194,12 +194,12 @@
                                     </div>
 
 
-                                    <!-- <?php
+                                    <?php 
                                     
-                                        $classroom = new ControllerClassRoom();
-                                        $classroom -> ctrAddClass();
+                                        $users = new ControllerUsers();
+                                        $users ->ctrAddUser(); 
                                     
-                                    ?> -->
+                                    ?>
 
                                 </form>
                                 

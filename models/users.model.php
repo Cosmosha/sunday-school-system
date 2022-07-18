@@ -11,14 +11,15 @@ class ModelUsers{
 
     public static function mdlAddUsers($table, $data){
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table(user_name, user_email, password, permission_permission_id, user_status)
-        VALUES(:user_name, :user_email, :password, :permission_permission_id, :user_status)");
+        $stmt = Connection::connect()->prepare("INSERT INTO $table(user_name, user_email, password, permission_id, user_status, church_id)
+        VALUES(:user_name, :user_email, :password, :permission_id, :user_status, :church_id)");
 
         $stmt->bindParam(":user_name", $data["user_name"], PDO::PARAM_STR);
         $stmt->bindParam(":user_email", $data["user_email"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $data["password"], PDO::PARAM_STR);
-        $stmt->bindParam(":permission_permission_is", $data["permission_permission_id"], PDO::PARAM_STR);
-        $stmt->bindParam("user_status", $data["user_status"], PDO::PARAM_STR);
+        $stmt->bindParam(":permission_id", $data["permission_id"], PDO::PARAM_INT);
+        $stmt->bindParam(":user_status", $data["user_status"], PDO::PARAM_INT);
+        $stmt->bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             # code...

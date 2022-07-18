@@ -27,9 +27,11 @@ class ControllerUsers{
                     // Fetch Result From USERS TABLE
                     $result = ModelUsers::MdlShowUsers($table, $item, $value);
 
+                    $hashPassword = $result["password"];
+
                     
 
-                    if ($result["user_email"]== $value && $result["password"]== $password ) {
+                    if ($result["user_email"]== $value && password_verify($password, $hashPassword) ) {
                         # code...
 
                         
@@ -147,7 +149,82 @@ class ControllerUsers{
   //
   // ─── ADD USER ───────────────────────────────────────────────────────────────────
   //
-    
+
+  static public function ctrAddUser(){
+
+    if (isset($_POST["username"])) {
+        # code...
+        $userid = $_POST["username"];
+        $table = "teacher";
+        $item = "teacher_id";
+
+        $result = ModelUsers::MdlShowUsers($table, $item, $userid);
+
+        $fname = $result["teacher_firstname"];
+        $lname = $result["teacher_lastname"];
+        $username = $fname.' '.$lname;
+        
+        $password = $_POST["password"];
+        $confirmPassword = $_POST["password2"];
+
+        if (preg_match('/^[a-zA-Z0-9@!^#-]+$/', $password) &&
+           preg_match('/^[a-zA-Z0-9@!^#-]+$/', $confirmPassword)) {
+            # code...
+
+            if ($password == $confirmPassword) {
+                # code...
+                $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
+
+                $email = $_POST["user_email"];
+                $status = 1;
+                $churchid = $_SESSION["churchid"];
+
+                $data = array('user_name'=> $username,
+                        'user_email' => $email,
+                        'password'=> $encryptPassword,
+                        'permission_id'=> $_POST["permission"],
+                        'user_status' => $status,
+                        'church_id' => $churchid);
+                
+                
+                $table1 = "user";
+                $item1 = "user_email";
+
+                $answer = ModelUsers::MdlShowUsers($table1, $item1, $email);
+
+                if ($answer["user_email"] != $email) {
+                    # code...
+
+                   $myresult = ModelUsers::mdlAddUsers($table1, $data);
+                   var_dump($myresult);
+
+                    if ($myresult == "ok") {
+                        # code...
+                        SweetAlert::alertUserSaved();
+                    }
+
+                }else {
+                    # code...
+                    SweetAlert::alertDuplicateUser();
+
+                }                      
+                
+
+            }else {
+                # code...
+                SweetAlert::alertErrorFilelds();
+            }
+
+        }else {
+            # code...
+            SweetAlert::alertInvalidChar();
+        }
+
+    }
+
+
+  }
+
  
 
 
@@ -156,6 +233,7 @@ class ControllerUsers{
     // ─── Reset Password  ───────────────────────────────────────────────────────────────────────────
     //
 
+    //Generate Random Pass Code
     private static function randPassword($len){
         $char = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@!^#-_';
         return substr(str_shuffle($char), 0, $len);

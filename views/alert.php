@@ -194,4 +194,135 @@ class SweetAlert{
 
     }
 
+
+
+    public static function alertUserSaved(){
+
+        echo '
+                <script type= "text/javascript">
+                 
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: "btn btn-success mb-4 mr-2",
+                            cancelButton: "btn btn-danger mb-4 mr-2",
+                            icon:"mb-2 mt-5"
+                        },
+                        buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+
+                        icon: "success",
+                        title: "Saved!",
+                        text: "User has been added.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Okay",
+                        closeOnConfirm: false,
+
+                });
+
+                </script>
+            ';
+
+    }
+
+
+
+
+    public static function alertUserUpdated(){
+
+        echo '
+                <script type= "text/javascript">
+                 
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: "btn btn-success mb-4 mr-2",
+                            cancelButton: "btn btn-danger mb-4 mr-2",
+                            icon:"mb-2 mt-5"
+                        },
+                        buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+
+                        icon: "success",
+                        title: "Updated!",
+                        text: "User has been added.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Okay",
+                        closeOnConfirm: false,
+
+                });
+
+                </script>
+            ';
+
+    }
+
+
+    public static function alertDuplicateUser(){
+
+        echo'
+                
+                <script type= "text/javascript">
+                            
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: "btn btn-success mb-4 mr-2",
+                            cancelButton: "btn btn-danger mb-4 mr-2",
+                            icon:"mb-2 mt-5"
+                        },
+                        buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+
+                        icon: "error",
+                        title: "Oops!",
+                        text: "User Already Exit.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Okay",
+                        closeOnConfirm: false,
+
+                    });
+
+                </script>
+            ';
+
+    }
+
+
+
+    public static function alertUserDelete(){
+
+        echo '
+                <script type= "text/javascript">
+                 
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: "btn btn-success mb-4 mr-2",
+                            cancelButton: "btn btn-danger mb-4 mr-2",
+                            icon:"mb-2 mt-5"
+                        },
+                        buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+
+                        icon: "success",
+                        title: "Deleted!",
+                        text: "User has been removed.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Okay",
+                        closeOnConfirm: false,
+
+                    });
+                    
+                </script>
+            ';
+
+    }
+
+
+
 }
