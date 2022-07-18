@@ -410,7 +410,7 @@ $(document).ready(function(){
 
          // console.log("result", result["user_id"]);
 
-          $("#editusername").val(result["user_id"]);
+          $("#editusername").val(result["user_name"]);
           $("#edituser_email").val(result["user_email"]);
           $("#editpassword").val(result["password"]);
           $("#editconfirmPass").val(result["password"]);

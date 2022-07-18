@@ -163,6 +163,7 @@ class ControllerUsers{
         $fname = $result["teacher_firstname"];
         $lname = $result["teacher_lastname"];
         $username = $fname.' '.$lname;
+        $teacher_id = $result["teacher_id"];
         
         $password = $_POST["password"];
         $confirmPassword = $_POST["password2"];
@@ -184,6 +185,7 @@ class ControllerUsers{
                         'password'=> $encryptPassword,
                         'permission_id'=> $_POST["permission"],
                         'user_status' => $status,
+                        'teacher_id' => $teacher_id,
                         'church_id' => $churchid);
                 
                 
@@ -192,7 +194,7 @@ class ControllerUsers{
 
                 $answer = ModelUsers::MdlShowUsers($table1, $item1, $email);
 
-                if ($answer["user_email"] != $email) {
+                if ($answer["user_email"] != $email || $answer["teacher_id"] != $teacher_id) {
                     # code...
 
                    $myresult = ModelUsers::mdlAddUsers($table1, $data);

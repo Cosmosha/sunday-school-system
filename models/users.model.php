@@ -11,9 +11,10 @@ class ModelUsers{
 
     public static function mdlAddUsers($table, $data){
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table(user_name, user_email, password, permission_id, user_status, church_id)
-        VALUES(:user_name, :user_email, :password, :permission_id, :user_status, :church_id)");
+        $stmt = Connection::connect()->prepare("INSERT INTO $table(teacher_id, user_name, user_email, password, permission_id, user_status, church_id)
+        VALUES(:teacher_id, :user_name, :user_email, :password, :permission_id, :user_status, :church_id)");
 
+        $stmt->bindParam(":teacher_id", $data["teacher_id"], PDO::PARAM_INT);
         $stmt->bindParam(":user_name", $data["user_name"], PDO::PARAM_STR);
         $stmt->bindParam(":user_email", $data["user_email"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $data["password"], PDO::PARAM_STR);

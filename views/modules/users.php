@@ -226,25 +226,8 @@
 
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">Name: <span class="text-danger">*</span></label>
-                                                        <select name="editusername" id="editusername" class="form-control username text-capitalize" required>
-                                                            <option value="">Select From List</option>
-
-                                                            <?php 
-                                                            
-                                                                $table = "teacher";
-                                                                $item = "";
-                                                                $value = "";
-
-                                                                $teacher = ModelTeachers::mdlShowTeacher($table, $item, $value);
-
-                                                                foreach ($teacher as $key => $user) {
-                                                                    # code...
-                                                                    echo '<option value="'.$user["teacher_id"].'">'.$user["teacher_firstname"].' '.$user["teacher_lastname"].'</option>';
-                                                                }
-                                                            
-                        
-                                                            ?>    
-                                                        </select>
+                                      
+                                                        <input type="text" onkeypress="validateEntry(event)" class="form-control editusername text-lowercase" name="editusername" id="editusername" placeholder="full name" value="" id="recipient-name" readonly>
                                                 </div>
 
                                             </div>
