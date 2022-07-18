@@ -85,7 +85,7 @@
                                             <div class="col-6">
 
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">User: <span class="text-danger">*</span></label>
+                                                    <label for="recipient-name" class="control-label">Name: <span class="text-danger">*</span></label>
                                                         <select name="username" id="username" required="" class="form-control username text-capitalize" required>
                                                             <option value="">Select From List</option>
 
