@@ -86,7 +86,7 @@
 
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="control-label">User: <span class="text-danger">*</span></label>
-                                                        <select name="username" id="username" required="" class="form-control tgender text-capitalize" required>
+                                                        <select name="username" id="username" required="" class="form-control username text-capitalize" required>
                                                             <option value="">Select From List</option>
 
                                                             <?php 
@@ -99,10 +99,10 @@
 
                                                                 foreach ($teacher as $key => $user) {
                                                                     # code...
-                                                                    echo '<option value="'.$user["teacher_firstname"].' '.$user["teacher_lastname"]. '">'.$user["teacher_firstname"].' '.$user["teacher_lastname"].'</option>';
+                                                                    echo '<option value="'.$user["teacher_id"].'">'.$user["teacher_firstname"].' '.$user["teacher_lastname"].'</option>';
                                                                 }
                                                             
-                                                            
+                        
                                                             ?>    
                                                         </select>
                                                 </div>
@@ -112,8 +112,8 @@
                                             <div class="col-6">
 
                                                 <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
-                                                <input type="email" onkeypress="validateEntry(event)" class="form-control text-lowercase" name="user_email" id="user_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
+                                                     <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
+                                                      <input type="email" onkeypress="validateEntry(event)" class="form-control user_email text-lowercase" name="user_email" id="user_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
                                                 </div>
 
                                             </div>
@@ -160,8 +160,22 @@
                                                     <label for="recipient-name" class="control-label">Permission Role: <span class="text-danger">*</span></label>
                                                         <select name="permission" id="permission" required="" class="form-control permission text-capitalize" required>
                                                             <option value="">Select Permission </option>
-                                                            <option value="male">Male</option>
-                                                            <option value="female">Female</option>         
+                                                            
+                                                            <?php  
+                                                            
+                                                                $table = "permission";
+                                                                $item = "";
+                                                                $value = "";
+
+                                                                $permission = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                                                                foreach ($permission as $key => $role) {
+                                                                    # code...
+
+                                                                    echo'<option value="'.$role["permission_id"].'">'.$role["permission_role"].'</option>';
+
+                                                                }
+                                                            
+                                                            ?>      
                                                         </select>
                                                 </div>
 

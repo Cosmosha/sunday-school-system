@@ -261,6 +261,8 @@ $(document).ready(function(){
     $(".sgender").change(function(){
 
         var gender = $(this).val();
+
+        console.log("gender", gender);
         
         if (gender == "boy") {
             
@@ -280,6 +282,56 @@ $(document).ready(function(){
         }
 
     });
+
+
+
+    // $(".username").change(function(){
+
+    //     var username = $(this).val();
+    //     console.log("username", username);
+
+    //     if (username != "") {
+            
+    //         $(".user_email").val("me@gmail.com");
+    //     }else{
+    //         $(".user_email").val("example@gmail.com");
+    //     }
+
+
+    // });
+
+
+
+    $(".username").change(function(){
+
+        var idTeacher = $(this).val();
+        console.log("idTeacher", idTeacher);
+
+        var datas = new FormData();
+        datas.append("idTeacher", idTeacher);
+  
+        $.ajax({
+  
+          url: "./ajax/teachers.ajax.php",
+            method: "POST",
+            data: datas,
+            Cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(result){
+  
+             // console.log("result", result);
+  
+              $(".user_email").val(result["teacher_email"]);
+
+
+          }
+  
+        })
+  
+      });
+  
 
 
 
