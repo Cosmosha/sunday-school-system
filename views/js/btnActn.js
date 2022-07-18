@@ -337,6 +337,7 @@ $(document).ready(function(){
     // ─── Delete Student Details ──────────────────────────────────────
 
     $(".studentTable tbody").on("click", "i.btnDeleteStudent", function(){
+    
 
       var deleteStudent = $(this).attr("deleteStudent");  
       var deletePhoto = $(this).attr("deletePhoto");
@@ -387,6 +388,36 @@ $(document).ready(function(){
   });
 
 
+  $(".userTable tbody").on("click", "i.btnEditUser", function(){
+
+    
+    var idUser = $(this).val();
+    console.log("idUser", idUser);
+
+    var datas = new FormData();
+    datas.append("idUser", idUser);
+
+    $.ajax({
+
+      url: "./ajax/users.ajax.php",
+        method: "POST",
+        data: datas,
+        Cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(result){
+
+         // console.log("result", result);
+
+          $("#user_email").val(result["user_email"]);
+
+
+      }
+
+    })
+
+  });
 
 
 });

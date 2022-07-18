@@ -72,7 +72,7 @@
                                 <form role="form" id="classform" method="POST">
 
                                 <div class="modal-header bg-info">
-                                    <h4 class="modal-title text-white" id="myModalLabel"> Add Users </h4>
+                                    <h4 class="modal-title text-white" id="myModalLabel"> Add User Account </h4>
                                     <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 
@@ -208,30 +208,124 @@
                     </div>
                     <!-- /.modal -->
 
+
                     <!-- Edit Classroom Modal Content -->
-                    <!-- <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-md">
+                    <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;"> -->
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <form role="form" id="classform" method="POST">
+                                <form role="form" id="edituserform" method="POST">
 
                                     <div class="modal-header bg-info">
-                                        <h4 class="modal-title text-white" id="myModalLabel"> Edit Class Room </h4>
+                                        <h4 class="modal-title text-white" id="myModalLabel"> Edit User Account </h4>
                                         <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                 
-                                    <div class="modal-body">
-                                     
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Class Name: <span class="text-danger">*</span></label>
-                                                <input type="text" onkeypress="validateInput(event)"  class="form-control editname" value="" id="editname" name="editname" id="recipient-name" required>
-                                                <input type="hidden" name="idClass" value="" id="idClass" required>
+                                    <div class="modal-body">                                  
+                                        <div class="row">
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Name: <span class="text-danger">*</span></label>
+                                                        <select name="editusername" id="editusername" required="" class="form-control username text-capitalize" required>
+                                                            <option value="">Select From List</option>
+
+                                                            <?php 
+                                                            
+                                                                $table = "teacher";
+                                                                $item = "";
+                                                                $value = "";
+
+                                                                $teacher = ModelTeachers::mdlShowTeacher($table, $item, $value);
+
+                                                                foreach ($teacher as $key => $user) {
+                                                                    # code...
+                                                                    echo '<option value="'.$user["teacher_id"].'">'.$user["teacher_firstname"].' '.$user["teacher_lastname"].'</option>';
+                                                                }
+                                                            
+                        
+                                                            ?>    
+                                                        </select>
+                                                </div>
+
                                             </div>
 
+                                            <div class="col-6">
 
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Room Capacity: <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control editcapacity"  id="editcapacity" name="editcapacity" value="" id="recipient-name" required>
+                                                <div class="form-group">
+                                                     <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
+                                                      <input type="email" onkeypress="validateEntry(event)" class="form-control user_email text-lowercase" name="edituser_email" id="edituser_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
+                                                </div>
+
                                             </div>
+
+                                        </div>   
+                                        
+                                        
+                                        <div class="row">
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Password: <span class="text-danger">*</span></label>
+                                                    
+                                                    <div class="controls">
+                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control" required data-validation-required-message="This field is required">
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Confirm Password: <span class="text-danger">*</span></label>
+                                                    
+                                                    <div class="controls">
+                                                         <input type="password" name="password2" data-validation-match-match="password" id="editconfirmPass" class="form-control" onkeypress="validateEntry(event)" required>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                            </div>
+
+                                        </div> 
+                                        
+                                        
+                                        <div class="row">
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Permission Role: <span class="text-danger">*</span></label>
+                                                        <select name="editpermission" id="editpermission" required="" class="form-control permission text-capitalize" required>
+                                                            <option value="">Select Permission </option>
+                                                            
+                                                            <?php  
+                                                            
+                                                                $table = "permission";
+                                                                $item = "";
+                                                                $value = "";
+
+                                                                $permission = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                                                                foreach ($permission as $key => $role) {
+                                                                    # code...
+
+                                                                    echo'<option value="'.$role["permission_id"].'">'.$role["permission_role"].'</option>';
+
+                                                                }
+                                                            
+                                                            ?>      
+                                                        </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-6">
+
+                                            </div>
+
+                                        </div>  
                                     
                                     </div>
                                     <div class="modal-footer">
@@ -239,18 +333,18 @@
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
-                                    <!-- <?php
+                                    <?php  
                                     
-                                        $editclass = new ControllerClassRoom();
-                                        $editclass -> ctrEditCLass();
+                                        
                                     
-                                    ?> -->
+                                    ?>
 
                                 </form>
                                 
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+
                     <!-- /.modal -->
 
 
