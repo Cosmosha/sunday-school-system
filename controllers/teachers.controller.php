@@ -253,7 +253,7 @@ class ControllerTeacher{
                          } 
                     }
                    
-                    var_dump($result);
+                   // var_dump($result);
 
                     if (!empty($phone) && $result["teacher_id"] != $_POST["idTeacher"]) {
                         # code...

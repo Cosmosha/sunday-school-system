@@ -129,7 +129,7 @@
                                                     <label for="recipient-name" class="control-label">Password: <span class="text-danger">*</span></label>
                                                     
                                                     <div class="controls">
-                                                        <input type="password" onkeypress="validateEntry(event)" name="password" class="form-control" required data-validation-required-message="This field is required">
+                                                        <input type="password" onkeypress="validateEntry(event)" name="password" class="form-control" required data-validation-required-message="This field is required" minlength="5">
                                                     </div>
                                                     
                                                 </div>
@@ -142,7 +142,7 @@
                                                     <label for="recipient-name" class="control-label">Confirm Password: <span class="text-danger">*</span></label>
                                                     
                                                     <div class="controls">
-                                                         <input type="password" name="password2" data-validation-match-match="password" class="form-control" onkeypress="validateEntry(event)" required>
+                                                         <input type="password" name="password2" data-validation-match-match="password" class="form-control" onkeypress="validateEntry(event)" minlength="5" required>
                                                     </div>
                                                    
                                                 </div>
@@ -188,6 +188,7 @@
                                         </div>  
                                     
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary waves-effect">Add User</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -236,7 +237,7 @@
 
                                                 <div class="form-group">
                                                      <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
-                                                      <input type="email" onkeypress="validateEntry(event)" class="form-control user_email text-lowercase" name="edituser_email" id="edituser_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
+                                                      <input type="email" onkeypress="validateEntry(event)" class="form-control user_email text-lowercase" name="c" id="edituser_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
                                                 </div>
 
                                             </div>
@@ -252,7 +253,7 @@
                                                     <label for="recipient-name" class="control-label">Password: <span class="text-danger">*</span></label>
                                                     
                                                     <div class="controls">
-                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control" required data-validation-required-message="This field is required">
+                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control" required data-validation-required-message="This field is required" minlength="5">
                                                     </div>
                                                     
                                                 </div>
@@ -265,7 +266,7 @@
                                                     <label for="recipient-name" class="control-label">Confirm Password: <span class="text-danger">*</span></label>
                                                     
                                                     <div class="controls">
-                                                         <input type="password" name="password2" data-validation-match-match="password" id="editconfirmPass" class="form-control" onkeypress="validateEntry(event)" required>
+                                                         <input type="password" name="password2" data-validation-match-match="password" id="editconfirmPass" class="form-control" onkeypress="validateEntry(event)" minlength="5" required>
                                                     </div>
                                                    
                                                 </div>
@@ -318,7 +319,8 @@
 
                                     <?php  
                                     
-                                        
+                                        $updateUser = new ControllerUsers();
+                                        $updateUser -> ctrUpdateUser();
                                     
                                     ?>
 

@@ -247,7 +247,7 @@ class SweetAlert{
 
                         icon: "success",
                         title: "Updated!",
-                        text: "User has been added.",
+                        text: "User has been modified.",
                         showConfirmButton: true,
                         confirmButtonText: "Okay",
                         closeOnConfirm: false,

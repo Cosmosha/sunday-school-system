@@ -229,6 +229,58 @@ class ControllerUsers{
 
  
 
+  //
+  // ─── UPDATE USER ───────────────────────────────────────────────────────────────────
+  //
+  
+  public static function ctrUpdateUser(){
+
+    if (isset($_POST["editusername"])) {
+        # code...
+        $password = $_POST["password"];
+        $confirmPass = $_POST["password2"];
+
+        if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $password) &&
+          !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $confirmPass)) {
+
+            $table = "user";
+
+            if ($password == $confirmPass) {
+                # code...
+                $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
+
+                $email = $_POST["edituser_email"];
+                $status = 1;
+                $churchid = $_SESSION["churchid"];
+
+                $data = array('password'=> $encryptPassword,
+                        'permission_id'=> $_POST["editpermission"],
+                        'user_email' => $email,
+                        'church_id' => $churchid);
+
+
+                $result = ModelUsers::MdlUpdateInfo($table, $data);
+
+                //var_dump($result);
+
+                if ($result == "ok") {
+                    # code...
+                    SweetAlert::alertUserUpdated();
+                }
+
+            }else {
+                # code...
+                SweetAlert::alertErrorFilelds();
+            }
+
+        }else {
+            # code...
+            SweetAlert::alertInvalidChar();
+        }
+
+    }
+
+  }
 
   
     //
