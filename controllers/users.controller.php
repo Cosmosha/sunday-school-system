@@ -244,29 +244,16 @@ class ControllerUsers{
             !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $confirmPass)) {
 
                 $table = "user";
-
-                $item = "email";
                 $email = $_POST["edituser_email"];
 
                 
-                $answer = ModelUsers::MdlShowUsers($table, $item, $email);
-
-                if ($password == $answer["password"]) {
-                    # code...
-                    $hashPass = $answer["password"];
-                    $pass = $hashPass;
-                    $conPass = $hashPass;
-                    $encryptPassword = $hashPass;
-                }else {
                     # code...
                     $pass = $password;
                     $conPass = $confirmPass;
-                    $encryptPassword = password_hash($pass, PASSWORD_DEFAULT);
-                }
 
                 if ($pass == $conPass) {
                     # code...
-
+                    $encryptPassword = password_hash($pass, PASSWORD_DEFAULT);
                     $email = $email;
                     $churchid = $_SESSION["churchid"];
 

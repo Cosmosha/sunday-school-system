@@ -412,8 +412,6 @@ $(document).ready(function(){
 
           $("#editusername").val(result["user_name"]);
           $("#edituser_email").val(result["user_email"]);
-          $("#editpassword").val(result["password"]);
-          $("#editconfirmPass").val(result["password"]);
           $("#editpermission").val(result["permission_id"]);
 
 
@@ -422,6 +420,39 @@ $(document).ready(function(){
     })
 
   });
+
+
+
+  $(".userTable tbody").on("click", "i.btnDeleteUser", function(){
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+  
+        confirmButton: 'btn btn-success mb-4 mr-2',
+        cancelButton: 'btn btn-danger mb-4 mr-2',
+        icon:'mb-2 mt-5'
+  
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'No, cancel!',
+      confirmButtonText: 'Yes, delete it!',      
+      // reverseButtons: true
+    }).then(function(result) {
+      if (result.value) {
+        
+        window.location = "index.php?root=users&deleteStudent="+deleteUser;
+
+      } 
+    })
+
+  }
 
 
 });
