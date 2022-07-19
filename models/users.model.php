@@ -73,12 +73,37 @@ class ModelUsers{
 
 
     //
+    // ─── UPDATE LAST LOGIN & STATUS INFO ───────────────────────────────────────────────────────────
+    //
+
+        static public function MdlUpdateInfo($table, $item1, $value1, $item2, $value2){
+
+            $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1 WHERE $item2 = :$item2");
+            $stmt -> bindParam(":$item1", $value1, PDO::PARAM_STR);
+            $stmt -> bindParam(":$item2", $value2, PDO::PARAM_STR);
+
+            if ($stmt -> execute()) {
+                # code...
+                return "ok";
+            }else{
+                return "error";
+            }
+
+            $stmt -> close();
+            $stmt -> null;
+
+        }
+
+
+
+    //
     // ─── UPDATE USER & STATUS INFO ───────────────────────────────────────────────────────────
     //
 
-        static public function MdlUpdateInfo($table, $data){
+        static public function mdlUPdateUser($table, $data){
 
             $stmt = Connection::connect()->prepare("UPDATE $table SET password = :password, permission_id = :permission_id   WHERE user_email = :user_email AND church_id = :church_id");
+          
             $stmt->bindParam(":user_email", $data["user_email"], PDO::PARAM_STR);
             $stmt->bindParam(":password", $data["password"], PDO::PARAM_STR);
             $stmt->bindParam(":permission_id", $data["permission_id"], PDO::PARAM_INT);
@@ -95,11 +120,6 @@ class ModelUsers{
             $stmt -> null;
 
         }
-
-
-    
- 
-        
 
 
 }

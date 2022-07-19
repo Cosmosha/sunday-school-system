@@ -4,9 +4,9 @@ class ControllerUsers{
 
 
 
-  //
-  // ─── USER LOGIN ─────────────────────────────────────────────────────────────────
-  //
+    //
+    // ─── USER LOGIN ─────────────────────────────────────────────────────────────────
+    //
 
     static public function ctrUserLogin(){
     
@@ -131,9 +131,9 @@ class ControllerUsers{
 
 
 
-  //
-  // ─── SHOW USER LIST ───────────────────────────────────────────────────────
-  //
+    //
+    // ─── SHOW USER LIST ───────────────────────────────────────────────────────
+    //
 
     public static function ctrShowUsersList($item, $value){
 
@@ -146,141 +146,158 @@ class ControllerUsers{
     }
 
 
-  //
-  // ─── ADD USER ───────────────────────────────────────────────────────────────────
-  //
+    //
+    // ─── ADD USER ───────────────────────────────────────────────────────────────────
+    //
 
-  static public function ctrAddUser(){
+    static public function ctrAddUser(){
 
-    if (isset($_POST["username"])) {
-        # code...
-        $userid = $_POST["username"];
-        $table = "teacher";
-        $item = "teacher_id";
-
-        $result = ModelUsers::MdlShowUsers($table, $item, $userid);
-
-        $fname = $result["teacher_firstname"];
-        $lname = $result["teacher_lastname"];
-        $username = $fname.' '.$lname;
-        $teacher_id = $result["teacher_id"];
-        
-        $password = $_POST["password"];
-        $confirmPassword = $_POST["password2"];
-
-        if (preg_match('/^[a-zA-Z0-9@!^#-]+$/', $password) &&
-           preg_match('/^[a-zA-Z0-9@!^#-]+$/', $confirmPassword)) {
+        if (isset($_POST["username"])) {
             # code...
+            $userid = $_POST["username"];
+            $table = "teacher";
+            $item = "teacher_id";
 
-            if ($password == $confirmPassword) {
+            $result = ModelUsers::MdlShowUsers($table, $item, $userid);
+
+            $fname = $result["teacher_firstname"];
+            $lname = $result["teacher_lastname"];
+            $username = $fname.' '.$lname;
+            $teacher_id = $result["teacher_id"];
+            
+            $password = $_POST["password"];
+            $confirmPassword = $_POST["password2"];
+
+            if (preg_match('/^[a-zA-Z0-9@!^#-]+$/', $password) &&
+            preg_match('/^[a-zA-Z0-9@!^#-]+$/', $confirmPassword)) {
                 # code...
-                $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                $email = $_POST["user_email"];
-                $status = 1;
-                $churchid = $_SESSION["churchid"];
-
-                $data = array('user_name'=> $username,
-                        'user_email' => $email,
-                        'password'=> $encryptPassword,
-                        'permission_id'=> $_POST["permission"],
-                        'user_status' => $status,
-                        'teacher_id' => $teacher_id,
-                        'church_id' => $churchid);
-                
-                
-                $table1 = "user";
-                $item1 = "user_email";
-
-                $answer = ModelUsers::MdlShowUsers($table1, $item1, $email);
-
-                if ($answer["user_email"] != $email || $answer["teacher_id"] != $teacher_id) {
+                if ($password == $confirmPassword) {
                     # code...
+                    $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                   $myresult = ModelUsers::mdlAddUsers($table1, $data);
-                   var_dump($myresult);
+                    $email = $_POST["user_email"];
+                    $status = 1;
+                    $churchid = $_SESSION["churchid"];
 
-                    if ($myresult == "ok") {
+                    $data = array('user_name'=> $username,
+                            'user_email' => $email,
+                            'password'=> $encryptPassword,
+                            'permission_id'=> $_POST["permission"],
+                            'user_status' => $status,
+                            'teacher_id' => $teacher_id,
+                            'church_id' => $churchid);
+                    
+                    
+                    $table1 = "user";
+                    $item1 = "user_email";
+
+                    $answer = ModelUsers::MdlShowUsers($table1, $item1, $email);
+
+                    if ($answer["user_email"] != $email || $answer["teacher_id"] != $teacher_id) {
                         # code...
-                        SweetAlert::alertUserSaved();
-                    }
+
+                    $myresult = ModelUsers::mdlAddUsers($table1, $data);
+                    var_dump($myresult);
+
+                        if ($myresult == "ok") {
+                            # code...
+                            SweetAlert::alertUserSaved();
+                        }
+
+                    }else {
+                        # code...
+                        SweetAlert::alertDuplicateUser();
+
+                    }                      
+                    
 
                 }else {
                     # code...
-                    SweetAlert::alertDuplicateUser();
-
-                }                      
-                
-
-            }else {
-                # code...
-                SweetAlert::alertErrorFilelds();
-            }
-
-        }else {
-            # code...
-            SweetAlert::alertInvalidChar();
-        }
-
-    }
-
-
-  }
-
- 
-
-  //
-  // ─── UPDATE USER ───────────────────────────────────────────────────────────────────
-  //
-  
-  public static function ctrUpdateUser(){
-
-    if (isset($_POST["editusername"])) {
-        # code...
-        $password = $_POST["password"];
-        $confirmPass = $_POST["password2"];
-
-        if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $password) &&
-          !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $confirmPass)) {
-
-            $table = "user";
-
-            if ($password == $confirmPass) {
-                # code...
-                $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
-
-                $email = $_POST["edituser_email"];
-                $status = 1;
-                $churchid = $_SESSION["churchid"];
-
-                $data = array('password'=> $encryptPassword,
-                        'permission_id'=> $_POST["editpermission"],
-                        'user_email' => $email,
-                        'church_id' => $churchid);
-
-
-                $result = ModelUsers::MdlUpdateInfo($table, $data);
-
-                //var_dump($result);
-
-                if ($result == "ok") {
-                    # code...
-                    SweetAlert::alertUserUpdated();
+                    SweetAlert::alertErrorFilelds();
                 }
 
             }else {
                 # code...
-                SweetAlert::alertErrorFilelds();
+                SweetAlert::alertInvalidChar();
             }
 
-        }else {
-            # code...
-            SweetAlert::alertInvalidChar();
         }
+
 
     }
 
-  }
+ 
+
+    //
+    // ─── UPDATE USER ───────────────────────────────────────────────────────────────────
+    //
+  
+    public static function ctrUpdateUser(){
+
+        if (isset($_POST["editusername"])) {
+            # code...
+            $password = $_POST["password"];
+            $confirmPass = $_POST["password2"];
+
+            if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $password) &&
+            !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $confirmPass)) {
+
+                $table = "user";
+
+                $item = "email";
+                $email = $_POST["edituser_email"];
+
+                
+                $answer = ModelUsers::MdlShowUsers($table, $item, $email);
+
+                if ($password == $answer["password"]) {
+                    # code...
+                    $hashPass = $answer["password"];
+                    $pass = $hashPass;
+                    $conPass = $hashPass;
+                    $encryptPassword = $hashPass;
+                }else {
+                    # code...
+                    $pass = $password;
+                    $conPass = $confirmPass;
+                    $encryptPassword = password_hash($pass, PASSWORD_DEFAULT);
+                }
+
+                if ($pass == $conPass) {
+                    # code...
+
+                    $email = $email;
+                    $churchid = $_SESSION["churchid"];
+
+                    $data = array('password'=> $encryptPassword,
+                            'permission_id'=> $_POST["editpermission"],
+                            'user_email' => $email,
+                            'church_id' => $churchid);
+
+
+                    $result = ModelUsers::mdlUPdateUser($table, $data);
+
+                    //var_dump($result);
+
+                    if ($result == "ok") {
+                        # code...
+                        SweetAlert::alertUserUpdated();
+                    }
+
+                }else {
+                    # code...
+                    SweetAlert::alertErrorFilelds();
+                }
+
+            }else {
+                # code...
+                SweetAlert::alertInvalidChar();
+            }
+
+        }
+
+    }
 
   
     //

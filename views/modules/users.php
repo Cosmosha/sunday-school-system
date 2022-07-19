@@ -65,7 +65,7 @@
 
                     </div>
 
-                    <!-- Add Classroom Modal Content -->
+                    <!-- Add User Modal Content -->
                     <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -210,7 +210,7 @@
                     <!-- /.modal -->
 
 
-                    <!-- Edit Classroom Modal Content -->
+                    <!-- Edit User Modal Content -->
                     <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;"> -->
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -237,7 +237,7 @@
 
                                                 <div class="form-group">
                                                      <label for="recipient-name" class="control-label">Email: <span class="text-danger">*</span></label>
-                                                      <input type="email" onkeypress="validateEntry(event)" class="form-control user_email text-lowercase" name="c" id="edituser_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
+                                                      <input type="email" onkeypress="validateEntry(event)" class="form-control user_email text-lowercase" name="edituser_email" id="edituser_email" placeholder="example@gmail.com" value="" id="recipient-name" readonly>
                                                 </div>
 
                                             </div>
