@@ -263,7 +263,7 @@ class ControllerUsers{
                             'church_id' => $churchid);
 
 
-                    $result = ModelUsers::mdlUPdateUser($table, $data);
+                    $result = ModelUsers::mdlUpdateUser($table, $data);
 
                     //var_dump($result);
 
@@ -352,9 +352,36 @@ class ControllerUsers{
     }
 
   
+    //
+    // ─── DELETE USER ──────────────────────────────────────────────
+    //
 
+    static public function ctrDeleteUser(){
 
+       if (isset($_GET["deleteUser"])) {
+        # code...
+        $table = "user";
+        $user =  $_GET["deleteUser"];
+        $church_id = $_SESSION["churchid"];
 
+        $data = array('user_id'=>$user,
+                'church_id'=>$church_id);
+
+                
+
+        $result = ModelUsers::mdlDeleteUsers($table, $data);
+
+        if ($result == "ok") {
+            # code...
+
+            SweetAlert::alertDelete();
+        }else {
+            # code...
+            echo "Something is wrong";
+        }
+       }     
+
+    }
 
 }
 

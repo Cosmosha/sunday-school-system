@@ -100,7 +100,7 @@ class ModelUsers{
     // ─── UPDATE USER & STATUS INFO ───────────────────────────────────────────────────────────
     //
 
-        static public function mdlUPdateUser($table, $data){
+        static public function mdlUpdateUser($table, $data){
 
             $stmt = Connection::connect()->prepare("UPDATE $table SET password = :password, permission_id = :permission_id   WHERE user_email = :user_email AND church_id = :church_id");
           
@@ -120,6 +120,36 @@ class ModelUsers{
             $stmt -> null;
 
         }
+
+
+
+    //
+    // ─── DELETE  USERS ─────────────────────────────────────────────────────
+    //
+
+    public static function  mdlDeleteUsers($table, $data){
+
+        $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE user_id = :user_id AND church_id = :church_id");
+
+        $stmt -> bindParam(":user_id", $data["user_id"], PDO::PARAM_STR);
+        $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            
+            return 'ok';
+        
+        } else {
+
+            return 'error';
+        
+        }
+        
+        $stmt -> close();
+
+        $stmt = null;
+
+    }
+
 
 
 }

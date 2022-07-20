@@ -388,71 +388,96 @@ $(document).ready(function(){
   });
 
 
-  $(".userTable tbody").on("click", "i.btnEditUser", function(){
 
+//
+// ────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: U S E R S   B U T T O N   C L I C K   A C T I O N : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────
+//
+
+
+    //
+    // ─── EDIT USERS ──────────────────────────────────────────────
+    //
+
+    $(".userTable tbody").on("click", "i.btnEditUser", function(){
+
+      
+      var idUser = $(this).attr("idUser");
+      console.log("idUser", idUser);
+
+      var datas = new FormData();
+      datas.append("idUser", idUser);
+
+      $.ajax({
+
+        url: "./ajax/users.ajax.php",
+          method: "POST",
+          data: datas,
+          Cache: false,
+          contentType: false,
+          processData: false,
+          dataType: "json",
+          success: function(result){
+
+          // console.log("result", result["user_id"]);
+
+            $("#editusername").val(result["user_name"]);
+            $("#edituser_email").val(result["user_email"]);
+            $("#editpermission").val(result["permission_id"]);
+
+
+        }
+
+      })
+
+    });
+
+
+
+    //
+    // ─── DELETE USERS ──────────────────────────────────────────────
+    //
+
+    $(".userTable tbody").on("click", "i.btnDeleteUser", function(){
+
+
+      var deleteUser = $(this).attr("deleteUser");
+      console.log("deleteUser", deleteUser);
+
+      var datas = new FormData();
+      datas.append("deleteUser", deleteUser);
+
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
     
-    var idUser = $(this).attr("idUser");
-    console.log("idUser", idUser);
-
-    var datas = new FormData();
-    datas.append("idUser", idUser);
-
-    $.ajax({
-
-      url: "./ajax/users.ajax.php",
-        method: "POST",
-        data: datas,
-        Cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(result){
-
-         // console.log("result", result["user_id"]);
-
-          $("#editusername").val(result["user_name"]);
-          $("#edituser_email").val(result["user_email"]);
-          $("#editpermission").val(result["permission_id"]);
-
-
-      }
-
-    })
-
-  });
-
-
-
-  $(".userTable tbody").on("click", "i.btnDeleteUser", function(){
-
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-  
-        confirmButton: 'btn btn-success mb-4 mr-2',
-        cancelButton: 'btn btn-danger mb-4 mr-2',
-        icon:'mb-2 mt-5'
-  
-      },
-      buttonsStyling: false
-    })
+          confirmButton: 'btn btn-success mb-4 mr-2',
+          cancelButton: 'btn btn-danger mb-4 mr-2',
+          icon:'mb-2 mt-5'
     
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      cancelButtonText: 'No, cancel!',
-      confirmButtonText: 'Yes, delete it!',      
-      // reverseButtons: true
-    }).then(function(result) {
-      if (result.value) {
-        
-        window.location = "index.php?root=users&deleteStudent="+deleteUser;
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText: 'No, cancel!',
+        confirmButtonText: 'Yes, delete it!',      
+        // reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          
+          window.location = "index.php?root=users&deleteUser="+deleteUser;
 
-      } 
+        } 
+      })
+
     })
 
-  }
+   
 
 
 });

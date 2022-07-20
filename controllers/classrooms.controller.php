@@ -159,10 +159,13 @@ class ControllerClassRoom{
             # code...
 
             $table = "class";
-            $data =  $_GET["deleteClass"];
+            $classid =  $_GET["deleteClass"];
             $church_id = $_SESSION["churchid"];
 
-            $result = ModelClassRoom::mdlDeleteClassRoom($table, $data,$church_id);
+            $data = array('user_id'=>$classid,
+                'church_id'=>$church_id);
+
+            $result = ModelClassRoom::mdlDeleteClassRoom($table, $data);
 
             if ($result == "ok") {
                 # code...

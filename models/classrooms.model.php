@@ -147,12 +147,12 @@ class ModelClassRoom{
     // ─── DELETE  CLASSROOM ─────────────────────────────────────────────────────
     //
 
-        public static function  mdlDeleteClassRoom($table, $data, $church_id){
+        public static function  mdlDeleteClassRoom($table, $data){
 
             $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE class_id = :class_id AND church_id = :church_id");
 
-            $stmt -> bindParam(":class_id", $data, PDO::PARAM_STR);
-            $stmt -> bindParam(":church_id", $church_id, PDO::PARAM_INT);
+            $stmt -> bindParam(":class_id", $data["class_id"], PDO::PARAM_STR);
+            $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
     
             if ($stmt->execute()) {
                 

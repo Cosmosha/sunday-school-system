@@ -344,9 +344,9 @@
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
     
-    <!-- <?php
+    <?php
                                     
-        $deleteClass = new ControllerClassRoom();
-        $deleteClass -> ctrDeleteClass();
+        $deleteUser = new ControllerUsers();
+        $deleteUser ->ctrDeleteUser();
     
-    ?> -->
+    ?>
