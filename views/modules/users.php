@@ -250,10 +250,10 @@
                                             <div class="col-6">
 
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">Password: <span class="text-danger">*</span></label>
+                                                    <label for="recipient-name" class="control-label">Password: </label>
                                                     
                                                     <div class="controls">
-                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control"  minlength="5">
+                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control" minlength="5">
                                                         <input type="hidden" name="currentPassword" id="currentPassword">
                                                     </div>
                                                     
@@ -264,7 +264,7 @@
                                             <div class="col-6">
 
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">Confirm Password: <span class="text-danger">*</span></label>
+                                                    <label for="recipient-name" class="control-label">Confirm Password: </label>
                                                     
                                                     <div class="controls">
                                                          <input type="password" name="password2" data-validation-match-match="password" id="editconfirmPass" class="form-control" onkeypress="validateEntry(event)" minlength="5" >
