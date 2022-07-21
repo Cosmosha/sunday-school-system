@@ -251,9 +251,19 @@ class ControllerUsers{
                     $pass = $password;
                     $conPass = $confirmPass;
 
+                    if (isset($pass) != "") {
+                        # code...
+                        $newPass = $pass;
+                        $encryptPassword = password_hash($newPass, PASSWORD_DEFAULT);
+                    }else {
+                        # code...
+                        $currentPass = $_POST["currentPassword"];
+                        $encryptPassword = $currentPass;
+                    }
+
                 if ($pass == $conPass) {
                     # code...
-                    $encryptPassword = password_hash($pass, PASSWORD_DEFAULT);
+                    
                     $email = $email;
                     $churchid = $_SESSION["churchid"];
 

@@ -254,6 +254,7 @@
                                                     
                                                     <div class="controls">
                                                         <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control" required data-validation-required-message="This field is required" minlength="5">
+                                                        <input type="hidden" name="currentPassword" id="currentPassword">
                                                     </div>
                                                     
                                                 </div>

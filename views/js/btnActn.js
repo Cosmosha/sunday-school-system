@@ -425,6 +425,7 @@ $(document).ready(function(){
             $("#editusername").val(result["user_name"]);
             $("#edituser_email").val(result["user_email"]);
             $("#editpermission").val(result["permission_id"]);
+            $("#currentPassword").val(result["password"]);
 
 
         }
