@@ -253,7 +253,7 @@
                                                     <label for="recipient-name" class="control-label">Password: <span class="text-danger">*</span></label>
                                                     
                                                     <div class="controls">
-                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control" required data-validation-required-message="This field is required" minlength="5">
+                                                        <input type="password" onkeypress="validateEntry(event)" name="password" id="editpassword" class="form-control"  minlength="5">
                                                         <input type="hidden" name="currentPassword" id="currentPassword">
                                                     </div>
                                                     
@@ -267,7 +267,7 @@
                                                     <label for="recipient-name" class="control-label">Confirm Password: <span class="text-danger">*</span></label>
                                                     
                                                     <div class="controls">
-                                                         <input type="password" name="password2" data-validation-match-match="password" id="editconfirmPass" class="form-control" onkeypress="validateEntry(event)" minlength="5" required>
+                                                         <input type="password" name="password2" data-validation-match-match="password" id="editconfirmPass" class="form-control" onkeypress="validateEntry(event)" minlength="5" >
                                                     </div>
                                                    
                                                 </div>

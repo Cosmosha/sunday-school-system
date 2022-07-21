@@ -237,10 +237,10 @@ class ControllerUsers{
 
         if (isset($_POST["editusername"])) {
             # code...
-            $password = $_POST["password"];
+
             $confirmPass = $_POST["password2"];
 
-            if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $password) &&
+            if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $_POST["password"]) &&
             !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,12}$/', $confirmPass)) {
 
                 $table = "user";
@@ -248,20 +248,17 @@ class ControllerUsers{
 
                 
                     # code...
-                    $pass = $password;
-                    $conPass = $confirmPass;
 
-                    if (isset($pass) != "") {
+                    if (!empty($_POST["password"])) {
                         # code...
-                        $newPass = $pass;
-                        $encryptPassword = password_hash($newPass, PASSWORD_DEFAULT);
+                        $encryptPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
                     }else {
                         # code...
-                        $currentPass = $_POST["currentPassword"];
-                        $encryptPassword = $currentPass;
-                    }
 
-                if ($pass == $conPass) {
+                        $encryptPassword = $_POST["currentPassword"];
+                        
+                    }
                     # code...
                     
                     $email = $email;
@@ -276,16 +273,12 @@ class ControllerUsers{
                     $result = ModelUsers::mdlUpdateUser($table, $data);
 
                     //var_dump($result);
+                    var_dump($_POST["currentPassword"]);
 
                     if ($result == "ok") {
                         # code...
                         SweetAlert::alertUserUpdated();
                     }
-
-                }else {
-                    # code...
-                    SweetAlert::alertErrorFilelds();
-                }
 
             }else {
                 # code...
