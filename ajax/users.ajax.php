@@ -24,6 +24,27 @@ class ajaxUser {
 
     }
 
+    
+    //
+    // ───USER STATUS ACTIVATION──────────────────────────────────────────────────────────────
+    //
+
+    public $userId;
+    public $userStatus;
+    public function ajaxUserStatus(){
+
+        $table = "user";
+        $item1 = "user_status";
+        $value1= $this->userStatus;
+
+        $item2 = "user_id";
+        $value2 = $this->userId;
+
+        $result = ModelUsers::MdlUpdateInfo($table, $item1, $value1, $item2, $value2);
+
+    }
+
+
 }
 
 //
@@ -35,4 +56,16 @@ if (isset($_POST["idUser"])) {
     $editUser = new ajaxUser();
     $editUser->idUser = $_POST["idUser"];
     $editUser->ajaxEditUser();
+}
+
+//
+// ────────────────────────────────────────────── INITIATE USER STATUS AJAX FUNCTION ─────
+//
+
+if (isset($_POST["userId"])) {
+    # code...
+    $activateUser = new ajaxUser();
+    $activateUser ->userId = $_POST["userId"];
+    $activateUser ->userStatus = $_POST["userStatus"];
+    $activateUser ->ajaxUserStatus();
 }

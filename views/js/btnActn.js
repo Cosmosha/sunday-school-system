@@ -302,7 +302,6 @@ $(document).ready(function(){
             $("#edit_address").val(result["home_address"]);
             $("#edit_classname").val(result["class_id"]);
 
-            console.log(result["gender"]);
 
             if (result["student_photo"] !="") { 
 
@@ -312,7 +311,6 @@ $(document).ready(function(){
 
               var rootImage = "views/img/students/default/boy.png";
               $('.preview').attr('src', rootImage);
-              console.log(rootImage);
 
             }else if (result["student_photo"] == "" && result["gender"] == "girl") {
               
@@ -436,6 +434,7 @@ $(document).ready(function(){
 
 
 
+
     //
     // ─── DELETE USERS ──────────────────────────────────────────────
     //
@@ -484,9 +483,56 @@ $(document).ready(function(){
 });
 
 
+//
+// ──────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: U S E R  S T A T U S   B U T T O N   A C T I O N : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────
+//
 
 
+$(document).on("click", ".btnActivate", function(){
 
+	var userId = $(this).attr("userId");
+	var userStatus = $(this).attr("userStatus");
+
+	var datas = new FormData();
+  datas.append("userId", userId);
+  datas.append("userStatus", userStatus);
+
+  // console.log("activateId", userId);
+  // console.log("userStatus", userStatus);
+
+  	$.ajax({
+
+      url:"./ajax/users.ajax.php",
+      method: "POST",
+      data: datas,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(answer){   
+		
+      }
+
+  	})
+
+  	if(userStatus == 0){
+
+  		$(this).removeClass('btn-success');
+  		$(this).addClass('btn-danger');
+  		$(this).html('Deactivated');
+  		$(this).attr('userStatus',1);
+
+  	}else{
+
+  		$(this).addClass('btn-success');
+  		$(this).removeClass('btn-danger');
+  		$(this).html('Activated');
+  		$(this).attr('userStatus',0);
+
+  	}
+
+});
 
 
 

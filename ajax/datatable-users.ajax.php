@@ -37,7 +37,15 @@ class UsersTable {
                 // ACTION BUTTONS
                 //
 
-                $status = "<button class='btn btn-sm btn-rounded btn-success' id='ustatus'>Active</button>";
+                if ($user[$i]["user_status"] != 0) {
+                    # code...
+                    $status = "<button class='btn btn-sm btn-rounded btn-success btnActivate' userId='".$user[$i]["user_id"]."' userStatus='0'>Activated</button>";
+                }else {
+                    # code...
+                    $status = "<button class='btn btn-sm btn-rounded btn-danger btnActivate' userId='".$user[$i]["user_id"]."' userStatus='1'>Deactivated</button>";
+                }
+
+                
                 $actionBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditUser' idUser='".$user[$i]["user_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> <i class='ti-trash m-l-10 dark-i btnDeleteUser' name='btnDeleteUser' deleteUser='".$user[$i]["user_id"]."' aria-hidden='true'></i>";     
 
                 $jsonData .='[
