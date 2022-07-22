@@ -46,14 +46,14 @@
                         
                         <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTable">
                             <thead>
-                                <tr>
+                                <tr class="bg-success">
                                     <th>NO.</th>
                                     <th>Stud. ID</th>
                                     <th>Name</th>
                                     <th>Gender</th>
                                     <th>Age</th>
                                     <th>Photo</th>
-                                    <th>School</th> 
+                                  
                                     <th>Guardian</th>
                                     <th>Phone</th>
                                     <th>House Address</th>  

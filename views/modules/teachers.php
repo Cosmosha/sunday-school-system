@@ -51,7 +51,7 @@
                         
                         <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase teacherTable">
                             <thead>
-                                <tr>
+                                <tr class="bg-success">
                                     <th>NO.</th>
                                     <th>Name</th>
                                     <th>Gender</th>

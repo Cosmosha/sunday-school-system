@@ -120,7 +120,7 @@ class StudentTable {
                         "'.$student[$i]["gender"].'",
                         "'.$age.'",
                         "'.$photo.'",
-                        "'.$student[$i]["school_name"].'",
+
                         "'.$student[$i]["guardian_name"].'",
                         "'.$phone.'",
                         "'.$student[$i]["home_address"].'",

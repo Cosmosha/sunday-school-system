@@ -1,15 +1,14 @@
-
 <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Class Room</h3>
+            <h3 class="text-themecolor">Attendance</h3>
         </div>
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                <li class="breadcrumb-item active">Room Details</li>
+                <li class="breadcrumb-item active">Attendance List</li>
             </ol>
         </div>
         <!-- <div>
@@ -19,10 +18,10 @@
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    
-    
 
-    
+
+
+
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -39,22 +38,30 @@
                     
                     <div class="row form-group text-right">
                         <div class="col-md-5 align-self-center">
-                                <h6 class="text-left p-t-10 text-capitalize">room details</h6>
+                                <h6 class="text-left p-t-10 text-capitalize">Attendance List</h6>
                         </div>
                         <div class="col-md-7 align-self-center">
-                                <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-plus"></i> Add Class</button>
+                                <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-check-square-o"></i> Take Attendance</button>
                         </div>
                     </div>
                     
 
                     <div class="table-responsive m-t-40">
                         
-                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase classroomTable">
+                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTable">
                             <thead>
                                 <tr class="bg-success">
                                     <th>NO.</th>
-                                    <th>Class Name</th>
-                                    <th>Room Capacity(Max)</th>
+                                    <th>Stud. ID</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>Photo</th>
+                                  
+                                    <th>Guardian</th>
+                                    <th>Phone</th>
+                                    <th>House Address</th>  
+                                    <th>Class</th>
                                     <th>Action</th>                                              
                                 </tr>
                             </thead>
@@ -65,32 +72,45 @@
 
                     <!-- Add Classroom Modal Content -->
                     <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-md">
+                        <div class="modal-dialog modal-xl">
                             <div class="modal-content">
                                 <form role="form" id="classform" method="POST">
 
                                 <div class="modal-header bg-info">
-                                    <h4 class="modal-title text-white" id="myModalLabel"> Create Class Room </h4>
+                                    <h4 class="modal-title text-white" id="myModalLabel"> Take Class Attendance </h4>
                                     <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 
 
                                     <div class="modal-body">
                                     
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Class Name: <span class="text-danger">*</span></label>
-                                                <input type="text" onkeypress="validateInput(event)"  class="form-control" name="class_name" id="recipient-name" required>
-                                            </div>
+                                         <table id="myTable" class="table table-bordered table-striped dt-responsive tables studentTable" width="100%">
+                                        
+                                            <thead>
+                                                
+                                                <tr>
+                                                
+                                                    <th style="width:10px">#</th>
+                                                    <th>Stud. ID</th>
+                                                    <th>Name</th>
+                                                    <th>Gender</th>
+                                                    <th>Age</th>
+                                                    <th>Guardian</th>
+                                                    <th>Phone</th>
+                                                    <th>House Address</th>  
+                                                    <th>Class</th>
+                                                    <th>Action</th>  
 
+                                                </tr> 
 
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Room Capacity: <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" name="class_capacity" id="recipient-name" required>
-                                            </div>
+                                            </thead>
+
+                                        </table>
+
                                     
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary waves-effect">Save Class</button>
+                                        <button type="submit" class="btn btn-primary waves-effect">Save Attendance</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
@@ -165,10 +185,3 @@
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
-    
-    <?php
-                                    
-        $deleteClass = new ControllerClassRoom();
-        $deleteClass -> ctrDeleteClass();
-    
-    ?>

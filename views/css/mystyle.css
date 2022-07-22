@@ -83,5 +83,11 @@ footer strong a:hover{
      max-width:1200px !important;
     }
 
+
+    .modal-xl{
+        width: 100%;
+        max-width: 1600px;
+    }
+
     
   }
