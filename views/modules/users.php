@@ -51,7 +51,7 @@
                         
                         <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase userTable">
                             <thead>
-                                <tr class="bg-success">
+                                <tr class="table-bordered bg-dark text-white">
                                     <th>NO.</th>
                                     <th>User Name</th>
                                     <th>Email</th>

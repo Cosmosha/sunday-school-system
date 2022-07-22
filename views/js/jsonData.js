@@ -64,6 +64,35 @@ $(document).ready(function(){
 
 
 
+	//
+	// ─── LOAD CLASS ATTENDANCE JSON DATA TABLE ───────────────────────────────────────────────
+	//
+
+	$('.attendanceTable').DataTable({
+
+		"ajax":"./ajax/datatable-attendance.ajax.php",
+	    "deferRender": true,
+	    "retrieve": true,
+	    "processing": true ,
+
+	});
+
+
+	//
+	// ─── LOAD TAKE ATTENDANCE JSON DATA TABLE ───────────────────────────────────────────────
+	//
+
+	// $('.classAttendanceTable').DataTable({
+
+	// 	"ajax":"./ajax/datatable-class-attendance.ajax.php",
+	//     "deferRender": true,
+	//     "retrieve": true,
+	//     "processing": true ,
+
+	// });
+
+
+
 });
 
 

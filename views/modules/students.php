@@ -46,7 +46,7 @@
                         
                         <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTable">
                             <thead>
-                                <tr class="bg-success">
+                                <tr class="table-bordered bg-dark text-white">
                                     <th>NO.</th>
                                     <th>Stud. ID</th>
                                     <th>Name</th>
@@ -68,7 +68,7 @@
 
                     <!-- Add Student Modal Content -->
                     <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-xl">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form role="form" id="studentform" method="POST" enctype="multipart/form-data">
 
@@ -309,7 +309,7 @@
 
                     <!-- Edit Student Modal Content -->
                     <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-xl">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form role="form" id="studentform" method="POST" enctype="multipart/form-data">
 

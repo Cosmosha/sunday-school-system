@@ -51,7 +51,7 @@
                         
                         <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase teacherTable">
                             <thead>
-                                <tr class="bg-success">
+                                <tr class="table-bordered bg-dark text-white">
                                     <th>NO.</th>
                                     <th>Name</th>
                                     <th>Gender</th>
@@ -71,7 +71,7 @@
 
                     <!-- Add Teacher Modal Content -->
                     <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-xl">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form role="form" id="classform" method="POST" enctype="multipart/form-data">
 
@@ -306,7 +306,7 @@
 
                     <!-- Edit Classroom Modal Content -->
                     <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-xl">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form role="form" id="editTeachForm" method="POST" enctype="multipart/form-data">
 

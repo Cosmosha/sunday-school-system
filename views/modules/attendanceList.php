@@ -48,9 +48,9 @@
 
                     <div class="table-responsive m-t-40">
                         
-                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase studentTable">
+                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase attendanceTable">
                             <thead>
-                                <tr class="bg-success">
+                                <tr class="table-bordered bg-dark text-white">
                                     <th>NO.</th>
                                     <th>Stud. ID</th>
                                     <th>Name</th>
@@ -62,9 +62,10 @@
                                     <th>Phone</th>
                                     <th>House Address</th>  
                                     <th>Class</th>
-                                    <th>Action</th>                                              
+                                             
                                 </tr>
                             </thead>
+
 
                         </table>                            
 
@@ -84,28 +85,88 @@
 
                                     <div class="modal-body">
                                     
-                                         <table id="myTable" class="table table-bordered table-striped dt-responsive tables studentTable" width="100%">
-                                        
-                                            <thead>
+                                       <div class="table-responsive">
+
+                                            <table id="myTable" class="table table-bordered table-striped dt-responsive text-center table-hover text-uppercase tables" width="100%">
                                                 
-                                                <tr>
+                                                <thead>
+                                                    
+                                                    <tr class="table-bordered">
+                                                    
+                                                        <th style="width:10px">NO.#</th>
+                                                        <th>Stud. ID</th>
+                                                        <th>Name</th>
+                                                        <th>Gender</th>
+                                                        <th>Photo</th>
+                                                        <th>Attendance</th>  
+
+                                                    </tr> 
+
+                                                </thead>
+
+
                                                 
-                                                    <th style="width:10px">#</th>
-                                                    <th>Stud. ID</th>
-                                                    <th>Name</th>
-                                                    <th>Gender</th>
-                                                    <th>Age</th>
-                                                    <th>Guardian</th>
-                                                    <th>Phone</th>
-                                                    <th>House Address</th>  
-                                                    <th>Class</th>
-                                                    <th>Action</th>  
+                                                <tbody>
+                                                    
+                                                    <?php
 
-                                                </tr> 
 
-                                            </thead>
+                                                        $student = ControllerAttendance::ctrShowClassStudent();
 
-                                        </table>
+                                                        foreach ($student as $key => $value) {
+                                                        $stud_ID = "CTKMC/CM/00";
+                                                        $studentname = $value["student_firstname"] ." " .$value["student_lastname"];
+
+                                                            //student image
+                                                            if ($value["student_photo"] != "") {
+                                                                # code...
+
+                                                                $photo = "<img src='".$value["student_photo"]."' width='40px'>";
+
+                                                            }elseif ($value["student_photo"] == "" && $value["gender"]=="boy") {
+                                                                # code...
+
+                                                                $photo = "<img src='views/img/students/default/boy.png' width='40px'>";
+
+                                                            }elseif ($value["student_photo"] == "" && $value["gender"]=="girl") {
+                                                                # code...
+
+                                                                $photo = "<img src='views/img/students/default/girl.png' width='40px'>";
+
+                                                            }
+
+                                                        echo '<tr>
+
+                                                                <td>'.($key+1).'</td>
+
+                                                                <td>'.$stud_ID.''.$value["student_id"].'</td>
+
+                                                                <td>'.$studentname.'</td>
+
+                                                                <td>'.$value["gender"].'</td>
+
+                                                                <td>'.$photo.'</td>
+
+                                                                <td>
+
+                                                                    <div class="switch">
+                                                                        <label>Absent
+                                                                            <input type="checkbox" unchecked><span class="lever"></span>Present</label>
+                                                                    </div>
+                                                                </td>
+
+                                                                </tr>';
+                                                        
+                                                        }
+
+                                                    ?>
+                                                        
+                                                </tbody>
+
+
+                                            </table>
+
+                                        </div>
 
                                     
                                     </div>
