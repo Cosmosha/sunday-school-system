@@ -28,18 +28,20 @@ class ControllerAttendance{
             # code...
 
 
-            if (isset($_POST["attend"])) {
+            if (isset($_POST["studentid"])) {
                 # code...
 
                 $sid = $_POST["studentid"];
                 $attend = $_POST["attend"];
+                $teacherid = $_POST["teacherid"];
 
                 for ($count=0; $count < count($sid); $count++) { 
                     # code...
-                    
+
                     $data = array(
-                        'student_id' => $sid, 
-                        'attendance_status'=> $attend
+                        'student_id' => $sid[$count], 
+                        'attendance_status'=> $attend[$count],
+                        'teacher_id' => $teacherid
                     );
 
                     var_dump($data);

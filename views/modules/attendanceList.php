@@ -236,14 +236,15 @@
                             html += '<td> '+ result[count].student_firstname+' '+result[count].student_lastname +' </td>';
                             html += '<td> '+result[count].gender +' </td>';
                             html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" unchecked><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> </td>';
-                            html += '</tr>';
                         }
                         
+
+
                         console.log("checkbox", $("#attend"));
 
                         $(".classAttendacneTable tbody").html(html);
 
-
+                        $($this).closest('tr').html(html);
                     }
 
                 })

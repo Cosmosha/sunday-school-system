@@ -27,7 +27,7 @@ class ModelClassAttendance{
         
         }
         
-        $stmt -> close();
+       // $stmt -> close();
 
         $stmt = null;
 
