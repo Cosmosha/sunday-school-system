@@ -285,21 +285,6 @@ $(document).ready(function(){
 
 
 
-    // $(".username").change(function(){
-
-    //     var username = $(this).val();
-    //     console.log("username", username);
-
-    //     if (username != "") {
-            
-    //         $(".user_email").val("me@gmail.com");
-    //     }else{
-    //         $(".user_email").val("example@gmail.com");
-    //     }
-
-
-    // });
-
 
 
     $(".username").change(function(){
@@ -334,6 +319,7 @@ $(document).ready(function(){
   
 
 
-
 });
+
+
 

@@ -16,7 +16,7 @@ class ControllerUsers{
             $email = $_POST["useremail"];
 
             if (filter_var($email, FILTER_VALIDATE_EMAIL) && 
-                preg_match('/^[a-zA-Z0-9@#_!]+$/', $_POST["userpassword"] )) {
+                preg_match('/^[a-zA-Z0-9@#_!]+$/', $_POST["userpassword"])) {
 
                                         
                     $table = "user";
@@ -29,12 +29,11 @@ class ControllerUsers{
 
                     $hashPassword = $result["password"];
 
-                    
 
-                    if ($result["user_email"]== $value && password_verify($password, $hashPassword) ) {
+                    if ($result["user_email"]== $value && password_verify($password, $hashPassword) 
+                        || $result["user_email"]== $value && password_verify($password, $hashPassword)) {
                         # code...
-
-                        
+    
                         $table2 = "teacher";
                         $item2 = "teacher_email";
                         $value = $email;
@@ -58,8 +57,9 @@ class ControllerUsers{
                             
                             $_SESSION["churchid"] = $churchid;
                             $_SESSION["churchname"] = $respond["church_name"];
+                            $_SESSION["churchcode"] = $respond["initials"];
 
-                            $_SESSION["teacher_id"] = $answer["teacher_id"];
+                            $_SESSION["teacherid"] = $answer["teacher_id"];
                             $_SESSION["teacher_class"] = $answer["class_id"];
                             $_SESSION["fname"] = $answer["teacher_firstname"];
                             $_SESSION["lname"] = $answer["teacher_lastname"];
@@ -274,7 +274,7 @@ class ControllerUsers{
                     $result = ModelUsers::mdlUpdateUser($table, $data);
 
                     //var_dump($result);
-                    var_dump($_POST["currentPassword"]);
+                    // var_dump($_POST["currentPassword"]);
 
                     if ($result == "ok") {
                         # code...

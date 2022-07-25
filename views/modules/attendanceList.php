@@ -56,8 +56,7 @@
                                     <th>Name</th>
                                     <th>Gender</th>
                                     <th>Age</th>
-                                    <th>Photo</th>
-                                  
+                                    <th>Photo</th>                                
                                     <th>Guardian</th>
                                     <th>Phone</th>
                                     <th>House Address</th>  
@@ -85,9 +84,9 @@
 
                                     <div class="modal-body">
                                     
-                                       <div class="table-responsive">
+                                       <div class="table-responsive m-t-40">
 
-                                            <table id="myTable" class="table table-bordered table-striped dt-responsive text-center table-hover text-uppercase tables" width="100%">
+                                            <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase classAttendacneTable" width="100%">
                                                 
                                                 <thead>
                                                     
@@ -97,72 +96,13 @@
                                                         <th>Stud. ID</th>
                                                         <th>Name</th>
                                                         <th>Gender</th>
-                                                        <th>Photo</th>
                                                         <th>Attendance</th>  
 
                                                     </tr> 
 
                                                 </thead>
 
-
-                                                
-                                                <tbody>
-                                                    
-                                                    <?php
-
-
-                                                        $student = ControllerAttendance::ctrShowClassStudent();
-
-                                                        foreach ($student as $key => $value) {
-                                                        $stud_ID = "CTKMC/CM/00";
-                                                        $studentname = $value["student_firstname"] ." " .$value["student_lastname"];
-
-                                                            //student image
-                                                            if ($value["student_photo"] != "") {
-                                                                # code...
-
-                                                                $photo = "<img src='".$value["student_photo"]."' width='40px'>";
-
-                                                            }elseif ($value["student_photo"] == "" && $value["gender"]=="boy") {
-                                                                # code...
-
-                                                                $photo = "<img src='views/img/students/default/boy.png' width='40px'>";
-
-                                                            }elseif ($value["student_photo"] == "" && $value["gender"]=="girl") {
-                                                                # code...
-
-                                                                $photo = "<img src='views/img/students/default/girl.png' width='40px'>";
-
-                                                            }
-
-                                                        echo '<tr>
-
-                                                                <td>'.($key+1).'</td>
-
-                                                                <td>'.$stud_ID.''.$value["student_id"].'</td>
-
-                                                                <td>'.$studentname.'</td>
-
-                                                                <td>'.$value["gender"].'</td>
-
-                                                                <td>'.$photo.'</td>
-
-                                                                <td>
-
-                                                                    <div class="switch">
-                                                                        <label>Absent
-                                                                            <input type="checkbox" unchecked><span class="lever"></span>Present</label>
-                                                                    </div>
-                                                                </td>
-
-                                                                </tr>';
-                                                        
-                                                        }
-
-                                                    ?>
-                                                        
-                                                </tbody>
-
+                                                 <tbody></tbody> 
 
                                             </table>
 
@@ -171,15 +111,15 @@
                                     
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary waves-effect">Save Attendance</button>
+                                        <button type="submit" name="submit" class="btn btn-primary waves-effect">Save Attendance</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 
 
                                     <?php
                                     
-                                        $classroom = new ControllerClassRoom();
-                                        $classroom -> ctrAddClass();
+                                        $attend = new ControllerAttendance();
+                                        $attend ->ctrTakeAttendacne();
                                     
                                     ?>
 
@@ -246,3 +186,69 @@
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
+
+    <script>
+        
+        $("document").ready(function(){
+
+            var churchid = '<?php echo $_SESSION["churchid"] ?>';
+            var classid = '<?php echo $_SESSION["teacher_class"] ?>';
+            var churchcode = '<?php echo $_SESSION["churchcode"] ?>';
+            var studID = churchcode+'/00/';
+
+            // console.log("churchid", churchid);
+            // console.log("Class_id", classid);
+            // console.log("Student_ID", studID);
+
+            var datas = new FormData();
+            datas.append("Churchid", churchid);
+            datas.append("Classid", classid);
+            
+
+                $.ajax({
+
+                    url: "./ajax/class-attendance.ajax.php",
+                    method: "POST",
+                    data: datas,
+                    Cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function(result){
+
+                        console.log(result);
+
+
+                        $(".switch").change(function(){
+
+                            $(this).val("0");
+
+                        });
+
+
+                        var html = '';
+   
+                        for(let count = 0; count < result.length; count++){
+
+                            html += '<tr>';
+                            html += '<td> '+(count+1)+' </td>';
+                            html += '<td> '+studID+''+result[count].student_id +'</td>';
+                            html += '<td> '+ result[count].student_firstname+' '+result[count].student_lastname +' </td>';
+                            html += '<td> '+result[count].gender +' </td>';
+                            html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" unchecked><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> </td>';
+                            html += '</tr>';
+                        }
+                        
+                        console.log("checkbox", $("#attend"));
+
+                        $(".classAttendacneTable tbody").html(html);
+
+
+                    }
+
+                })
+        
+
+        });
+
+    </script>
