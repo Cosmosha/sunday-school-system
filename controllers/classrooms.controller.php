@@ -42,7 +42,8 @@ class ControllerClassRoom{
                         if ($result == "ok" ) {
                             # code...
 
-                            SweetAlert::alertSaved();
+                            $message = "Classroom Recoreds Saved";
+                            SweetAlert::alertSaved($message);
 
                         }else {
                             # code...
@@ -50,7 +51,8 @@ class ControllerClassRoom{
                         }
                     }else {
                         # code...
-                        SweetAlert::alertDuplicateItem();
+                        $message = "Records Already Exist";
+                        SweetAlert::alertDuplicateItem($message);
                     }
 
 
@@ -63,7 +65,8 @@ class ControllerClassRoom{
                     
             }else {
                 # code...
-                SweetAlert::alertErrorFilelds();
+                $message = "All Fields are Required";
+                SweetAlert::alertErrorFilelds($message);
                 
             }
             
@@ -125,10 +128,11 @@ class ControllerClassRoom{
                     if ($result == "ok") {
                         # code...
 
-                        SweetAlert::alertUpdate();
+                        $message = "Classroom Records Modified";
+                        SweetAlert::alertUpdate($message);
 
                     }else{
-                        var_dump("Info Update Server Side Error!");
+                        print_r("Info Update Server Side Error!");
                     }
 
 
@@ -138,7 +142,8 @@ class ControllerClassRoom{
 
 
             }else{
-                SweetAlert::alertErrorFilelds();
+                $message= "All Fields are Required";
+                SweetAlert::alertErrorFilelds($message);
             }
 
         }
@@ -170,7 +175,8 @@ class ControllerClassRoom{
             if ($result == "ok") {
                 # code...
 
-                SweetAlert::alertDelete();
+                $message = "Classroom Records Deleted";
+                SweetAlert::alertDelete($message);
             }else {
                 # code...
                 echo "Something is wrong";

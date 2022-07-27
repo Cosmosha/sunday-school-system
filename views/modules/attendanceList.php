@@ -216,14 +216,38 @@
                     dataType: "json",
                     success: function(result){
 
-                        console.log(result);
+                        // console.log(result);
 
 
-                        $(".switch").change(function(){
+                        $("document").ready(function(){
+                            // var stats = $('input:checkbox[name=attend]').is(':checked');
+                            // if (stats == "false") {
+                            //     stats = "0";
+                            // }else {
+                            //     stats = "1";
+                            // }
 
-                            $(this).val("0");
+                            $('#attend').on('click', function() {
+                                var checkStatus = this.checked ? 'ON' : 'OFF';
 
+                                $.post("attendancelist.controller.php", {"checkboxStatus": checkStatus}, 
+                                function(data) {
+                                    $('tr').html(data);
+                                });
+                            });
+
+                            $('#attend').on('click', function() {
+                           
+                                var stats = $('input:checkbox[name=attend]').is(':checked');
+
+                                console.log("checkbox Status", stats);
+                                
+                                
+                            });
+                            
                         });
+
+                       
 
 
                         var html = '';
@@ -235,16 +259,15 @@
                             html += '<td> '+studID+''+result[count].student_id +'</td>';
                             html += '<td> '+ result[count].student_firstname+' '+result[count].student_lastname +' </td>';
                             html += '<td> '+result[count].gender +' </td>';
-                            html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" unchecked><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> </td>';
+                            html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" ><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> <input type="hidden" name="churchid" value="<?php echo $_SESSION["churchid"] ?>"> </td>';
                         }
                         
 
 
-                        console.log("checkbox", $("#attend"));
 
                         $(".classAttendacneTable tbody").html(html);
 
-                        $($this).closest('tr').html(html);
+                        // $($this).closest('tr').html(html);
                     }
 
                 })

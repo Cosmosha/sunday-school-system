@@ -45,7 +45,7 @@ class ClassAttendanceTable {
                     
                     // ACTION BUTTONS
                    // $editBtn = " <i class='ti-trash m-l-10 dark-i btnDeleteStudent' name='btnDeleteStudent' deleteStudent='".$student[$i]["student_id"]."' churchid='".$student[$i]["church_id"]."' deletePhoto='".$student[$i]["student_photo"]."' deleteDOB='".$student[$i]["dob"]."' deleteFname='".$student[$i]["student_firstname"]."' deleteLname='".$student[$i]["student_lastname"]."'  aria-hidden='true'></i>";   
-                    $editBtn =   "<input type='checkbox' id='md_checkbox_40' class='filled-in chk-col-black' checked />";
+                    $editBtn =  '<div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" ><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'.$student[$i]["student_id"].'"> <input type="hidden" name="teacherid" value="'.$_SESSION["teacherid"].'">';
                 
                     // student fullname
                     $studentname = $student[$i]["student_firstname"] ." " .$student[$i]["student_lastname"];

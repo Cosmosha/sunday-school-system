@@ -68,14 +68,16 @@ class ControllerStudents {
                             && $student["church_id"] == $churchid) {
                             # code...
 
-                            SweetAlert::alertDuplicateItem();
+                            $message = "Student Records Already Exist";
+                            SweetAlert::alertDuplicateItem($message);
                             break;
 
                         } elseif (!empty($student) && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                                 && $student["church_id"] == $churchid) {
                             # code...
 
-                            SweetAlert::alertDuplicateItem();
+                            $message = "Student Records Already Exist";
+                            SweetAlert::alertDuplicateItem($message);
                             break;
 
                         } else {
@@ -116,13 +118,14 @@ class ControllerStudents {
                     
                             if($result == "ok"){
                     
-                                SweetAlert::alertSaved();
+                                $message = "Student Records Saved";
+                                SweetAlert::alertSaved($message);
                     
                             }else {
                     
-                                SweetAlert::alertErrorFilelds();
-                                // print_r("Oops! Server Insert Error!");
-                                // var_dump($result);
+                                $message = "All Fields are Required";
+                                SweetAlert::alertErrorFilelds($message);
+                                print_r("Oops! Server Insert Error!");
                             }
                             
                             
@@ -145,8 +148,8 @@ class ControllerStudents {
 
             }else {
             # code...
-
-                SweetAlert::alertErrorFilelds();
+                $message = "All Fields are Required";
+                SweetAlert::alertErrorFilelds($message);
             
             }
 
@@ -207,7 +210,8 @@ class ControllerStudents {
                         if (!empty($student) && $student["student_id"] != $idStudent  && $student["student_firstname"] == $fname && $student["student_lastname"] == $lname && $student["phone"] == $phone
                             && $student["church_id"] == $churchid) {
                             # code...
-                            SweetAlert::alertDuplicateItem();
+                            $message = "Student Records Already Exit";
+                            SweetAlert::alertDuplicateItem($message);
                             break;
 
                         }else {
@@ -249,11 +253,13 @@ class ControllerStudents {
 
                             if ($result == "ok") {
                                 # code...
-                                SweetAlert::alertUpdate();
+                                $message = "Student Records Modified";
+                                SweetAlert::alertUpdate($message);
 
                             }else {
                                 # code...
-                                SweetAlert::alertErrorFilelds();
+                                $message = "All Fields are Required";
+                                SweetAlert::alertErrorFilelds($message);
                                 echo "Something went wrong";
                             }
 
@@ -274,7 +280,8 @@ class ControllerStudents {
 
             }else {
                 # code...
-                SweetAlert::alertErrorFilelds();
+                $message = "All Fields are Required";
+                SweetAlert::alertErrorFilelds($message);
             }
 
         }				
@@ -311,8 +318,8 @@ class ControllerStudents {
 
             if ($result == "ok") {
                 # code...
-
-                SweetAlert::alertDelete();
+                $message = "Student Records Deleted";
+                SweetAlert::alertDelete($message);
             }else {
                 # code...
                 echo "Something is wrong";

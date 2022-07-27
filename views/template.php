@@ -56,6 +56,7 @@
     <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/plugins/sweetalert/sweetalert2.min.css">
 
+    <link href="assets/plugins/icheck/skins/all.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -89,6 +90,8 @@
     
     <!--Custom JavaScript -->
     <script src="assets/js/custom.min.js"></script>
+
+    <script src="assets/js/jasny-bootstrap.js"></script>
 
 
     <!--morris JavaScript -->
@@ -130,7 +133,8 @@
     <script src="https://cdn.datatables.net/searchpanes/2.0.1/js/dataTables.searchPanes.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
 
-
+    <script src="assets/plugins/icheck/icheck.min.js"></script>
+    <script src="assets/plugins/icheck/icheck.init.js"></script>
 
 </head>
 

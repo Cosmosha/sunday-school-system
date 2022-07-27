@@ -3,7 +3,9 @@
 
 class SweetAlert{
 
-    public static function alertSaved(){
+
+
+    public static function alertSaved($message){
 
         echo '
                 <script type= "text/javascript">
@@ -21,7 +23,7 @@ class SweetAlert{
 
                         icon: "success",
                         title: "Saved!",
-                        text: "Record has been added.",
+                        text: "' .$message.'",
                         showConfirmButton: true,
                         confirmButtonText: "Okay",
                         closeOnConfirm: false,
@@ -35,7 +37,7 @@ class SweetAlert{
 
 
 
-    public static function alertUpdate(){
+    public static function alertUpdate($message){
 
         echo '
                 <script type= "text/javascript">
@@ -54,7 +56,7 @@ class SweetAlert{
 
                         icon: "success",
                         title: "Updated!",
-                        text: "Record has been modified.",
+                        text: "' .$message.'",
                         showConfirmButton: true,
                         confirmButtonText: "Okay",
                         closeOnConfirm: false,
@@ -67,12 +69,8 @@ class SweetAlert{
             ';
 
     }
-
-
-
-
     
-    public static function alertDelete(){
+    public static function alertDelete($message){
 
         echo '
                 <script type= "text/javascript">
@@ -90,7 +88,7 @@ class SweetAlert{
 
                         icon: "success",
                         title: "Deleted!",
-                        text: "Record has been removed.",
+                        text: "' .$message.'",
                         showConfirmButton: true,
                         confirmButtonText: "Okay",
                         closeOnConfirm: false,
@@ -101,8 +99,6 @@ class SweetAlert{
             ';
 
     }
-
-
 
 
     public static function alertInvalidChar(){
@@ -131,10 +127,7 @@ class SweetAlert{
     }
 
 
-
-
-
-    public static function alertErrorFilelds(){
+    public static function alertErrorFilelds($message){
 
         echo'
                 
@@ -152,7 +145,7 @@ class SweetAlert{
                     swalWithBootstrapButton.fire({
 
                         icon: "error",
-                        title: "All Fileds are Required!",
+                        text: "' .$message.'",
                         showConfirmButton: true,
                         confirmButtonText: "Okay",
                         closeOnConfirm: false,
@@ -163,7 +156,8 @@ class SweetAlert{
 
     }
 
-    public static function alertDuplicateItem(){
+    
+    public static function alertDuplicateItem($message){
 
         echo'
                 
@@ -182,142 +176,13 @@ class SweetAlert{
 
                         icon: "error",
                         title: "Oops!",
-                        text: "Record already Exit.",
+                        text: "' .$message.'",
                         showConfirmButton: true,
                         confirmButtonText: "Okay",
                         closeOnConfirm: false,
 
                     });
 
-                </script>
-            ';
-
-    }
-
-
-
-    public static function alertUserSaved(){
-
-        echo '
-                <script type= "text/javascript">
-                 
-                    const swalWithBootstrapButtons = Swal.mixin({
-                        customClass: {
-                            confirmButton: "btn btn-success mb-4 mr-2",
-                            cancelButton: "btn btn-danger mb-4 mr-2",
-                            icon:"mb-2 mt-5"
-                        },
-                        buttonsStyling: false
-                    })
-
-                    swalWithBootstrapButtons.fire({
-
-                        icon: "success",
-                        title: "Saved!",
-                        text: "User has been added.",
-                        showConfirmButton: true,
-                        confirmButtonText: "Okay",
-                        closeOnConfirm: false,
-
-                });
-
-                </script>
-            ';
-
-    }
-
-
-
-
-    public static function alertUserUpdated(){
-
-        echo '
-                <script type= "text/javascript">
-                 
-                    const swalWithBootstrapButtons = Swal.mixin({
-                        customClass: {
-                            confirmButton: "btn btn-success mb-4 mr-2",
-                            cancelButton: "btn btn-danger mb-4 mr-2",
-                            icon:"mb-2 mt-5"
-                        },
-                        buttonsStyling: false
-                    })
-
-                    swalWithBootstrapButtons.fire({
-
-                        icon: "success",
-                        title: "Updated!",
-                        text: "User has been modified.",
-                        showConfirmButton: true,
-                        confirmButtonText: "Okay",
-                        closeOnConfirm: false,
-
-                });
-
-                </script>
-            ';
-
-    }
-
-
-    public static function alertDuplicateUser(){
-
-        echo'
-                
-                <script type= "text/javascript">
-                            
-                    const swalWithBootstrapButtons = Swal.mixin({
-                        customClass: {
-                            confirmButton: "btn btn-success mb-4 mr-2",
-                            cancelButton: "btn btn-danger mb-4 mr-2",
-                            icon:"mb-2 mt-5"
-                        },
-                        buttonsStyling: false
-                    })
-
-                    swalWithBootstrapButtons.fire({
-
-                        icon: "error",
-                        title: "Oops!",
-                        text: "User Already Exit.",
-                        showConfirmButton: true,
-                        confirmButtonText: "Okay",
-                        closeOnConfirm: false,
-
-                    });
-
-                </script>
-            ';
-
-    }
-
-
-
-    public static function alertUserDelete(){
-
-        echo '
-                <script type= "text/javascript">
-                 
-                    const swalWithBootstrapButtons = Swal.mixin({
-                        customClass: {
-                            confirmButton: "btn btn-success mb-4 mr-2",
-                            cancelButton: "btn btn-danger mb-4 mr-2",
-                            icon:"mb-2 mt-5"
-                        },
-                        buttonsStyling: false
-                    })
-
-                    swalWithBootstrapButtons.fire({
-
-                        icon: "success",
-                        title: "Deleted!",
-                        text: "User has been removed.",
-                        showConfirmButton: true,
-                        confirmButtonText: "Okay",
-                        closeOnConfirm: false,
-
-                    });
-                    
                 </script>
             ';
 

@@ -164,7 +164,8 @@ class ControllerTeacher{
                         if ($result == "ok") {
                             # code...
 
-                            SweetAlert::alertSaved();
+                            $message = "Teacher Records Saved";
+                            SweetAlert::alertSaved($message);
 
                         }else {
                             # code...
@@ -175,7 +176,8 @@ class ControllerTeacher{
                     }else {
                         # code...
 
-                        SweetAlert::alertDuplicateItem();
+                        $message = "Teacher Records Already Exit";
+                        SweetAlert::alertDuplicateItem($message);
                     }
 
                 }else {
@@ -187,7 +189,8 @@ class ControllerTeacher{
            }else {
                # code...
 
-               SweetAlert::alertErrorFilelds();
+                $message = "All Fields are Required";
+               SweetAlert::alertErrorFilelds($message);
            }
 
         }
@@ -257,7 +260,8 @@ class ControllerTeacher{
 
                     if (!empty($phone) && $result["teacher_id"] != $_POST["idTeacher"]) {
                         # code...
-                        SweetAlert::alertDuplicateItem();
+                        $message = "Teacher Records are Exist";
+                        SweetAlert::alertDuplicateItem($message);
 
                     }else {
                         # code...
@@ -364,7 +368,8 @@ class ControllerTeacher{
 
                         if ($answer == "ok") {
                             # code...
-                            SweetAlert::alertUpdate();
+                            $message = "Teacher Records Modified";
+                            SweetAlert::alertUpdate($message);
                             
                         }else {
                             # code...
@@ -381,7 +386,8 @@ class ControllerTeacher{
                 
             }else {
                 # code...
-                SweetAlert::alertErrorFilelds();
+                $message = "All Fields are Required";
+                SweetAlert::alertErrorFilelds($message);
             }
 
         }
@@ -415,7 +421,8 @@ class ControllerTeacher{
             if ($result == "ok") {
                 # code...
 
-                SweetAlert::alertDelete();
+                $message = "Teacher Records Deleted";
+                SweetAlert::alertDelete($message);
             }else {
                 # code...
                 echo "Something is wrong";

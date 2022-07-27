@@ -203,19 +203,22 @@ class ControllerUsers{
 
                         if ($myresult == "ok") {
                             # code...
-                            SweetAlert::alertUserSaved();
+                            $message = "User Records Saved";
+                            SweetAlert::alertSaved($message);
                         }
 
                     }else {
                         # code...
-                        SweetAlert::alertDuplicateUser();
+                        $message = "User Record Already Exist";
+                        SweetAlert::alertDuplicateItem($message);
 
                     }                      
                     
 
                 }else {
                     # code...
-                    SweetAlert::alertErrorFilelds();
+                    $message = "All Fields are Required";
+                    SweetAlert::alertErrorFilelds($message);
                 }
 
             }else {
@@ -278,7 +281,8 @@ class ControllerUsers{
 
                     if ($result == "ok") {
                         # code...
-                        SweetAlert::alertUserUpdated();
+                        $message = "User Record Modified";
+                        SweetAlert::alertUpdate($message);
                     }
 
             }else {
@@ -378,7 +382,8 @@ class ControllerUsers{
         if ($result == "ok") {
             # code...
 
-            SweetAlert::alertDelete();
+            $message = "User Records Deleted";
+            SweetAlert::alertDelete($message);
         }else {
             # code...
             echo "Something is wrong";
