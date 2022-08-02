@@ -219,37 +219,6 @@
                         // console.log(result);
 
 
-                        $("document").ready(function(){
-                            // var stats = $('input:checkbox[name=attend]').is(':checked');
-                            // if (stats == "false") {
-                            //     stats = "0";
-                            // }else {
-                            //     stats = "1";
-                            // }
-
-                            $('#attend').on('click', function() {
-                                var checkStatus = this.checked ? 'ON' : 'OFF';
-
-                                $.post("attendancelist.controller.php", {"checkboxStatus": checkStatus}, 
-                                function(data) {
-                                    $('tr').html(data);
-                                });
-                            });
-
-                            $('#attend').on('click', function() {
-                           
-                                var stats = $('input:checkbox[name=attend]').is(':checked');
-
-                                console.log("checkbox Status", stats);
-                                
-                                
-                            });
-                            
-                        });
-
-                       
-
-
                         var html = '';
    
                         for(let count = 0; count < result.length; count++){
@@ -267,7 +236,7 @@
 
                         $(".classAttendacneTable tbody").html(html);
 
-                        // $($this).closest('tr').html(html);
+                        $($this).closest('tr').html(html);
                     }
 
                 })

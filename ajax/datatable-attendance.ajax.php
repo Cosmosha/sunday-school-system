@@ -1,6 +1,7 @@
 <?php 
 
 
+
 //
 // ──────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: S T U D E N T   A J A X     D A T A T A B L E : :  :   :    :     :        :          :
@@ -22,8 +23,6 @@ class AttendanceTable {
 
 
     public static function showClassStudentTable(){
-        
-
 
 
         $table = "student";

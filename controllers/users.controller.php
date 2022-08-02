@@ -58,6 +58,7 @@ class ControllerUsers{
                             $_SESSION["churchid"] = $churchid;
                             $_SESSION["churchname"] = $respond["church_name"];
                             $_SESSION["churchcode"] = $respond["initials"];
+                            $_SESSION["denomination"] = $respond["denomination"]; 
 
                             $_SESSION["teacherid"] = $answer["teacher_id"];
                             $_SESSION["teacher_class"] = $answer["class_id"];
