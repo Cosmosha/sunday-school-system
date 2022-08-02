@@ -52,8 +52,8 @@ class ControllerAttendance{
 
                 }
 
-                $message = "Class Attendance Taken";
-                SweetAlert::alertSaved($message);
+                // $message = "Class Attendance Taken";
+                // SweetAlert::alertSaved($message);
 
             }else {
                 
