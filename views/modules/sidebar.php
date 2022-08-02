@@ -103,9 +103,9 @@
 
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-greeting"></i><span class="hide-menu">ATTENDANCE</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="attendanceList">Attendance List</a></li>
-                                <!-- <li><a href="form-layout.html">Form Layouts</a></li>
-                                <li><a href="form-addons.html">Form Addons</a></li> -->
+                                <li><a href="attendanceList">Class Attendance List</a></li>
+                                <li><a href="attendanceRecords">Attendance Records</a></li>
+                                <!-- <li><a href="form-addons.html">Form Addons</a></li>  -->
 
                             </ul>
                         </li>

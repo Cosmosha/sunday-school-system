@@ -194,7 +194,7 @@
             var churchid = '<?php echo $_SESSION["churchid"] ?>';
             var classid = '<?php echo $_SESSION["teacher_class"] ?>';
             var churchcode = '<?php echo $_SESSION["churchcode"] ?>';
-            var studID = churchcode+'/00/';
+            var studID = churchcode+'/CM/00';
 
             // console.log("churchid", churchid);
             // console.log("Class_id", classid);

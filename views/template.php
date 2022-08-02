@@ -185,6 +185,7 @@
                         if ($_GET["root"] == "dashboard" ||
                             $_GET["root"]== "classroom" ||
                             $_GET["root"]== "attendanceList" ||
+                            $_GET["root"]== "attendanceRecords" ||
                             $_GET["root"]== "students" ||
                             $_GET["root"]== "teachers" ||
                             $_GET["root"]== "users" ||

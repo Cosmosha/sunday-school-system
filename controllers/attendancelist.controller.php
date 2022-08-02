@@ -1,6 +1,24 @@
 <?php 
 class ControllerAttendance{
 
+    
+    public static function ctrShowClassStudent(){
+
+        $table= "student";
+
+        $churchid = 1;
+
+        $class_id = 1;
+
+
+        $data = array('class_id'=> $class_id,
+        'church_id'=>$churchid);
+
+        $result = ModelClassAttendance::mdlShowStudentClass($table, $data);
+
+        return $result;
+
+    }
 
 
     public static function ctrTakeAttendacne(){
@@ -15,13 +33,13 @@ class ControllerAttendance{
                 $sid = $_POST["studentid"];
                 $teacherid = $_POST["teacherid"];
                 $church_id = $_POST["churchid"];
-                $attend = $_POST["attend"];
+                $attnd = $_POST["attend"];
 
                 for($c=0; $c < count($sid); $c++){
-                    if($attend[$c]=="on"){
-                        $attnd[] = "1";
+                    if($attnd[$c]=="on"){
+                        $attend[] = "1";
                     }else{
-                        $attnd[] = "0";
+                        $attend[] = "0";
                     }
                 }
                
@@ -31,7 +49,7 @@ class ControllerAttendance{
 
                     $data = array(
                         'student_id' => $sid[$count], 
-                        'attendance_status'=> $attnd[$count],
+                        'attendance_status'=> $attend[$count],
                         'teacher_id' => $teacherid,
                         'church_id' => $church_id
                     );
@@ -65,26 +83,6 @@ class ControllerAttendance{
             
         }
         
-
-    }
-
-
-    
-    public static function ctrShowClassStudent(){
-
-        $table= "student";
-
-        $churchid = 1;
-
-        $class_id = 1;
-
-
-        $data = array('class_id'=> $class_id,
-        'church_id'=>$churchid);
-
-        $result = ModelClassAttendance::mdlShowStudentClass($table, $data);
-
-        return $result;
 
     }
 
