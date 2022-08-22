@@ -27,7 +27,6 @@ class ModelClassAttendance{
         
         }
         
-       // $stmt -> close();
 
         $stmt = null;
 
@@ -42,12 +41,13 @@ class ModelClassAttendance{
     static public function mdlAddStudentAttendance($table, $data){
 
         
-        $stmt = Connection::connect()->prepare(" INSERT INTO $table (student_id, attendance_status, teacher_id, church_id)
-        VALUES(:student_id, :attendance_status, :teacher_id, :church_id )");
+        $stmt = Connection::connect()->prepare(" INSERT INTO $table (student_id, attendance_status, class_id, teacher_id, church_id)
+        VALUES(:student_id, :attendance_status, :class_id, :teacher_id, :church_id )");
 
         $stmt -> bindParam(":student_id", $data["student_id"], PDO::PARAM_INT);
         $stmt -> bindParam(":attendance_status", $data["attendance_status"], PDO::PARAM_STR);
         $stmt -> bindParam(":teacher_id", $data["teacher_id"], PDO::PARAM_INT);
+        $stmt -> bindParam(":class_id", $data["class_id"], PDO::PARAM_INT);
         $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
@@ -60,6 +60,33 @@ class ModelClassAttendance{
         }
 
         $stmt -> close();
+        $stmt = null;
+
+    }
+
+
+    //
+    // ─── SHOW STUDENTS ATTENDANCE ────────────────────────────────────────────────────────
+    //
+
+    static public function mdlShowAttendance($table, $data){
+
+        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE attendance_status = :attendance_status AND church_id = :church_id");
+
+        $stmt -> bindParam(":attendance_status", $data["attendance_status"], PDO::PARAM_INT);
+        $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            
+            return $stmt -> fetchColumn();
+        
+        } else {
+
+            return 'error';
+        
+        }
+        
+
         $stmt = null;
 
     }

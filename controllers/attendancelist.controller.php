@@ -33,6 +33,7 @@ class ControllerAttendance{
                 $sid = $_POST["studentid"];
                 $teacherid = $_POST["teacherid"];
                 $church_id = $_POST["churchid"];
+                $classid = $_POST["classid"];
                 $attnd = $_POST["attend"];
 
                 for($c=0; $c < count($sid); $c++){
@@ -51,6 +52,7 @@ class ControllerAttendance{
                         'student_id' => $sid[$count], 
                         'attendance_status'=> $attend[$count],
                         'teacher_id' => $teacherid,
+                        'class_id' => $classid,
                         'church_id' => $church_id
                     );
 

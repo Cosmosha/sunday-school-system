@@ -192,17 +192,19 @@
         $("document").ready(function(){
 
             var churchid = '<?php echo $_SESSION["churchid"] ?>';
-            var classid = '<?php echo $_SESSION["teacher_class"] ?>';
+            var classid = '<?php echo $_SESSION["classid"] ?>';
+            var teacherid = '<?php echo $_SESSION["teacherid"] ?>';
             var churchcode = '<?php echo $_SESSION["churchcode"] ?>';
             var studID = churchcode+'/CM/00';
 
             // console.log("churchid", churchid);
             // console.log("Class_id", classid);
-            // console.log("Student_ID", studID);
+            // console.log("Student_ID", studID); 
 
             var datas = new FormData();
             datas.append("Churchid", churchid);
             datas.append("Classid", classid);
+            datas.append("Teacherid", teacherid);
             
 
                 $.ajax({
@@ -228,7 +230,7 @@
                             html += '<td> '+studID+''+result[count].student_id +'</td>';
                             html += '<td> '+ result[count].student_firstname+' '+result[count].student_lastname +' </td>';
                             html += '<td> '+result[count].gender +' </td>';
-                            html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" ><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> <input type="hidden" name="churchid" value="<?php echo $_SESSION["churchid"] ?>"> </td>';
+                            html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" ><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> <input type="hidden" name="churchid" value="<?php echo $_SESSION["churchid"] ?>"> <input type="hidden" name="classid" value="'+result[count].class_id +'"> </td>';
                         }
                         
 
