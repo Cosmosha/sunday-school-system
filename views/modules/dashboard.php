@@ -20,7 +20,7 @@
                 <div class="col-lg-12 text-center">
                     <h1 class="m-t-30 p-l-50"><?php echo ucwords($_SESSION["churchname"])?></h1>
                     <h1 class="text-muted m-t-30 p-l-50 m-3 text-capitalize"> Children's Ministry</h1>
-                    <h5 class="text-muted m-1 m-b-30 text-capitalize"><i class="ti-pin"></i> Anaji estate Circuit | Takoradi</h5>
+                    <h5 class="text-muted m-1 m-b-30 text-capitalize"><i class="ti-pin"></i> <?php echo $_SESSION["churchsociety"].' | '. $_SESSION["churchtown"];?></h5>
                 </div>
             </div>
             <!-- Row -->
@@ -113,7 +113,7 @@
                                                 <div class="ml-auto">
                                                     <ul class="list-inline">
                                                         <li>
-                                                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Absent</h6> </li>
+                                                            <h6 class="text-muted text-danger"><i class="fa fa-circle font-10 m-r-10 "></i>Absent</h6> </li>
                                                         <li>
                                                             <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>Present</h6> </li>
                                                     </ul>
@@ -141,7 +141,18 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-6 align-self-center">
-                                            <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup> 35487</h2>
+                                                    <?php 
+                                                    
+                                                        $table = "student_attendance";
+                                                        $data = array('attendance_status' => 1, 
+                                                                    'currentmonth' => date("Ym"),
+                                                                    'church_id'=> $_SESSION["churchid"]);
+                                                        
+                                                        $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
+                                                    
+                                                    ?>
+
+                                            <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup> <?php echo $result?></h2>
                                         </div>
                                         <div class="col-6 p-t-10 p-b-20 text-right">
                                             <div class="spark-count" style="height:65px"></div>
@@ -161,7 +172,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-6 align-self-center">
-                                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-down"></i></small></sup> 35487</h2>
+                                        <?php 
+                                                    
+                                                    $table = "student_attendance";
+                                                    $data = array('attendance_status' => 0, 
+                                                                'currentmonth' => date("Ym"),
+                                                                'church_id'=> $_SESSION["churchid"]);
+                                                    
+                                                    $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
+                                                
+                                        ?>
+                                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-down"></i></small></sup> <?php echo $result?> </h2>
                                         </div>
                                         <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
                                             <div class="spark-count" style="height:65px"></div>

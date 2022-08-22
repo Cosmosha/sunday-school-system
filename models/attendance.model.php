@@ -66,14 +66,15 @@ class ModelClassAttendance{
 
 
     //
-    // ─── SHOW STUDENTS ATTENDANCE ────────────────────────────────────────────────────────
+    // ─── SHOW GENERAL TOTAL NUMBER FOR ATTENDANCE ────────────────────────────────────────────────────────
     //
 
-    static public function mdlShowAttendance($table, $data){
+    static public function mdlShowAttendanceNumber($table, $data){
 
-        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE attendance_status = :attendance_status AND church_id = :church_id");
+        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE attendance_status = :attendance_status AND church_id = :church_id AND EXTRACT(YEAR_MONTH FROM date_added)= :currentmonth");
 
         $stmt -> bindParam(":attendance_status", $data["attendance_status"], PDO::PARAM_INT);
+        $stmt -> bindParam(":currentmonth", $data["currentmonth"], PDO::PARAM_STR);
         $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
