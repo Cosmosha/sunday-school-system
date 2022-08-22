@@ -3,7 +3,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles m-b-0">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Dashboard</h3>
+                    <h3 class="text-themecolor">Dashboard</h3> 
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
@@ -137,7 +137,8 @@
                                             <h1 class="text-white"><i class="ti-bar-chart-alt"></i></h1></div>
                                         <div>
                                             <h3 class="card-title">Student Present</h3>
-                                            <h6 class="card-subtitle">March  2022</h6> </div>
+                                            <h6 class="card-subtitle font-weight-bolder"><?php echo date('F Y')?></h6> 
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 align-self-center">
@@ -149,14 +150,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-inverse card-success">
+                            <div class="card card-inverse card-danger">
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="m-r-20 align-self-center">
                                             <h1 class="text-white"><i class="ti-bar-chart"></i></h1></div>
                                         <div>
                                             <h3 class="card-title">Student Absent</h3>
-                                            <h6 class="card-subtitle">March  2022</h6> 
+                                            <h6 class="card-subtitle font-weight-bolder"><?php echo date('F Y')?></h6> 
                                         </div>
                                     </div>
                                     <div class="row">
