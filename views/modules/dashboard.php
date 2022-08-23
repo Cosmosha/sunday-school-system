@@ -100,100 +100,104 @@
                 
                 <!-- Row -->
                 <div class="row">
-                        <!-- Column -->
-                        <div class="col-lg-8 col-xlg-9">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="d-flex flex-wrap">
-                                                <div>
-                                                    <h4 class="card-title">Yearly Attendance</h4>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <ul class="list-inline">
-                                                        <li>
-                                                            <h6 class="text-muted text-danger"><i class="fa fa-circle font-10 m-r-10 "></i>Absent</h6> </li>
-                                                        <li>
-                                                            <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>Present</h6> </li>
-                                                    </ul>
-                                                </div>
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex flex-wrap">
+                                            <div>
+                                                <h4 class="card-title">Monthly Attendance</h4>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <ul class="list-inline">
+
+                                                    <li>
+                                                        <h6 class=" text-info"><i class="fa fa-circle font-10 m-r-10"></i>Present</h6> 
+                                                    </li>
+                                                    <li>
+                                                        <h6 class="text-danger"><i class="fa fa-circle font-10 m-r-10 "></i>Absent</h6> 
+                                                    </li>
+                                                    
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div id="earning" style="height: 355px;"></div>
-                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="attendance" style="height: 355px;"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Column -->
-                        <div class="col-lg-4 col-xlg-3">
-                            <div class="card card-inverse card-info">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="m-r-20 align-self-center">
-                                            <h1 class="text-white"><i class="ti-bar-chart-alt"></i></h1></div>
-                                        <div>
-                                            <h3 class="card-title">Student Present</h3>
-                                            <h6 class="card-subtitle font-weight-bolder"><?php echo date('F Y')?></h6> 
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 align-self-center">
-                                                    <?php 
-                                                    
-                                                        $table = "student_attendance";
-                                                        $data = array('attendance_status' => 1, 
-                                                                    'currentmonth' => date("Ym"),
-                                                                    'church_id'=> $_SESSION["churchid"]);
-                                                        
-                                                        $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
-                                                    
-                                                    ?>
-
-                                            <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup> <?php echo $result?></h2>
-                                        </div>
-                                        <div class="col-6 p-t-10 p-b-20 text-right">
-                                            <div class="spark-count" style="height:65px"></div>
-                                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3">
+                        <div class="card card-inverse card-info">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-bar-chart-alt"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Student Present</h3>
+                                        <h6 class="card-subtitle font-weight-bolder"><?php echo date('F Y')?></h6> 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card card-inverse card-danger">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="m-r-20 align-self-center">
-                                            <h1 class="text-white"><i class="ti-bar-chart"></i></h1></div>
-                                        <div>
-                                            <h3 class="card-title">Student Absent</h3>
-                                            <h6 class="card-subtitle font-weight-bolder"><?php echo date('F Y')?></h6> 
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 align-self-center">
-                                        <?php 
-                                                    
+                                <div class="row">
+                                    <div class="col-6 align-self-center">
+                                                <?php 
+                                                
                                                     $table = "student_attendance";
-                                                    $data = array('attendance_status' => 0, 
+                                                    $data = array('attendance_status' => 1, 
                                                                 'currentmonth' => date("Ym"),
                                                                 'church_id'=> $_SESSION["churchid"]);
                                                     
                                                     $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
                                                 
-                                        ?>
-                                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-down"></i></small></sup> <?php echo $result?> </h2>
-                                        </div>
-                                        <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
-                                            <div class="spark-count" style="height:65px"></div>
-                                        </div>
+                                                ?>
+
+                                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup> <?php echo $result?></h2>
+                                    </div>
+                                    <div class="col-6 p-t-10 p-b-20 text-right">
+                                        <div class="spark-count" style="height:65px"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Column -->
+                        <div class="card card-inverse card-danger">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-bar-chart"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Student Absent</h3>
+                                        <h6 class="card-subtitle font-weight-bolder"><?php echo date('F Y')?></h6> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 align-self-center">
+                                    <?php 
+                                                
+                                                $table = "student_attendance";
+                                                $data = array('attendance_status' => 0, 
+                                                            'currentmonth' => date("Ym"),
+                                                            'church_id'=> $_SESSION["churchid"]);
+                                                
+                                                $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
+                                            
+                                    ?>
+                                    <h2 class="font-light text-white"><sup><small><i class="ti-arrow-down"></i></small></sup> <?php echo $result?> </h2>
+                                    </div>
+                                    <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
+                                        <div class="spark-count" style="height:65px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Row -->
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
 
 
                     <!-- ============================================================== -->
@@ -203,6 +207,59 @@
 
 
                 </div>
+
+
+                <script>
+                     Morris.Area({
+                        element: 'attendance',
+                            data: [{
+                                    year: '2011',
+                                    Present: 230,
+                                    attendance: 90,
+                           
+                                },
+                                {
+                                    year: '2012',
+                                    Present: 310,
+                                    attendance: 40,
+                           
+                                },
+                                {
+                                    year: '2013',
+                                    Present: 80,
+                                    attendance: 210,
+                           
+                                },
+                                {
+                                    year: '2014',
+                                    Present: 310,
+                                    attendance: 40,
+                           
+                                },
+                                {
+                                    year: '2015',
+                                    Present: 110,
+                                    attendance: 70,
+                           
+                                },
+                            ],
+                            xkey: 'year',
+                            ykeys: ['Present', 'attendance'],
+                            labels: ['Absent', 'Present'],
+                            pointSize: 3,
+                            fillOpacity: 0,
+                            pointStrokeColors: ['#1976d2', '#EE4B2B', '#1976d2'],
+                            behaveLikeLine: true,
+                            gridLineColor: '#e0e0e0',
+                            lineWidth: 3,
+                            hideHover: 'auto',
+                            lineColors: ['#1976d2', '#EE4B2B', '#1976d2'],
+                            resize: true
+
+                        });
+                </script>
+
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
