@@ -1,3 +1,4 @@
+
 <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -19,9 +20,6 @@
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
 
-
-
-
     <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
@@ -29,9 +27,9 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
+
         <div class="row">
-            <div class="col-12">
-                                    
+            <div class="col-12">                                   
                 <!-- Column -->
                 <div class="card">
                     <div class="card-body">
@@ -44,7 +42,7 @@
                                 <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-check-square-o"></i> Take Attendance</button>
                         </div>
                     </div>
-                    
+
 
                     <div class="table-responsive m-t-40">
                         
@@ -70,7 +68,7 @@
 
                     </div>
 
-                    <!-- Add Classroom Modal Content -->
+                    <!-- Take Attendance Modal Content -->
                     <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-xl">
                             <div class="modal-content">
@@ -130,55 +128,10 @@
                     </div>
                     <!-- /.modal -->
 
-                    <!-- Edit Classroom Modal Content -->
-                    <div id="editmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <form role="form" id="classform" method="POST">
-
-                                    <div class="modal-header bg-info">
-                                        <h4 class="modal-title text-white" id="myModalLabel"> Edit Class Room </h4>
-                                        <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                
-                                    <div class="modal-body">
-                                     
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Class Name: <span class="text-danger">*</span></label>
-                                                <input type="text" onkeypress="validateInput(event)"  class="form-control editname" value="" id="editname" name="editname" id="recipient-name" required>
-                                                <input type="hidden" name="idClass" value="" id="idClass" required>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="control-label">Room Capacity: <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control editcapacity"  id="editcapacity" name="editcapacity" value="" id="recipient-name" required>
-                                            </div>
-                                    
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary waves-effect">Update Info</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                    </div>
-
-                                    <?php
-                                    
-                                        $editclass = new ControllerClassRoom();
-                                        $editclass -> ctrEditCLass();
-                                    
-                                    ?>
-
-                                </form>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal -->
-
-
                 </div>
             </div>
         </div>
+        
         <!-- ============================================================== -->
         <!-- End PAge Content -->
 
@@ -230,7 +183,7 @@
                             html += '<td> '+studID+''+result[count].student_id +'</td>';
                             html += '<td> '+ result[count].student_firstname+' '+result[count].student_lastname +' </td>';
                             html += '<td> '+result[count].gender +' </td>';
-                            html += '<td> <div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" ><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> <input type="hidden" name="churchid" value="<?php echo $_SESSION["churchid"] ?>"> <input type="hidden" name="classid" value="'+result[count].class_id +'"> </td>';
+                            html += '<td> <div class="switch"><label>Absent <input type="checkbox"  id="attend" name="attend[]"><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> <input type="hidden" name="churchid" value="<?php echo $_SESSION["churchid"] ?>"> <input type="hidden" name="classid" value="'+result[count].class_id +'"> </td>';
                         }
                         
 
@@ -245,5 +198,11 @@
         
 
         });
+
+
+
+
+
+
 
     </script>

@@ -77,7 +77,8 @@
                                 <li><a href="dashboard"> Home </a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-city"></i><span class="hide-menu">CLASS ROOM</span></a>
+
+                        <li id="classroom"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-city"></i><span class="hide-menu">CLASS ROOM</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="classroom">Room Details</a></li>
                             </ul>
@@ -85,7 +86,7 @@
 
 
                         
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">TEACHERS 
+                        <li id="teachers"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">TEACHERS 
                             <span class="label label-rouded label-success font-weight-bolder pull-right" id="teacherNotify">  <?php  $table = "teacher";  $teacher = ModelTeachers::mdlShowTeacherRow($table); echo $teacher?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="teachers">Teachers List</a></li>
@@ -93,15 +94,15 @@
                                 <li><a href="app-compose.html">Compose Mail</a></li> -->
                             </ul>
                         </li>
+
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right" id="studentNotify">  <?php $item = ""; $value = "";  $table = "student";  $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value); echo $student?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="students"> Students List </a></li>
                                 <!-- <li><a href="ui-user-card.html">User Cards</a></li> -->
-
                             </ul>
                         </li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-greeting"></i><span class="hide-menu">ATTENDANCE</span></a>
+                        <li id="classList"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-greeting"></i><span class="hide-menu">ATTENDANCE</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="attendanceList">Class Attendance List</a></li>
                                 <li><a href="attendanceRecords">Attendance Records</a></li>
@@ -115,7 +116,7 @@
 
                             </ul>
                         </li> -->
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">UTILITIES</span></a>
+                        <li id="utilities"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">UTILITIES</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="users">System Users</a></li>
                                 <li><a href="permissions">Permissions</a></li>

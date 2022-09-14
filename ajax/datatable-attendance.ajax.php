@@ -22,7 +22,7 @@ class AttendanceTable {
     //
 
 
-    public static function showClassStudentTable(){
+    static public function showClassStudentTable(){
 
 
         $table = "student";

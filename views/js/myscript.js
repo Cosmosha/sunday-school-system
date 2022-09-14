@@ -33,9 +33,7 @@ $(function()
                     window.location = "logout";
                     return false;
                 
-                 } //else {
-                //     // console.log(currentTime + " - "+ pastTime + " - "+ timeDiff + " - " + minPast + " Min Pas");
-                // }
+                 } 
                 
             }
 
@@ -316,8 +314,11 @@ $(document).ready(function(){
         })
   
       });
-  
 
+
+
+
+    
 
 });
 

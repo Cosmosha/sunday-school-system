@@ -1,18 +1,16 @@
 <?php 
+
+if(!isset($_SESSION)){
+    session_start();
+}
 class ControllerAttendance{
 
-    
     public static function ctrShowClassStudent(){
 
         $table= "student";
 
-        $churchid = 1;
-
-        $class_id = 1;
-
-
-        $data = array('class_id'=> $class_id,
-        'church_id'=>$churchid);
+        $data = array('class_id'=> $_SESSION["classid"],
+        'church_id'=> $_SESSION["churchid"]);
 
         $result = ModelClassAttendance::mdlShowStudentClass($table, $data);
 
@@ -37,24 +35,26 @@ class ControllerAttendance{
                 $attnd = $_POST["attend"];
 
                 for($c=0; $c < count($sid); $c++){
-                    if($attnd[$c]=="on"){
-                        $attend[] = "1";
+                    if(!isset($attnd[$c])){
+                        $attend = "0";
+                        $data = array(
+                            'student_id' => $sid[$c], 
+                            'attendance_status'=> $attend,
+                            'teacher_id' => $teacherid,
+                            'class_id' => $classid,
+                            'church_id' => $church_id
+                        );
+
                     }else{
-                        $attend[] = "0";
+                        $attend = "1";
+                        $data = array(
+                            'student_id' => $sid[$c], 
+                            'attendance_status'=> $attend,
+                            'teacher_id' => $teacherid,
+                            'class_id' => $classid,
+                            'church_id' => $church_id
+                        );
                     }
-                }
-               
-
-                for ($count=0; $count < count($sid); $count++) { 
-                    # code...
-
-                    $data = array(
-                        'student_id' => $sid[$count], 
-                        'attendance_status'=> $attend[$count],
-                        'teacher_id' => $teacherid,
-                        'class_id' => $classid,
-                        'church_id' => $church_id
-                    );
 
                     var_dump($data);
 
@@ -69,11 +69,9 @@ class ControllerAttendance{
                     // }else{
                     //     print_r("OOps Server Side Error!");
                     // }
-
                 }
+               
 
-                // $message = "Class Attendance Taken";
-                // SweetAlert::alertSaved($message);
 
             }else {
                 
@@ -90,3 +88,4 @@ class ControllerAttendance{
 
 
 }
+
