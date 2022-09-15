@@ -70,8 +70,6 @@ class ControllerAttendance{
                     //     print_r("OOps Server Side Error!");
                     // }
                 }
-               
-
 
             }else {
                 

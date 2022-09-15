@@ -1,5 +1,8 @@
 <?php
 
+//
+// ─── LOADING CONTROLLERS ─────────────────────────────────────────────────────
+//
 
 require_once "controllers/template.controller.php";
 require_once "controllers/users.controller.php";
@@ -7,6 +10,7 @@ require_once "controllers/teachers.controller.php";
 require_once "controllers/classrooms.controller.php";
 require_once "controllers/students.controller.php";
 require_once "controllers/attendancelist.controller.php";
+require_once "controllers/attendanceRecords.controller.php";
 
 require_once "controllers/mailscript.php";
 
@@ -22,13 +26,16 @@ require_once "models/attendance.model.php";
 
 
 //
-// ─── LOADING METHODS ────────────────────────────────────────────────────────────
+// ─── LOADING FUNCTIONS ────────────────────────────────────────────────────────────
 //
 
 require_once "views/alert.php";
 require_once "views/createFolder.php";
 
 
+//
+// ─── INITIATE TEMPLATE CONTROLLER CLASS ─────────────────────────────────────────────────────
+//
 
 $template = new ControllerTemplate();
 $template -> ctrTemplate();
