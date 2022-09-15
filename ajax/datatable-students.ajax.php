@@ -1,5 +1,7 @@
 <?php 
-
+if(!isset($_SESSION)){
+    session_start();
+}
 //
 // ──────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: S T U D E N T   A J A X     D A T A T A B L E : :  :   :    :     :        :          :
@@ -107,7 +109,7 @@ class StudentTable {
                     $class = $classid;
 
 
-                    $stud_ID = "CTKMC/CM/00";
+                    $stud_ID = $_SESSION["churchcode"]."/CM/00";
 
                     $age = $sAge;
 
