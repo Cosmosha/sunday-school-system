@@ -9,7 +9,7 @@
         <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                <li class="breadcrumb-item active">Attendance List</li>
+                <li class="breadcrumb-item active">Class List</li>
             </ol>
         </div>
         <!-- <div>
@@ -36,7 +36,7 @@
                     
                     <div class="row form-group text-right">
                         <div class="col-md-5 align-self-center">
-                                <h6 class="text-left p-t-10 text-capitalize">Attendance List</h6>
+                                <h6 class="text-left p-t-10 text-capitalize">Class List</h6>
                         </div>
                         <div class="col-md-7 align-self-center">
                                 <button type="button" class="btn btn-outline-primary btnAdd" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-check-square-o"></i> Take Attendance</button>
@@ -185,9 +185,6 @@
                             html += '<td> '+result[count].gender +' </td>';
                             html += '<td> <div class="switch"><label>Absent <input type="checkbox"  id="attend" name="attend[]"><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'+result[count].student_id +'"> <input type="hidden" name="teacherid" value="<?php echo $_SESSION["teacherid"] ?>"> <input type="hidden" name="churchid" value="<?php echo $_SESSION["churchid"] ?>"> <input type="hidden" name="classid" value="'+result[count].class_id +'"> </td>';
                         }
-                        
-
-
 
                         $(".classAttendacneTable tbody").html(html);
 

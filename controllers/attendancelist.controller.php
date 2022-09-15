@@ -56,7 +56,7 @@ class ControllerAttendance{
                         );
                     }
 
-                    var_dump($data);
+                   print_r($data);
 
                     $table = "student_attendance";
 

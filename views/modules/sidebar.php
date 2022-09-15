@@ -104,8 +104,8 @@
 
                         <li id="classList"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-greeting"></i><span class="hide-menu">ATTENDANCE</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="attendanceList">Class Attendance List</a></li>
-                                <li><a href="attendanceRecords">Attendance Records</a></li>
+                                <li><a href="attendanceList">Class List</a></li>
+                                <li><a href="attendanceRecords">Attendance List</a></li>
                                 <!-- <li><a href="form-addons.html">Form Addons</a></li>  -->
 
                             </ul>
@@ -135,3 +135,4 @@
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
 
+        
