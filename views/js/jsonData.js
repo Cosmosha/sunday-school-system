@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 
 	//
-	// ─── LOAD CLASS ATTENDANCE JSON DATA TABLE ───────────────────────────────────────────────
+	// ─── LOAD CLASS List JSON DATA TABLE ───────────────────────────────────────────────
 	//
 
 	$('.attendanceTable').DataTable({
@@ -82,14 +82,14 @@ $(document).ready(function(){
 	// ─── LOAD TAKE ATTENDANCE JSON DATA TABLE ───────────────────────────────────────────────
 	//
 
-	// $('.classAttendanceTable').DataTable({
+	$('.classAttendanceList').DataTable({
 
-	// 	"ajax":"./ajax/datatable-class-attendance.ajax.php",
-	//     "deferRender": true,
-	//     "retrieve": true,
-	//     "processing": true ,
+		"ajax":"./ajax/datatable-class-attendance.ajax.php",
+	    "deferRender": true,
+	    "retrieve": true,
+	    "processing": true ,
 
-	// });
+	});
 
 
 

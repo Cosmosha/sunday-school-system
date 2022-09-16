@@ -46,20 +46,23 @@
 
                     <div class="table-responsive m-t-40">
                         
-                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase ">
+                        <table id="myTable" class="table table-bordered table-striped text-center table-hover text-uppercase classAttendanceList">
                             <thead>
                                 <tr class="table-bordered bg-dark text-white">
                                     <th>NO.</th>
-                                    <th>Stud. ID</th>
+                                    <th>Student ID</th>
                                     <th>Name</th>
-                                    <th>Attendance Status</th>
+                                    <th>Gender</th>
+                                    <th>Attendance</th>
                                     <th>Date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                         </table>                            
 
                     </div>
 
+                    
 
                 </div>
             </div>

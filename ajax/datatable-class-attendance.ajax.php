@@ -1,7 +1,6 @@
 <?php 
-if(!isset($_SESSION)){
-    session_start();
-}
+
+
 
 //
 // ──────────────────────────────────────────────────────────────────────────────── I ──────────
@@ -11,7 +10,9 @@ if(!isset($_SESSION)){
 
 
 require_once "../controllers/attendancelist.controller.php";
+require_once "../controllers/attendanceRecords.controller.php";
 require_once "../models/students.model.php";
+require_once "../controllers/students.controller.php";
 require_once "../models/attendance.model.php";
 require_once "../controllers/classrooms.controller.php";
 require_once "../models/classrooms.model.php";
@@ -23,15 +24,15 @@ class ClassAttendanceTable {
     //
 
 
-    public function showClassAttendanceTable(){
-        
+    static public function showClassAttendanceTable(){
+
 
         $table = "student";
         
         $item = "";
         $value = "";
 
-        $student = ControllerAttendance::ctrShowClassStudent();
+        $student = ControllerAttendanceRecords::ctrShowAttendanceRecords();
 
         $jsonData = '{
 
@@ -44,39 +45,15 @@ class ClassAttendanceTable {
 
                     
                     // ACTION BUTTONS
-                   // $editBtn = " <i class='ti-trash m-l-10 dark-i btnDeleteStudent' name='btnDeleteStudent' deleteStudent='".$student[$i]["student_id"]."' churchid='".$student[$i]["church_id"]."' deletePhoto='".$student[$i]["student_photo"]."' deleteDOB='".$student[$i]["dob"]."' deleteFname='".$student[$i]["student_firstname"]."' deleteLname='".$student[$i]["student_lastname"]."'  aria-hidden='true'></i>";   
-                    $editBtn =  '<div class="switch" id="attend"><label>Absent<input type="checkbox" name="attend[]" ><span class="lever"></span>Present</label></div>  <input type="hidden" name="studentid[]" value="'.$student[$i]["student_id"].'"> <input type="hidden" name="teacherid" value="'.$_SESSION["teacherid"].'">';
-                
-                    // student fullname
-                    $studentname = $student[$i]["student_firstname"] ." " .$student[$i]["student_lastname"];
+                    $editBtn = "<i class='fa fa-pencil m-r-20 dark-i btnEditstudent' idstudent='".$student[$i]["student_id"]."'  data-toggle='modal' data-target='#editmodal' aria-hidden='true'></i> ";   
 
-                    //student image
-                    if ($student[$i]["student_photo"] != "") {
+
+                    if ($student[$i]["attendance_status"]=="1") {
                         # code...
-
-                        $photo = "<img src='".$student[$i]["student_photo"]."' width='40px'>";
-
-                    }elseif ($student[$i]["student_photo"] == "" && $student[$i]["gender"]=="boy") {
-                        # code...
-
-                        $photo = "<img src='views/img/students/default/boy.png' width='40px'>";
-
-                    }elseif ($student[$i]["student_photo"] == "" && $student[$i]["gender"]=="girl") {
-                        # code...
-
-                        $photo = "<img src='views/img/students/default/girl.png' width='40px'>";
-
+                        $status = "<h4><span class='label label-success'>Present</span></h4>";
+                    }elseif($student[$i]["attendance_status"]=="0"){
+                        $status = "<h4><span class='label label-danger'>Absent</span></h4>";
                     }
-
-                    $phone = "0".$student[$i]["phone"];
-
-
-                    $table = "student";
-                    $item1 = "dob";
-                    $value1 = $student[$i]["dob"];
-
-                    $sAge = ModelStudents::mdlShowAge($table, $item1, $value1);
-
 
                     //Get class name using class id
                     $classrm = $student[$i]["class_id"];
@@ -91,41 +68,38 @@ class ClassAttendanceTable {
                         }
                     }
 
-                    
 
-                    //Get Status Name From DB Using Status Id
-
-                    // $table = "availability";
-                    // $stat = $student[$i]["status_id"];
+                    $stud_id = $student[$i]["student_id"];
                 
-                    // $stats = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                    $stud = ControllerStudents::ctrShowStudentList($item, $value);
 
-                    // foreach ($stats as $key => $value) {
-                    //     # code...
-                    //     if ($value["status_id"] == $stat) {
-                    //         # code...
-                    //         $statusid = $value["status_name"];
-                    //     }
-                    // }
+                    foreach ($stud as $key => $value) {
+                        # code...
+                        if ($value["student_id"] == $stud_id) {
+                            # code...
+                            $stud_fname = $value["student_firstname"];
+                            $stud_lname = $value["student_lastname"];
+                            $gender = $value["gender"];
+                        }
+                    }
 
-                    //$status = $statusid;
+                    $studentname = $stud_fname." ".$stud_lname;
 
 
-                    $class = $classid;
 
 
                     $stud_ID = $_SESSION["churchcode"]."/CM/00";
 
-                    $age = $sAge;
-
-                    
+                    $da = $student[$i]["date_added"];
+                    $attDate = date("d-m-Y", strtotime($da));
 
                     $jsonData .='[
                         "'.($i + 1).'",
                         "'.$stud_ID. $student[$i]["student_id"].'",
                         "'.$studentname.'",
-                        "'.$student[$i]["gender"].'",
-                        "'.$photo.'",
+                        "'.$gender.'",
+                        "'.$status.'",
+                        "'.$attDate.'",
                         "'.$editBtn.'"
 
                     ],';
