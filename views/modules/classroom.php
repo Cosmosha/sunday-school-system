@@ -55,7 +55,7 @@
                                     <th>NO.</th>
                                     <th>Class Name</th>
                                     <th>Room Capacity(Max)</th>
-                                    <th>Action</th>                                              
+                                    <th id="action">Action</th>                                              
                                 </tr>
                             </thead>
 
@@ -172,3 +172,4 @@
         $deleteClass -> ctrDeleteClass();
     
     ?>
+

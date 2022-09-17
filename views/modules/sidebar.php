@@ -47,7 +47,7 @@
                     <div class="profile-text"> 
                             <!-- <h5><?php echo ucwords($_SESSION["fname"])?></h5> -->
                             <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
-                             <a href="#" class="" data-toggle="tooltip" title="Inbox"><i class="mdi mdi-gmail"></i></a>
+                             <!-- <a href="#" class="" data-toggle="tooltip" title="Inbox"><i class="mdi mdi-gmail"></i></a> -->
                             <a href="logout" class="" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off power-off"></i></a>
 
                         <div class="dropdown-menu animated flipInY">
@@ -86,7 +86,7 @@
 
 
                         
-                        <li id="teachers"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">TEACHERS 
+                        <li id="teacher"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">TEACHERS 
                             <span class="label label-rouded label-success font-weight-bolder pull-right" id="teacherNotify">  <?php  $table = "teacher";  $teacher = ModelTeachers::mdlShowTeacherRow($table); echo $teacher?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="teachers">Teachers List</a></li>
@@ -95,7 +95,7 @@
                             </ul>
                         </li>
 
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right" id="studentNotify">  <?php $item = ""; $value = "";  $table = "student";  $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value); echo $student?>  </span> </span></a>
+                        <li id="student"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right" id="studentNotify">  <?php $item = ""; $value = "";  $table = "student";  $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value); echo $student?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="students"> Students List </a></li>
                                 <!-- <li><a href="ui-user-card.html">User Cards</a></li> -->
@@ -135,4 +135,19 @@
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
 
-        
+            <script>
+                $(document).ready(function(){
+
+                    const permission = <?php echo $_SESSION["permission"]?>
+
+                    switch (permission) {
+                        case 2:
+                            $('nav ul #teacher').hide();
+                            $('nav ul #utilities').hide();
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                });
+            </script>

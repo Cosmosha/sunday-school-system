@@ -72,6 +72,7 @@ class ControllerUsers{
 
                             $_SESSION["username"] = $result["user_name"];
                             $_SESSION["useremail"] = $result["user_email"];
+                            $_SESSION["permission"] = $result["permission_id"];
 
 
                             // Register Last Login Date and Time
