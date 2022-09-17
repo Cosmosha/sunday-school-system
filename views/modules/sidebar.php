@@ -140,14 +140,10 @@
 
                     const permission = <?php echo $_SESSION["permission"]?>
 
-                    switch (permission) {
-                        case 2:
-                            $('nav ul #teacher').hide();
-                            $('nav ul #utilities').hide();
-                            break;
-                    
-                        default:
-                            break;
+                    if (permission==2) {
+                        $('nav ul #classroom').hide();
+                        $('nav ul #teacher').hide();
+                        $('nav ul #utilities').hide();
                     }
                 });
             </script>
