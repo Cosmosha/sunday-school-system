@@ -100,7 +100,7 @@ function validateEntry (e) {
 //
 
 function validateInput (e) {
-    var regex = new RegExp ("^[a-zA-Z ]+$");
+    var regex = new RegExp ("^[a-zA-Z0-9 ]+$");
     var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
 
     if (regex.test(str)) {

@@ -196,14 +196,16 @@ class ControllerUsers{
                     
                     $table1 = "user";
                     $item1 = "user_email";
+                    $value1 = $_POST["user_email"];
 
-                    $answer = ModelUsers::MdlShowUsers($table1, $item1, $email);
+                    $answer = ModelUsers::MdlShowUsers($table1, $item1, $value1);
+                    var_dump($answer);
 
                     if ($answer["user_email"] != $email || $answer["teacher_id"] != $teacher_id) {
                         # code...
 
-                    $myresult = ModelUsers::mdlAddUsers($table1, $data);
-                    var_dump($myresult);
+                        $myresult = ModelUsers::mdlAddUsers($table1, $data);
+                        var_dump($myresult);
 
                         if ($myresult == "ok") {
                             # code...

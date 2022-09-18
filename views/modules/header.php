@@ -18,9 +18,7 @@
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
-                            <span class="font-17"> <?php echo strtoupper($_SESSION["denomination"]) ?> </span>
-                            <!-- <span class="font-weight-light"><?php echo $_SESSION["churchlocation"] ?></span>  -->
-                            
+                            <span class="font-17"> <?php echo strtoupper($_SESSION["denomination"]) ?> </span>   
                         </span> 
                     </a>
                 </div>
