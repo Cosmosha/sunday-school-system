@@ -160,15 +160,6 @@ class ControllerUsers{
         if (isset($_POST["username"])) {
             # code...
             $userid = $_POST["username"];
-            $table = "teacher";
-            $item = "teacher_id";
-
-            $result = ModelUsers::MdlShowUsers($table, $item, $userid);
-
-            $fname = $result["teacher_firstname"];
-            $lname = $result["teacher_lastname"];
-            $username = $fname.' '.$lname;
-            $teacher_id = $result["teacher_id"];
             
             $password = $_POST["password"];
             $confirmPassword = $_POST["password2"];
@@ -176,6 +167,16 @@ class ControllerUsers{
             if (preg_match('/^[a-zA-Z0-9@!^#-]+$/', $password) &&
             preg_match('/^[a-zA-Z0-9@!^#-]+$/', $confirmPassword)) {
                 # code...
+
+                $table = "teacher";
+                $item = "teacher_id";
+    
+                $result = ModelUsers::MdlShowUsers($table, $item, $userid);
+    
+                $fname = $result["teacher_firstname"];
+                $lname = $result["teacher_lastname"];
+                $username = $fname.' '.$lname;
+                $teacher_id = $result["teacher_id"];
 
                 if ($password == $confirmPassword) {
                     # code...
@@ -198,7 +199,7 @@ class ControllerUsers{
                     $item1 = "user_email";
                     $value1 = $_POST["user_email"];
 
-                    $answer = ModelUsers::MdlShowUsers($table1, $item1, $value1);
+                    $answer = self::ctrShowUsersList($item1, $value1);
                     var_dump($answer);
 
                     if ($answer["user_email"] != $email || $answer["teacher_id"] != $teacher_id) {
