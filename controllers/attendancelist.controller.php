@@ -28,6 +28,9 @@ class ControllerAttendance{
             if (isset($_POST["attend"])) {
                 # code...
 
+                //
+                // ─── GET ATTENDANCE DATA FROM DB ─────────────────────────────────────────────────────────────
+                //
 
                 $table1= "student_attendance";
 
@@ -35,7 +38,10 @@ class ControllerAttendance{
                 'church_id'=> $_SESSION["churchid"]);
         
                 $dateSet = ModelClassAttendance::mdlShowStudentClass($table1, $data1);
+
                 
+                //Change Attendance Date Format
+
                 for ($i=0; $i < count( $dateSet)  ; $i++) { 
                   # code...
                    $getDate= $dateSet[$i]["date_added"];
@@ -49,6 +55,11 @@ class ControllerAttendance{
                    }
                    
                 }
+
+                
+                //
+                // ─── GET ATTENDACE POST VALUES ─────────────────────────────────────────────────────────────
+                //
 
                 $sid = $_POST["studentid"];
                 $teacherid = $_POST["teacherid"];
@@ -68,6 +79,8 @@ class ControllerAttendance{
                         'church_id' => $church_id
                     );
 
+
+                    //Check if Attendance is Already Taken
 
                     if ($atDate != date("d-m-Y")) {
                         # code...
