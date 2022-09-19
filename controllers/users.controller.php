@@ -200,9 +200,9 @@ class ControllerUsers{
                     $value1 = $_POST["user_email"];
 
                     $answer = self::ctrShowUsersList($item1, $value1);
-                    var_dump($answer);
+                    $ans = $answer["user_email"] ?? null;
 
-                    if ($answer["user_email"] != $email || $answer["teacher_id"] != $teacher_id) {
+                    if ($ans != $email || $answer["teacher_id"] != $teacher_id) {
                         # code...
 
                         $myresult = ModelUsers::mdlAddUsers($table1, $data);
