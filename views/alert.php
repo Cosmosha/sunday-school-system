@@ -3,10 +3,10 @@
 
 class SweetAlert{
 
-    // public $message
+    // public $Message;
 
-    // public function __construct($message){
-    //     this->message=$message;
+    // public static function __construct($message){
+    //     self::$Message= $message;
     // }
 
 
