@@ -108,7 +108,7 @@
                                     <div class="col-12">
                                         <div class="d-flex flex-wrap">
                                             <div>
-                                                <h4 class="card-title">Monthly Attendance</h4>
+                                                <h4 class="card-title">Yearly Attendance Stats</h4>
                                             </div>
                                             <div class="ml-auto">
                                                 <ul class="list-inline">
@@ -152,7 +152,7 @@
                                                                 'currentmonth' => date("Ym"),
                                                                 'church_id'=> $_SESSION["churchid"]);
                                                     
-                                                    $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
+                                                    $result = ModelClassAttendance::mdlShowAttendanceMonthwise($table,$data);
                                                 
                                                 ?>
 
@@ -183,7 +183,7 @@
                                                             'currentmonth' => date("Ym"),
                                                             'church_id'=> $_SESSION["churchid"]);
                                                 
-                                                $result = ModelClassAttendance::mdlShowAttendanceNumber($table,$data);
+                                                $result = ModelClassAttendance::mdlShowAttendanceMonthwise($table, $data);
                                             
                                     ?>
                                     <h2 class="font-light text-white"><sup><small><i class="ti-arrow-down"></i></small></sup> <?php echo $result?> </h2>
@@ -200,6 +200,19 @@
                 <!-- Row -->
 
 
+                <?php 
+                
+
+                    // $table = "student_attendance";
+                    // $data = array('currentmonth' => date("Ym"),
+                    // 'church_id'=> $_SESSION["churchid"]);
+
+                    // $answer = ModelClassAttendance::mdlShowStudentClass($table, $data);
+
+                    // $getYear = date("Y", strtotime($answer["date_added"]));
+                    // var_dump($getYear);
+                ?>
+
                     <!-- ============================================================== -->
                     <!-- End PAge Content -->
                     <!-- ============================================================== -->
@@ -215,37 +228,37 @@
                             data: [{
                                     year: '2011',
                                     Present: 230,
-                                    attendance: 90,
+                                    Absent: 90,
                            
                                 },
                                 {
                                     year: '2012',
                                     Present: 310,
-                                    attendance: 40,
+                                    Absent: 40,
                            
                                 },
                                 {
                                     year: '2013',
                                     Present: 80,
-                                    attendance: 210,
+                                    Absent: 210,
                            
                                 },
                                 {
                                     year: '2014',
                                     Present: 310,
-                                    attendance: 40,
+                                    Absent: 40,
                            
                                 },
                                 {
                                     year: '2015',
                                     Present: 110,
-                                    attendance: 70,
+                                    Absent: 70,
                            
                                 },
                             ],
                             xkey: 'year',
-                            ykeys: ['Present', 'attendance'],
-                            labels: ['Absent', 'Present'],
+                            ykeys: ['Present', 'Absent'],
+                            labels: ['Present', 'Absent'],
                             pointSize: 3,
                             fillOpacity: 0,
                             pointStrokeColors: ['#1976d2', '#EE4B2B', '#1976d2'],

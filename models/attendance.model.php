@@ -66,10 +66,10 @@ class ModelClassAttendance{
 
 
     //
-    // ─── SHOW GENERAL TOTAL NUMBER FOR ATTENDANCE ────────────────────────────────────────────────────────
+    // ─── SHOW MONTHWISE TOTAL NUMBER FOR ATTENDANCE ────────────────────────────────────────────────────────
     //
 
-    static public function mdlShowAttendanceNumber($table, $data){
+    static public function mdlShowAttendanceMonthwise($table, $data){
 
         $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE attendance_status = :attendance_status AND church_id = :church_id AND EXTRACT(YEAR_MONTH FROM date_added)= :currentmonth");
 
@@ -91,6 +91,39 @@ class ModelClassAttendance{
         $stmt = null;
 
     }
+
+
+
+    
+    //
+    // ─── SHOW YEARLYWISE TOTAL NUMBER FOR ATTENDANCE ────────────────────────────────────────────────────────
+    //
+
+    static public function mdlShowAttendanceYearwise($table, $data){
+
+        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE attendance_status = :attendance_status AND church_id = :church_id AND EXTRACT(YEAR FROM date_added)= :getYear");
+
+        $stmt -> bindParam(":attendance_status", $data["attendance_status"], PDO::PARAM_INT);
+        $stmt -> bindParam(":getYear", $data["getYear"], PDO::PARAM_STR);
+        $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            
+            return $stmt -> fetchColumn();
+        
+        } else {
+
+            return 'error';
+        
+        }
+        
+
+        $stmt = null;
+
+    }
+
+
+
 
 
 

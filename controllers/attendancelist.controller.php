@@ -91,7 +91,7 @@ class ControllerAttendance{
 
                         if ($result == "ok") {
                             # code...
-                            $message = "Class Attendance Taken";
+                            $message = "Class Attendance Successfully Taken";
                             SweetAlert::alertSaved($message);
                         }else{
                             print_r("OOps Server Side Error!");
@@ -99,7 +99,7 @@ class ControllerAttendance{
                         
                     }else {
                         # code...
-                        $message = "Class Attendance Already Taken";
+                        $message = "Class Attendance Already Taken For Today";
                             SweetAlert::alertDuplicateItem($message);
                     }
 

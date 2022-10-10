@@ -9,7 +9,7 @@ class ModelUsers{
     // ─── ADD USER ───────────────────────────────────────────────────────────────────
     //
 
-    public static function mdlAddUsers($table, $data){
+    static public function mdlAddUsers($table, $data){
 
         $stmt = Connection::connect()->prepare("INSERT INTO $table(teacher_id, user_name, user_email, password, permission_id, user_status, church_id)
         VALUES(:teacher_id, :user_name, :user_email, :password, :permission_id, :user_status, :church_id)");
