@@ -38,7 +38,7 @@ $(function()
             }
 
 
-            if (window.location.pathname == "/menosoft-sundaysch/logout") {
+            if (window.location.pathname === "/menosoft-sundaysch/logout" || window.location.pathname === "/menosoft-sundaysch/login") {
                 
                 window.stop();
                 return false;
