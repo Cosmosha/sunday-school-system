@@ -66,6 +66,32 @@ class ModelClassAttendance{
 
 
     //
+    // ─── SHOW ALL CHURCH ATTENDANCE ────────────────────────────────────────────────────────
+    //
+
+    static public function mdlShowAttendance($table, $data){
+
+        $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE church_id = :church_id");
+
+        $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
+        
+        if ($stmt->execute()) {
+            
+            return $stmt -> fetchAll();
+         
+         } else {
+ 
+             return 'error';
+         
+         }
+         
+ 
+         $stmt = null;
+
+    }
+
+
+    //
     // ─── SHOW MONTHWISE TOTAL NUMBER FOR ATTENDANCE ────────────────────────────────────────────────────────
     //
 

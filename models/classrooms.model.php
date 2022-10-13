@@ -10,7 +10,7 @@ class ModelClassRoom{
     // ─── ADD CLASS ROOM  ─────────────────────────────────────────────────────────────
     //
 
-        public static function mdlAddClassRoom($table, $data){
+        static public function mdlAddClassRoom($table, $data){
 
             $stmt = Connection::connect()->prepare(" INSERT INTO $table (class_name, class_capacity, church_id)
                 VALUES(:class_name, :class_capacity, :church_id )");

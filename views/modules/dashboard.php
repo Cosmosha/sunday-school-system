@@ -200,18 +200,57 @@
                 <!-- Row -->
 
 
-                <?php 
-                
+                    <?php 
+                    
 
-                    // $table = "student_attendance";
-                    // $data = array('currentmonth' => date("Ym"),
-                    // 'church_id'=> $_SESSION["churchid"]);
+                        $table = "student_attendance";
+                        // $data = array('currentmonth' => date("Ym"),
+                        // 'church_id'=> $_SESSION["churchid"]);
+                        $data = array('church_id' => $_SESSION["churchid"]);
 
-                    // $answer = ModelClassAttendance::mdlShowStudentClass($table, $data);
+                        $answer = ModelClassAttendance::mdlShowAttendance($table, $data);
 
-                    // $getYear = date("Y", strtotime($answer["date_added"]));
-                    // var_dump($getYear);
-                ?>
+                        
+
+                        foreach ($answer as $key => $value) {
+                            # code...
+
+                            $getYear [] = date("Y", strtotime($value["date_added"]));
+                            //var_dump($getYear);
+                            $result = [];
+
+                            foreach(array_unique($getYear) as $uniqueValue)
+                                $result[implode(",", array_keys($getYear, $uniqueValue))] = $uniqueValue;
+                        
+                            //print_r($result);
+                        }
+
+                        $chart_data = '';
+                        
+                        foreach ($result as $key => $value) {
+                            # code...
+                            $data = array('attendance_status' => "0", 
+                            'getYear' => $value,
+                            'church_id'=> $_SESSION["churchid"]);
+
+                            //Absent Yearly
+                            $absentSum = ModelClassAttendance::mdlShowAttendanceYearwise($table, $data);
+                                // var_dump($ans);
+                                // var_dump($value);
+                            
+                            //Present Yearly
+                            $data1 = array('attendance_status' => "1", 
+                            'getYear' => $value,
+                            'church_id'=> $_SESSION["churchid"]);
+
+                            $presentSum = ModelClassAttendance::mdlShowAttendanceYearwise($table, $data1);
+
+                             
+                            $chart_data.="{year: '".$value."', Present:".$presentSum.", Absent:".$absentSum.",}, "; 
+                            $chart_dat = substr($chart_data, 0, -2);
+                        }
+
+                    ?>
 
                     <!-- ============================================================== -->
                     <!-- End PAge Content -->
@@ -225,36 +264,8 @@
                 <script>
                      Morris.Area({
                         element: 'attendance',
-                            data: [{
-                                    year: '2011',
-                                    Present: 230,
-                                    Absent: 90,
-                           
-                                },
-                                {
-                                    year: '2012',
-                                    Present: 310,
-                                    Absent: 40,
-                           
-                                },
-                                {
-                                    year: '2013',
-                                    Present: 80,
-                                    Absent: 210,
-                           
-                                },
-                                {
-                                    year: '2014',
-                                    Present: 310,
-                                    Absent: 40,
-                           
-                                },
-                                {
-                                    year: '2015',
-                                    Present: 110,
-                                    Absent: 70,
-                           
-                                },
+                            data: [
+                                        <?php print_r($chart_dat); ?>,
                             ],
                             xkey: 'year',
                             ykeys: ['Present', 'Absent'],
