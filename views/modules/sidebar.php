@@ -64,6 +64,7 @@
                         <!-- text-->  
                         </div>
                     </div>
+
                 </div>
                 <!-- End User profile text-->
 
@@ -128,12 +129,15 @@
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
+
             </div>
             <!-- End Sidebar scroll-->
+
         </aside>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
+
 
             <script>
                 $(document).ready(function(){
@@ -147,3 +151,4 @@
                     }
                 });
             </script>
+

@@ -287,7 +287,7 @@
                                                     <div class="col-6">
 
                                                         <div class="form-group">
-                                                            <label for="recipient-name" class="control-label">Status: <span class="text-danger">*</span></label>
+                                                            <label for="recipient-name" class="control-label"> Membership Status: <span class="text-danger">*</span></label>
                                                             <select name="status" id="status" required="" class="form-control text-capitalize" required>
                                                                 <option value= "" >Select availability status</option>
                                                                 <?php  
