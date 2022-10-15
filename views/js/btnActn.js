@@ -301,6 +301,8 @@ $(document).ready(function(){
             $("#edit_gname").val(result["guardian_name"]);
             $("#edit_address").val(result["home_address"]);
             $("#edit_classname").val(result["class_id"]);
+            $("#edit_status").val(result["status"]);
+            $(".edit_baptism").val(result["baptism"]);
 
 
             if (result["student_photo"] !="") { 

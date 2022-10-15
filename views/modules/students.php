@@ -53,11 +53,12 @@
                                     <th>Gender</th>
                                     <th>Age</th>
                                     <th>Photo</th>
-                                  
                                     <th>Guardian</th>
                                     <th>Phone</th>
                                     <th>House Address</th>  
                                     <th>Class</th>
+                                    <th>Baptism</th>
+                                    <th>Status</th>
                                     <th>Action</th>                                              
                                 </tr>
                             </thead>
@@ -260,6 +261,50 @@
                                                             
                                                             ?>
                                                             </select>
+                                                        </div>
+
+                                                    </div>
+
+                                            </div>
+
+
+                                            <div class="row">
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Baptism: <span class="text-danger">*</span></label>
+                                                            <select name="baptism" id="recipient-name" class="form-control editbaptism text-capitalize" id="baptism" required>
+                                                                <option value="">Select Baptism Status</option>
+                                                                <option value="Not Baptized">Not Baptized</option>
+                                                                <option value="Baptized">Baptized</option>
+                                                                <option value="Baptized & Confirmed">Baptized & Confirmed</option>         
+                                                            </select>
+                                                    </div>
+
+                                                </div>
+
+                                                    <div class="col-6">
+
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="control-label">Status: <span class="text-danger">*</span></label>
+                                                            <select name="status" id="status" required="" class="form-control text-capitalize" required>
+                                                                <option value= "" >Select availability status</option>
+                                                                <?php  
+                                                            
+                                                                    $table = "availability";
+                                                                    $item = null;
+                                                                    $value = null;
+
+                                                                    $status = ModelClassRoom::mdlShowInfo($table, $item, $value);
+
+                                                                    foreach ($status as $key => $value) {
+                                                                        # code...
+                                                                        echo '<option value="'.$value["status_id"].'">'.$value["status_name"].'</option>';
+                                                                    }
+                                                                                                                                
+                                                                ?>
+                                                              </select>
                                                         </div>
 
                                                     </div>
@@ -508,6 +553,49 @@
 
                                             </div>
 
+
+                                            <div class="row">
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Baptism: <span class="text-danger">*</span></label>
+                                                            <select name="edit_baptism" id="recipient-name" class="form-control edit_baptism text-capitalize" id="edit_baptism" required>
+                                                                <option value="">Select Baptism Status</option>
+                                                                <option value="Not Baptized">Not Baptized</option>
+                                                                <option value="Baptized">Baptized</option>
+                                                                <option value="Baptized & Confirmed">Baptized & Confirmed</option>         
+                                                            </select>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Membership Status: <span class="text-danger">*</span></label>
+                                                        <select name="edit_status" id="edit_status" required="" class="form-control text-capitalize" required>
+                                                            <option value= "" >Select availability status</option>
+                                                            <?php  
+                                                        
+                                                                $table = "availability";
+                                                                $item = null;
+                                                                $value = null;
+
+                                                                $status = ModelClassRoom::mdlShowInfo($table, $item, $value);
+
+                                                                foreach ($status as $key => $value) {
+                                                                    # code...
+                                                                    echo '<option value="'.$value["status_id"].'">'.$value["status_name"].'</option>';
+                                                                }
+                                                                                                                            
+                                                            ?>
+                                                        </select>
+                                                    </div>
+
+                                                </div>  
+
+                                            </div>                                           
 
 
                                             <div class="row">

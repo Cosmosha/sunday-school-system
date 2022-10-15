@@ -90,20 +90,22 @@ class StudentTable {
 
                     //Get Status Name From DB Using Status Id
 
-                    // $table = "availability";
-                    // $stat = $student[$i]["status_id"];
+                    $table = "availability";
+                    $statu = $student[$i]["status"];
                 
-                    // $stats = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                    $stats = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
-                    // foreach ($stats as $key => $value) {
-                    //     # code...
-                    //     if ($value["status_id"] == $stat) {
-                    //         # code...
-                    //         $statusid = $value["status_name"];
-                    //     }
-                    // }
+                    //print_r($statu);
+                    foreach ($stats as $key => $value) {
+                        # code...
+                        if ($value["status_id"] == $statu) {
+                            # code...
+                            $statusid = $value["status_name"];
+                        }
+                    }
 
-                    //$status = $statusid;
+                     $status = $statusid;
+                    //$status = "active";
 
 
                     $class = $classid;
@@ -122,11 +124,12 @@ class StudentTable {
                         "'.$student[$i]["gender"].'",
                         "'.$age.'",
                         "'.$photo.'",
-
                         "'.$student[$i]["guardian_name"].'",
                         "'.$phone.'",
                         "'.$student[$i]["home_address"].'",
                         "'.$class.'",
+                        "'.$student[$i]["baptism"].'",
+                        "'.$status.'",
                         "'.$editBtn.'"
                     ],';
 

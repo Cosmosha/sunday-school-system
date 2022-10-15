@@ -200,6 +200,7 @@
                 <!-- Row -->
 
 
+                <!-- Yearly Attendance Stats  -->
                     <?php 
                     
 

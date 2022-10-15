@@ -92,7 +92,7 @@ class ModelStudents{
     public static function mdlUpdateStudent($table, $data){
 
         $stmt = Connection::connect()->prepare("UPDATE $table SET student_firstname = :student_firstname,  student_lastname = :student_lastname, student_photo = :student_photo,
-        gender = :gender, dob = :dob, student_level = :student_level, class_form = :class_form, school_name = :school_name, home_address = :home_address, class_id = :class_id,
+        gender = :gender, dob = :dob, student_level = :student_level, class_form = :class_form, school_name = :school_name, home_address = :home_address, class_id = :class_id, baptism = :baptism, status = :status,
         school_name = :school_name, region_id = :region_id, class_id = :class_id, guardian_name = :guardian_name, phone = :phone  WHERE student_id = :student_id AND church_id = :church_id");
 
         $stmt->bindParam(":student_id", $data["student_id"], PDO::PARAM_INT);
@@ -103,6 +103,8 @@ class ModelStudents{
 		$stmt->bindParam(":student_level", $data["student_level"], PDO::PARAM_STR);
 		$stmt->bindParam(":class_form", $data["class_form"], PDO::PARAM_STR);
 		$stmt->bindParam(":school_name", $data["school_name"], PDO::PARAM_STR);
+		$stmt->bindParam(":baptism", $data["baptism"], PDO::PARAM_STR);
+		$stmt->bindParam(":status", $data["status"], PDO::PARAM_STR);
 
         $stmt->bindParam(":region_id", $data["region_id"], PDO::PARAM_INT);
 		$stmt->bindParam(":guardian_name", $data["guardian_name"], PDO::PARAM_STR);

@@ -44,6 +44,8 @@ class ControllerStudents {
                 $phone = $_POST["sphone"];
                 $address = trim($_POST["saddress"]);
                 $asignedclass = $_POST["sclassname"]; 
+                $baptism = $_POST["baptism"];
+                $status = $_POST["status"];
                 $churchid = $_SESSION["churchid"];
             
                 
@@ -108,6 +110,8 @@ class ControllerStudents {
                                     'phone'=>$phone,
                                     'home_address'=>$address,
                                     'class_id'=>$asignedclass,
+                                    'baptism'=>$baptism,
+                                    'status' =>$status,
                                     'church_id'=>$churchid,
                                     'student_photo'=>$photo
                             );
@@ -187,6 +191,8 @@ class ControllerStudents {
                 $phone = $_POST["edit_phone"];
                 $address = trim($_POST["edit_address"]);
                 $asignedclass = $_POST["edit_classname"]; 
+                $baptism = $_POST["edit_baptism"];
+                $status = $_POST["edit_status"];
                 $churchid = $_SESSION["churchid"];
                 $idStudent = $_POST["student_id"];
 
@@ -242,6 +248,8 @@ class ControllerStudents {
                                 'home_address'=>$address,
                                 'class_id'=>$asignedclass,
                                 'church_id'=>$churchid,
+                                'baptism'=> $baptism,
+                                'status'=> $status,
                                 'student_photo'=>$edit_photo,
                                 'student_id'=> $idStudent
                                 
