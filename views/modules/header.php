@@ -12,13 +12,15 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                          <img src="assets/images/logo-icon.png" alt="Menosoft" class="dark-logo" />
+                          <img src="assets/images/logo/meno.png" alt="Menosoft" class="dark-logo" />
                             
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span>
-                            <span class="font-17"> <?php echo strtoupper($_SESSION["denomination"]) ?> </span>   
+                        <span class="vinfo">
+                            CMS | Version 1.0
+                            <!-- <span class="font-17"> <?php echo strtoupper($_SESSION["denomination"]) ?> </span>    -->
+                             
                         </span> 
                     </a>
                 </div>

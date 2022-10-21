@@ -27,7 +27,7 @@ if(!isset($_SESSION)){
     </script>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/menosoft.png">
     <title>MCS System | <?php echo ucwords( $_GET["root"]) ?> </title>
 
     <!-- Bootstrap Core CSS -->
@@ -43,6 +43,9 @@ if(!isset($_SESSION)){
     <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
+
+    <!-- Calendar CSS -->
+    <link href="assets/plugins/calendar/dist/fullcalendar.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -191,7 +194,7 @@ if(!isset($_SESSION)){
                             $_GET["root"]== "students" ||
                             $_GET["root"]== "teachers" ||
                             $_GET["root"]== "users" ||
-                            $_GET["root"]== "permission" ||
+                            $_GET["root"]== "calendar" ||
                             $_GET["root"]=="logout" ){
                             # code...
 
@@ -332,7 +335,11 @@ if(!isset($_SESSION)){
     }(window, document, jQuery);
 </script>
 
-
+<!-- Calendar JavaScript -->
+<script src="assets/plugins/calendar/jquery-ui.min.js"></script>
+<script src="assets/plugins/moment/moment.js"></script>
+<script src='assets/plugins/calendar/dist/fullcalendar.min.js'></script>
+<script src="assets/plugins/calendar/dist/cal-init.js"></script>
 
 </body>
 

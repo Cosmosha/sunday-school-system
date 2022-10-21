@@ -24,6 +24,6 @@
                 <h1>404</h1>
                 <h3 class="text-uppercase">Page Not Found !</h3>
                 <p class="text-muted m-t-30 m-b-30">HOW DID YOU MANAGE TO GET HERE</p>
-                <a href="dashboards" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">Back to home</a> </div>
+                <a href="dashboard" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">Back to home</a> </div>
         </div>
 </section>

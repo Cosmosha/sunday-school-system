@@ -1,3 +1,8 @@
+header nav span.vinfo{
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold !important;
+}
 
 footer strong a{
     color: grey;

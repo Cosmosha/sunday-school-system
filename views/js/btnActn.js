@@ -492,49 +492,49 @@ $(document).ready(function(){
 //
 
 
-$(document).on("click", ".btnActivate", function(){
+  $(document).on("click", ".btnActivate", function(){
 
-	var userId = $(this).attr("userId");
-	var userStatus = $(this).attr("userStatus");
+    var userId = $(this).attr("userId");
+    var userStatus = $(this).attr("userStatus");
 
-	var datas = new FormData();
-  datas.append("userId", userId);
-  datas.append("userStatus", userStatus);
+    var datas = new FormData();
+    datas.append("userId", userId);
+    datas.append("userStatus", userStatus);
 
-  // console.log("activateId", userId);
-  // console.log("userStatus", userStatus);
+    // console.log("activateId", userId);
+    // console.log("userStatus", userStatus);
 
-  	$.ajax({
+      $.ajax({
 
-      url:"./ajax/users.ajax.php",
-      method: "POST",
-      data: datas,
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function(answer){   
-		
+        url:"./ajax/users.ajax.php",
+        method: "POST",
+        data: datas,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(answer){   
+      
+        }
+
+      })
+
+      if(userStatus == 0){
+
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-danger');
+        $(this).html('Deactivated');
+        $(this).attr('userStatus',1);
+
+      }else{
+
+        $(this).addClass('btn-success');
+        $(this).removeClass('btn-danger');
+        $(this).html('Activated');
+        $(this).attr('userStatus',0);
+
       }
 
-  	})
-
-  	if(userStatus == 0){
-
-  		$(this).removeClass('btn-success');
-  		$(this).addClass('btn-danger');
-  		$(this).html('Deactivated');
-  		$(this).attr('userStatus',1);
-
-  	}else{
-
-  		$(this).addClass('btn-success');
-  		$(this).removeClass('btn-danger');
-  		$(this).html('Activated');
-  		$(this).attr('userStatus',0);
-
-  	}
-
-});
+  });
 
 
 
@@ -551,9 +551,9 @@ $(document).on("click", ".btnActivate", function(){
 // ──────────────────────────────────────────────────────────────────────────────────────
 //
 
-$(document).on("click", "button#reset", function(){
+  $(document).on("click", "button#reset", function(){
 
-  var rootImage = "views/img/teachers/default/default.png";
-  $('.preview').attr("src", rootImage);
+    var rootImage = "views/img/teachers/default/default.png";
+    $('.preview').attr("src", rootImage);
 
-})
+  })
