@@ -38,7 +38,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="card-body">
-                                        <h4 class="card-title m-t-10">Events List for this Month</h4>
+                                        <h4 class="card-title m-t-10">Event List for this Month</h4>
                                         <div class="row">
                                         <a href="#" data-toggle="modal" data-target="#add-new-event" class="btn m-t-10 btn-info btn-block waves-effect waves-light">
                                                         <i class="ti-plus"></i> Add Event 

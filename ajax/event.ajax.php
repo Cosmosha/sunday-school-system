@@ -14,7 +14,8 @@ foreach ($answer as $key => $row) {
         'id' => $row["event_id"], 
         'title'=>$row["event_name"],
         'start_event'=>$row["event_start"],
-        'end_event'=>$row["event_end"] 
+        'end_event'=>$row["event_end"], 
+        'color_event' => $row["event_color"]
     );
 
 }
