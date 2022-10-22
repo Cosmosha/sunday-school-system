@@ -28,10 +28,18 @@ $(document).ready(function() {
                                 end: data[i]['end_event'],
                                 className: 'bg-'+data[i]['color_event']
                             });
+                            
                         }
     
                         //adding the callback
                         callback(events);
+                        iziToast.show({
+                            icon: 'fa fa-calendar',
+                            title: 'Event Calendar',
+                            message: 'Loading Completed!',
+                            theme: 'light',
+                            position: 'topCenter',
+                        });
                     }
                 });
             },
@@ -39,6 +47,7 @@ $(document).ready(function() {
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
             selectable: true,
+            selectHelper: true,
     });
 
 
