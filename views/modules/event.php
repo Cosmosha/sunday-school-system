@@ -42,8 +42,8 @@
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <div id="calendar-events" class="">
-                                                    <!-- <div class="calendar-events" data-class="bg-info"><i class="fa fa-circle text-info"></i> My Event One</div>
-                                                    <div class="calendar-events" data-class="bg-success"><i class="fa fa-circle text-success"></i> My Event Two</div>
+                                                    <div class="calendar-events" data-class="bg-info"><i class="fa fa-circle text-info"></i> My Event One</div>
+                                                    <!-- <div class="calendar-events" data-class="bg-success"><i class="fa fa-circle text-success"></i> My Event Two</div>
                                                     <div class="calendar-events" data-class="bg-danger"><i class="fa fa-circle text-danger"></i> My Event Three</div>
                                                     <div class="calendar-events" data-class="bg-warning"><i class="fa fa-circle text-warning"></i> My Event Four</div> -->
                                                 </div>
@@ -55,8 +55,8 @@
                                                     </label>
                                                 </div>
                                                 <a href="#" data-toggle="modal" data-target="#add-new-event" class="btn m-t-10 btn-info btn-block waves-effect waves-light">
-                                                        <i class="ti-plus"></i> Add New Event
-                                                    </a>
+                                                        <i class="ti-plus"></i> Create Event Category
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -71,31 +71,40 @@
                     </div>
                 </div>
             </div>
+
             <!-- BEGIN MODAL -->
-            <div class="modal none-border" id="my-event">
-                <div class="modal-dialog">
+            <div class="modal fade none-border" id="my-event">
+                <div class="modal-dialog modal-md">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title"><strong>Add Event</strong></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                        <div class="modal-header bg-info">
+                             <h4 class="modal-title text-white" id="myModalLabel"> Add / Update Event</h4>
+                             <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
+
                         <div class="modal-body"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
-                            <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
+                            <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete Event</button>
+                            <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+
             <!-- Modal Add Category -->
             <div class="modal fade none-border" id="add-new-event">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-md">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title"><strong>Add</strong> a category</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    
+
+                       <div class="modal-header bg-info">
+                            <h4 class="modal-title text-white" id="myModalLabel"> Add Event</h4>
+                            <button type="button " class="close close-danager white-i" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
+                                                    
+
                         <div class="modal-body">
                             <form role="form">
                                 <div class="row">
@@ -118,21 +127,22 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light save-category" data-dismiss="modal">Save Event</button>
                             <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         <!-- END MODAL -->
+
+
+
         <!-- ============================================================== -->
 
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
-
-
 
 
 

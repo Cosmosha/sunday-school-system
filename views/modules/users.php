@@ -190,7 +190,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary waves-effect">Add User</button>
+                                        <button type="submit" class="btn btn-primary waves-effect">Save User</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                     </div>
 

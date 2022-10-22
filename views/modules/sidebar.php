@@ -120,7 +120,7 @@
                         <li id="utilities"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">UTILITIES</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="users">System Users</a></li>
-                                <li><a href="calendar">Event Calendar</a></li>
+                                <li><a href="event">Event Calendar</a></li>
                                 
                             </ul>
                         </li>

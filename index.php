@@ -11,6 +11,7 @@ require_once "controllers/classrooms.controller.php";
 require_once "controllers/students.controller.php";
 require_once "controllers/attendancelist.controller.php";
 require_once "controllers/attendanceRecords.controller.php";
+require_once "controllers/event.controller.php";
 
 require_once "controllers/mailscript.php";
 
@@ -23,6 +24,7 @@ require_once "models/teachers.model.php";
 require_once "models/classrooms.model.php";
 require_once "models/students.model.php";
 require_once "models/attendance.model.php";
+require_once "models/event.model.php";
 
 
 //

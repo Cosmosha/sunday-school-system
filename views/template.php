@@ -39,10 +39,14 @@ if(!isset($_SESSION)){
  
     <!-- Date picker plugins css -->
     <link href="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    
     <!-- Daterange picker plugins css -->
     <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
+
+    <!-- iziToast -->
+    <link href="assets/plugins/iziToast/dist/css/iziToast.min.css" rel="stylesheet">
 
     <!-- Calendar CSS -->
     <link href="assets/plugins/calendar/dist/fullcalendar.css" rel="stylesheet" />
@@ -71,10 +75,16 @@ if(!isset($_SESSION)){
 <![endif]-->
 
 
+
+
+
+
+
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
 
@@ -98,6 +108,9 @@ if(!isset($_SESSION)){
 
     <script src="assets/js/jasny-bootstrap.js"></script>
 
+    <!-- iziToast -->
+    <script src="assets/plugins/iziToast/dist/js/iziToast.min.js"></script>
+
 
     <!--morris JavaScript -->
     <script src="assets/plugins/raphael/raphael-min.js"></script>
@@ -113,6 +126,7 @@ if(!isset($_SESSION)){
     <script src="views/js/myscript.js"></script>
     <script src="views/js/jsonData.js"></script>
     <script src="views/js/btnActn.js"></script>
+    <script src="views/js/calendarEvent.js"></script>
 
     <!-- Sweet-Alert  -->
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
@@ -194,7 +208,7 @@ if(!isset($_SESSION)){
                             $_GET["root"]== "students" ||
                             $_GET["root"]== "teachers" ||
                             $_GET["root"]== "users" ||
-                            $_GET["root"]== "calendar" ||
+                            $_GET["root"]== "event" ||
                             $_GET["root"]=="logout" ){
                             # code...
 
@@ -339,7 +353,8 @@ if(!isset($_SESSION)){
 <script src="assets/plugins/calendar/jquery-ui.min.js"></script>
 <script src="assets/plugins/moment/moment.js"></script>
 <script src='assets/plugins/calendar/dist/fullcalendar.min.js'></script>
-<script src="assets/plugins/calendar/dist/cal-init.js"></script>
+<!-- <script src="assets/plugins/calendar/dist/cal-init.js"></script> -->
+<script src="views/js/calendarEvent.js"></script>
 
 </body>
 

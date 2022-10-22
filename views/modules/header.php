@@ -18,7 +18,7 @@
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="vinfo">
-                            CMS | Version 1.0
+                            CM System | v.1.0
                             <!-- <span class="font-17"> <?php echo strtoupper($_SESSION["denomination"]) ?> </span>    -->
                              
                         </span> 
