@@ -55,5 +55,24 @@ class ControllerEvent{
 
     }
 
+
+
+    //
+    // ─── SHOW EVENTS LIST ───────────────────────────────────────────────────────
+    //
+
+    public static function ctrShowEvent(){
+       
+        $table = "event_calendar";
+        $data = array('church_id'=> 1);
+
+        $result = ModelEvent::mdlShowEvent($table, $data);
+
+        return $result;
+
+    }
+
+    
+
 }
 

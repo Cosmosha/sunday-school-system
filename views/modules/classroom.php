@@ -79,7 +79,7 @@
                                     
                                             <div class="form-group">
                                                 <label for="recipient-name" class="control-label">Class Name: <span class="text-danger">*</span></label>
-                                                <input type="text" onkeypress="validateInput(event)"  class="form-control" name="class_name" id="recipient-name" required>
+                                                <input type="text" onkeypress="validateEntry(event)"  class="form-control" name="class_name" id="recipient-name" required>
                                             </div>
 
 

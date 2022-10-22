@@ -28,12 +28,35 @@ class ModelEvent{
             return $stmt ->errorInfo();
         }
 
-        $stmt -> close();
         $stmt -> null;
 
 
     }
 
+
+    //
+    // ─── Show Events ───────────────────────────────────────────────────────
+    //
+
+    static public function mdlShowEvent($table, $data){
+
+        $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE church_id = :church_id ORDER BY event_id");
+
+        $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            
+            return $stmt -> fetchAll();
+         
+         } else {
+ 
+            return $stmt ->errorInfo();
+         
+         }
+ 
+         $stmt = null;
+
+    }
 
 
 }
