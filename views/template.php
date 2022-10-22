@@ -297,7 +297,7 @@ if(!isset($_SESSION)){
 
 
       // Date Picker
-      jQuery('.mydatepicker, #datepicker').datepicker();
+    jQuery('.mydatepicker, #datepicker').datepicker();
     jQuery('#datepicker-autoclose').datepicker({
         autoclose: true,
         todayHighlight: true

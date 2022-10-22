@@ -10,7 +10,7 @@ class ModelEvent{
     
     static public function mdlAddEvent($table, $data){
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table(event_name, event_start, event_end, event_color, churchid) 
+        $stmt = Connection::connect()->prepare("INSERT INTO $table(event_name, event_start, event_end, event_color, church_id) 
                     VALUES (:event_name, :event_start, :event_end, :event_color, :church_id)");
         
         $stmt -> bindParam(":event_name", $data["event_name"], PDO::PARAM_STR);
@@ -25,7 +25,7 @@ class ModelEvent{
 
         }else {
             # code...
-            return "error";
+            return $stmt ->errorInfo();
         }
 
         $stmt -> close();
