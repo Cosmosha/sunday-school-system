@@ -7,12 +7,14 @@ class ControllerStudents {
     // ─── SHOW STUDENT LIST ───────────────────────────────────────────────────────
     //
 
-    public static function ctrShowStudentList($item, $value){
+    public static function ctrShowStudentList($studentid){
 
         $table = "student";
 
+        $data = array('student_id'=>$studentid,
+                       'church_id'=> $_SESSION["churchid"]);
 
-        $result = ModelStudents::mdlShowStudents($table,$item,$value);
+        $result = ModelStudents::mdlShowStudents($table,$data,$studentid);
 
         return $result;
 

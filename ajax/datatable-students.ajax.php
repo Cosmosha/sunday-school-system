@@ -26,7 +26,7 @@ class StudentTable {
         $item = null;
         $value = null;
 
-        $student = ControllerStudents::ctrShowStudentList($item, $value);
+        $student = ControllerStudents::ctrShowStudentList($value);
 
         $jsonData = '{
 
@@ -75,8 +75,10 @@ class StudentTable {
 
                     //Get class name using class id
                     $classrm = $student[$i]["class_id"];
+
+                    $table = "class";
                 
-                    $class = ControllerClassRoom::ctrShowClassList($item, $value);
+                    $class = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
                     foreach ($class as $key => $value) {
                         # code...

@@ -1,5 +1,9 @@
 <?php 
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
 require_once "../controllers/students.controller.php";
 require_once "../models/students.model.php";
 
@@ -14,9 +18,9 @@ class studentAjax{
     public function ajaxEditStudent(){
 
         $item = "student_id";
-        $value = $this->idStudent;
+        $studentid = $this->idStudent;
 
-        $answer = ControllerStudents::ctrShowStudentList($item, $value);
+        $answer = ControllerStudents::ctrShowStudentList($studentid);
 
         echo json_encode($answer);
 
