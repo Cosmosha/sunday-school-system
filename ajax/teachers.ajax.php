@@ -17,7 +17,6 @@ class ajaxTeacher{
     public $idTeacher;
     public function ajaxEditTeacher(){
 
-        $item = "teacher_id";
         $teacherid = $this->idTeacher;
 
         $answer = ControllerTeacher::ctrShowTeacherList($teacherid);

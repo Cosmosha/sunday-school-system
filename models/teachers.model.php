@@ -72,8 +72,6 @@ class ModelTeachers{
         }
 
 
-            $stmt -> close();
-
             $stmt = null;
 
     }
