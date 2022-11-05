@@ -1,5 +1,7 @@
 <?php
 
+
+
 class ControllerUsers{
 
 
@@ -24,10 +26,15 @@ class ControllerUsers{
                     $value = $email;
                     $password =  $_POST["userpassword"];
 
+                    // Fetch Users Church by Churchid
+                    $getChurch = ModelClassRoom::mdlShowInfo($table, $item, $value);
+                    $churchid = $getChurch["church_id"];
+
                     // Fetch Result From USERS TABLE
-                    $result = ModelUsers::MdlShowUsers($table, $item, $value);
+                    $result = ModelUsers::MdlShowUsers($table, $item, $value, $churchid);
 
                     $hashPassword = $result["password"];
+                    $churchid = $result["church_id"];
 
 
                     if ($result["user_email"]== $value && password_verify($password, $hashPassword) 
@@ -39,15 +46,16 @@ class ControllerUsers{
                         $value = $email;
 
                         //Fetch Result From TEACHER TABLE WHERE EMAIL EQUAL TEACHER EMAIL
-                        $answer = ModelUsers::MdlShowUsers($table2, $item2, $value);
+                        $answer = ModelUsers::MdlShowUsers($table2, $item2, $value, $churchid);
 
 
                         $table3 = "church";
                         $item3 = "church_id";
+                        $value3 = $result["church_id"];
                         $churchid = $result["church_id"];
 
                         //Fetch Result From CHURCH TABLE WITH CHURCH ID FROM USER TABLE
-                        $respond = ModelUsers::MdlShowUsers($table3, $item3, $churchid);
+                        $respond = ModelUsers::MdlShowUsers($table3, $item3, $value3, $churchid);
                         
 
                         if ($result["user_status"]==1) {
@@ -91,7 +99,7 @@ class ControllerUsers{
                             $value2 = $result["user_id"];
 
                             //UPDATE USER LOGIN DATE TIME
-                            $last_login = ModelUsers::MdlUpdateInfo($table, $item1, $value1, $item2, $value2);
+                            $last_login = ModelUsers::MdlUpdateInfo($table, $item1, $value1, $item2, $value2, $churchid);
 
                             if ($last_login == "ok") {
                                 # code...
@@ -144,7 +152,9 @@ class ControllerUsers{
 
         $table = "user";
 
-        $result = ModelUsers::MdlShowUsers($table, $item, $value);
+        $churchid = $_SESSION["churchid"];
+
+        $result = ModelUsers::MdlShowUsers($table, $item, $value, $churchid);
 
         return $result;
 

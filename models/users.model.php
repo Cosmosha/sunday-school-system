@@ -41,15 +41,16 @@ class ModelUsers{
     //
 
         
-        static public function MdlShowUsers($table, $item, $value){
+        static public function MdlShowUsers($table, $item, $value, $churchid){
 
             if ($item !=null) {
                 # code...
-
                 
-                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item");
+                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item AND church_id = :church_id");
 
                 $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+
+                $stmt -> bindParam(":church_id", $churchid, PDO::PARAM_INT);
 
                 $stmt -> execute();
 
@@ -58,8 +59,12 @@ class ModelUsers{
             }else {
                 # code...
 
-                $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE church_id = :church_id ORDER BY user_id desc");
+
+                $stmt -> bindParam(":church_id", $churchid, PDO::PARAM_INT);
+
                 $stmt -> execute();
+
                 return $stmt -> fetchAll();
             }
 
@@ -76,11 +81,12 @@ class ModelUsers{
     // ─── UPDATE LAST LOGIN & STATUS INFO ───────────────────────────────────────────────────────────
     //
 
-        static public function MdlUpdateInfo($table, $item1, $value1, $item2, $value2){
+        static public function MdlUpdateInfo($table, $item1, $value1, $item2, $value2, $churchid){
 
-            $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1 WHERE $item2 = :$item2");
+            $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1 WHERE $item2 = :$item2 AND church_id = :church_id ");
             $stmt -> bindParam(":$item1", $value1, PDO::PARAM_STR);
             $stmt -> bindParam(":$item2", $value2, PDO::PARAM_STR);
+            $stmt -> bindParam(":church_id", $churchid, PDO::PARAM_INT);
 
             if ($stmt -> execute()) {
                 # code...

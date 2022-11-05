@@ -513,7 +513,7 @@ $(document).ready(function(){
         contentType: false,
         processData: false,
         success: function(answer){   
-      
+           console.log(answer);
         }
 
       })

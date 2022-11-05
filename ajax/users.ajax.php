@@ -1,6 +1,10 @@
 <?php 
 
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
 require_once "../controllers/users.controller.php";
 require_once "../models/users.model.php";
 
@@ -16,9 +20,9 @@ class ajaxUser {
     public function ajaxEditUser(){
 
         $item = "user_id";
-        $value = $this->idUser;
+        $userid = $this->idUser;
 
-        $answer = ControllerUsers::ctrShowUsersList($item, $value);
+        $answer = ControllerUsers::ctrShowUsersList($item, $userid);
 
         echo json_encode($answer);
 
@@ -39,8 +43,10 @@ class ajaxUser {
 
         $item2 = "user_id";
         $value2 = $this->userId;
+        $churchid = $_SESSION["churchid"];
 
-        $result = ModelUsers::MdlUpdateInfo($table, $item1, $value1, $item2, $value2);
+        $result = ModelUsers::MdlUpdateInfo($table, $item1, $value1, $item2, $value2, $churchid);
+        // print_r($result);
 
     }
 

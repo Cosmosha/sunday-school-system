@@ -95,7 +95,7 @@
                                                                 $item = "";
                                                                 $value = "";
 
-                                                                $teacher = ModelTeachers::mdlShowTeacher($table, $item, $value);
+                                                                $teacher = ModelClassRoom::mdlShowInfo($table, $item, $value);
 
                                                                 foreach ($teacher as $key => $user) {
                                                                     # code...
