@@ -1,7 +1,5 @@
 <?php
-if(!isset($_SESSION)){
-    session_start();
-}
+
 //
 // ──────────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: T E A C H E R S   A J A X   D A T A T A B L E : :  :   :    :     :        :          :
@@ -24,9 +22,7 @@ class Teachers{
         $item = null;
         $value = null;
 
-        $teacher = ControllerTeacher::ctrShowTeacherList($item);
-
-        print_r($teacher);
+        $teacher = ControllerTeacher::ctrShowTeacherList($item,$value);
 
         $jsonData = '{
 
@@ -68,8 +64,10 @@ class Teachers{
 
                     //Get class name using class id
                     $classrm = $teacher[$i]["class_id"];
+
+                    $table = "class";
                 
-                    $class = ControllerClassRoom::ctrShowClassList($item);
+                    $class =  ModelClassRoom::mdlShowInfo($table, $item, $value);
 
                     foreach ($class as $key => $value) {
                         # code...
