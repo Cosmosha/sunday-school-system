@@ -180,8 +180,10 @@ class ControllerUsers{
 
                 $table = "teacher";
                 $item = "teacher_id";
+                $value = $_SESSION["teacherid"];
+                $churchid = $_SESSION["churchid"];
     
-                $result = ModelUsers::MdlShowUsers($table, $item, $userid);
+                $result = ModelUsers::MdlShowUsers($table, $item, $value, $churchid);
     
                 $fname = $result["teacher_firstname"];
                 $lname = $result["teacher_lastname"];
@@ -331,8 +333,9 @@ class ControllerUsers{
             $table = "user";
             $item = "user_email";
             $value = $_POST["passRest"];
+            $churchid = $_SESSION["churchid"];
            
-            $result = ModelUsers::MdlShowUsers($table, $item, $value);
+            $result = ModelUsers::MdlShowUsers($table, $item, $value, $churchid);
 
             if ($result["user_email"]==$value) {
                 # code...
