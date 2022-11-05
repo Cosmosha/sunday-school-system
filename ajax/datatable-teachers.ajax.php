@@ -1,9 +1,7 @@
 <?php
-
 if(!isset($_SESSION)){
     session_start();
 }
-
 //
 // ──────────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: T E A C H E R S   A J A X   D A T A T A B L E : :  :   :    :     :        :          :
@@ -68,8 +66,6 @@ class Teachers{
 
                     //Get class name using class id
                     $classrm = $teacher[$i]["class_id"];
-
-                    $table2 = "class";
                 
                     $class = ModelClassRoom::mdlShowInfo($table2, $item, $value);
 
