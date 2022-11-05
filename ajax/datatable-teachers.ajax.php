@@ -71,8 +71,7 @@ class Teachers{
 
                     $table2 = "class";
                 
-                    $class = ModelClassRoom::mdlShowInfo($table2, $item, $value);;
-
+                    $class = ModelClassRoom::mdlShowInfo($table2, $item, $value);
 
                     foreach ($class as $key => $value) {
                         # code...
