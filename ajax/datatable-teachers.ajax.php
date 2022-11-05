@@ -22,9 +22,7 @@ class Teachers{
         $item = null;
         $value = null;
 
-        $teacher = ControllerTeacher::ctrShowTeacherList($item);
-
-        print_r($teacher);
+        $teacher = ControllerTeacher::ctrShowTeacherList($item,$value);
 
         $jsonData = '{
 
@@ -67,7 +65,7 @@ class Teachers{
                     //Get class name using class id
                     $classrm = $teacher[$i]["class_id"];
                 
-                    $class = ControllerClassRoom::ctrShowClassList($item);
+                    $class = ControllerClassRoom::ctrShowClassList($item, $value);
 
                     foreach ($class as $key => $value) {
                         # code...
