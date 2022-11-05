@@ -41,8 +41,16 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                <?php $item =""; $value=""; $table = "student";  $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value);?>
-                                 <?php $percnt = ($student / $student) * 100; ?>
+                                <?php $item =""; $value=""; $table = "student"; $churchid = $_SESSION["churchid"]; $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value, $churchid);?>
+                                 <?php 
+                                        if ($student > 0) {
+                                            # code...
+                                            $percnt = ($student / $student) * 100; 
+                                        }else{
+                                            $percnt = 0;
+                                        }
+
+                                 ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male-female text-info"></i></h2>
                                     <h3 class=""><?php  echo $student ?></h3>
                                     <h6 class="card-subtitle">Number of Students <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo number_format( (float)$percnt, 0,'.','');?>% </span></h6>
@@ -62,8 +70,16 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                <?php $item ="gender"; $value="boy"; $table = "student";  $boys = ModelStudents::mdlShowStudentCountRow($table,$item,$value);?>
-                                <?php $boyPercnt = ($boys / $student) * 100; ?>
+                                <?php $item ="gender"; $value="boy"; $table = "student";$churchid = $_SESSION["churchid"];  $boys = ModelStudents::mdlShowStudentCountRow($table,$item,$value, $churchid);?>
+                                <?php 
+
+                                        if ($boys > 0) {
+                                            # code...
+                                            $boyPercnt = ($boys / $student) * 100; 
+                                        }else{
+                                            $boyPercnt = 0;
+                                        }  
+                                ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-male text-purple"></i></h2>
                                     <h3 class=""><?php echo $boys?></h3>
                                     <h6 class="card-subtitle">Number of Boys <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo number_format( (float)$boyPercnt, 0,'.','');?>% </span></h6></div>
@@ -81,8 +97,17 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                <?php $item ="gender"; $value="girl"; $table = "student";  $girls = ModelStudents::mdlShowStudentCountRow($table,$item,$value);?>
-                                <?php $girlPercnt = ($girls / $student) * 100; ?>
+                                <?php $item ="gender"; $value="girl"; $table = "student";  $girls = ModelStudents::mdlShowStudentCountRow($table,$item,$value,$churchid);?>
+                                <?php 
+                                    
+                                    if ($student > 0) {
+                                        # code...
+                                        $girlPercnt = ($student / $student) * 100; 
+                                    }else{
+                                        $girlPercnt = 0;
+                                    }
+                                    
+                                ?>
                                     <h2 class="m-b-0"><i class="mdi mdi-human-female text-warning"></i></h2>
                                     <h3 class=""><?php echo $girls?></h3>
                                     <h6 class="card-subtitle">Number of Girls <span class="m-l-2 float-right font-weight-bold text-dark"> <?php echo number_format( (float)$girlPercnt, 0,'.','');?>% </span></h6></div>
@@ -228,7 +253,7 @@
 
                         $chart_data = '';
                         
-                        foreach ($result as $key => $value) {
+                        foreach ((array)$result as $key => $value) {
                             # code...
                             $data = array('attendance_status' => "0", 
                             'getYear' => $value,

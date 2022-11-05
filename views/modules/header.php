@@ -81,7 +81,9 @@
                             $fname = substr($firstname, 0, 1);
                             $lname = substr($lastname, 0, 1);
 
-                            echo' <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="bg-white text-dark profile-pic font-weight-bold p-1">'.ucfirst($fname).''.ucfirst($lname).'</span>  </a> ';
+                            $pro = ucfirst($fname).''.ucfirst($lname);
+
+                            echo' <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="bg-white text-dark profile-pic font-weight-bold p-1">'.$pro.'</span></a> ';
                             
                             ?>
 

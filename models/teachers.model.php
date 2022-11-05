@@ -156,10 +156,12 @@ class ModelTeachers{
     // ─── SHOW NUMBER OF TEACHER TABLE ROWS ──────────────────────────────────────────
     //
 
-    static public function mdlShowTeacherRow($table){
+    static public function mdlShowTeacherRow($table, $churchid){
 
         
-        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table");
+        $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE church_id = :church_id");
+
+        $stmt -> bindParam(":church_id", $churchid, PDO::PARAM_INT);
 
         $stmt -> execute();
         

@@ -168,21 +168,25 @@ class ModelStudents{
     // ─── Get Total Number Of Students ───────────────────────────────────────────────
 
     
-    static public function mdlShowStudentCountRow($table, $item, $value){
+    static public function mdlShowStudentCountRow($table, $item, $value, $churchid){
 
         if ($item != null) {
 
             # code...
-            $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE $item = :$item  ");
+            $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE $item = :$item AND church_id = :church_id ");
 
             $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+            $stmt -> bindParam(":church_id", $churchid, PDO::PARAM_INT);
 
             $stmt -> execute();
 
             return $stmt -> fetchColumn();
+
         } else {
             # code...
-            $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table");
+            $stmt = Connection::connect()->prepare("SELECT COUNT(*) FROM $table WHERE church_id = :church_id");
+
+            $stmt -> bindParam(":church_id", $churchid, PDO::PARAM_INT);
 
             $stmt -> execute();
             

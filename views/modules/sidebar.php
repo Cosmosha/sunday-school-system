@@ -88,7 +88,7 @@
 
                         
                         <li id="teacher"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">TEACHERS 
-                            <span class="label label-rouded label-success font-weight-bolder pull-right" id="teacherNotify">  <?php  $table = "teacher";  $teacher = ModelTeachers::mdlShowTeacherRow($table); echo $teacher?>  </span> </span></a>
+                            <span class="label label-rouded label-success font-weight-bolder pull-right" id="teacherNotify">  <?php  $table = "teacher"; $churchid = $_SESSION["churchid"]; $teacher = ModelTeachers::mdlShowTeacherRow($table, $churchid); echo $teacher?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="teachers">Teachers List</a></li>
                                 <!-- <li><a href="app-email-detail.html">Attendance Detail</a></li>
@@ -96,7 +96,7 @@
                             </ul>
                         </li>
 
-                        <li id="student"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right" id="studentNotify">  <?php $item = ""; $value = "";  $table = "student";  $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value); echo $student?>  </span> </span></a>
+                        <li id="student"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-male-female"></i><span class="hide-menu"> STUDENTS <span class="label label-rouded label-info pull-right" id="studentNotify">  <?php $item = ""; $value = "";  $table = "student"; $churchid = $_SESSION["churchid"] ; $student = ModelStudents::mdlShowStudentCountRow($table,$item,$value,$churchid); echo $student?>  </span> </span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="students"> Students List </a></li>
                                 <!-- <li><a href="ui-user-card.html">User Cards</a></li> -->
