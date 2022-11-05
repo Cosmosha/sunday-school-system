@@ -84,7 +84,6 @@ class ControllerClassRoom{
 
         $table = "class";
 
-
         $data = array('class_id'=>$classid,
                       'church_id'=> $_SESSION["churchid"]);
 

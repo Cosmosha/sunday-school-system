@@ -26,7 +26,6 @@ class ClassRoomTable{
 
         $classroom = ControllerClassRoom::ctrShowClassList($classid);
 
-
         $jsonData = '{
 
             

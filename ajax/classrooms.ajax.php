@@ -4,6 +4,7 @@ if(!isset($_SESSION)){
     session_start();
 }
 
+
 require_once "../models/classrooms.model.php";
 require_once "../controllers/classrooms.controller.php";
 

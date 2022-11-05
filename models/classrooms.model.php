@@ -79,7 +79,6 @@ class ModelClassRoom{
         
         static public function mdlShowClassList($table, $data, $classid){
 
-
             if ($classid !=null) {
                 # code...
 
