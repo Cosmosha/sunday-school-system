@@ -9,11 +9,14 @@ class ControllerTeacher{
     // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
     //
 
-    public static function ctrShowTeacherList($item, $value){
+    public static function ctrShowTeacherList($teacherid){
 
         $table = "teacher";
 
-        $result = ModelTeachers::mdlShowTeacher($table,$item,$value);
+        $data = array('teacher_id'=>$teacherid,
+                        'church_id'=> $_SESSION["churchid"]);
+
+        $result = ModelTeachers::mdlShowTeacher($table,$data,$teacherid);
 
         return $result;
 
@@ -407,6 +410,7 @@ class ControllerTeacher{
             $table = "teacher";
             $id = $_GET["deleteTeacher"];
             $church_id = $_SESSION["churchid"];
+
             $data = array('teacher_id'=>$id,
                          'church_id'=> $church_id);
 
