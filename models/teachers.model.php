@@ -50,7 +50,6 @@ class ModelTeachers{
        
         if ($teacherid !=null) {
             # code...
-
             
             $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE teacher_id = :teacher_id AND church_id = :church_id ");
 
