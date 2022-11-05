@@ -1,5 +1,10 @@
 <?php
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
+
 require_once "../models/classrooms.model.php";
 require_once "../controllers/classrooms.controller.php";
 
@@ -15,10 +20,9 @@ class  ajaxClassroom{
     public function ajaxEditClass(){
 
 
-        $item = "class_id";
-        $value = $this->idClass;
+        $classid = $this->idClass;
 
-        $answer = ControllerClassRoom::ctrShowClassList($item, $value);
+        $answer = ControllerClassRoom::ctrShowClassList($classid);
 
         echo json_encode($answer);
 
