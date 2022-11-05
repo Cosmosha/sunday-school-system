@@ -45,16 +45,16 @@ class ModelTeachers{
     // ─── SHOW TEACHERS ──────────────────────────────────────────────────────────────
     //
 
-    static public function mdlShowTeacher($table, $item, $value){
+    static public function mdlShowTeacher($table, $data, $teacherid){
 
        
-        if ($item !=null) {
+        if ($teacherid !=null) {
             # code...
-
             
-            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item  ");
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE teacher_id = :teacher_id AND church_id = :church_id ");
 
-            $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+            $stmt -> bindParam(":teacher_id", $data["teacher_id"], PDO::PARAM_INT);
+            $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 
             $stmt -> execute();
 
@@ -63,7 +63,8 @@ class ModelTeachers{
         }else {
             # code...
 
-            $stmt = Connection::connect()->prepare("SELECT * FROM $table ORDER BY teacher_id desc");
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE church_id = :church_id ORDER BY teacher_id desc");
+            $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);
 
             $stmt -> execute();
             

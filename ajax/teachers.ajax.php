@@ -1,5 +1,9 @@
 <?php 
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
 require_once "../models/teachers.model.php";
 require_once "../controllers/teachers.controller.php";
 
@@ -14,9 +18,9 @@ class ajaxTeacher{
     public function ajaxEditTeacher(){
 
         $item = "teacher_id";
-        $value = $this->idTeacher;
+        $teacherid = $this->idTeacher;
 
-        $answer = ControllerTeacher::ctrShowTeacherList($item,$value);
+        $answer = ControllerTeacher::ctrShowTeacherList($teacherid);
 
         echo json_encode($answer);
 
