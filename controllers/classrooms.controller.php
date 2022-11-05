@@ -80,11 +80,15 @@ class ControllerClassRoom{
     // ─── SHOW CLASSROOM LIST ───────────────────────────────────────────────────────
     //
 
-    public static function ctrShowClassList($item, $value){
+    public static function ctrShowClassList($classid){
 
         $table = "class";
 
-        $result = ModelClassRoom::mdlShowClassList($table, $item, $value);
+
+        $data = array('class_id'=>$classid,
+                      'church_id'=> $_SESSION["churchid"]);
+
+        $result = ModelClassRoom::mdlShowClassList($table, $data, $classid);
 
         return $result;
 

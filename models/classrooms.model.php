@@ -77,16 +77,16 @@ class ModelClassRoom{
     //
 
         
-        static public function mdlShowClassList($table, $item, $value){
+        static public function mdlShowClassList($table, $data, $classid){
 
 
-            if ($item !=null) {
+            if ($classid !=null) {
                 # code...
 
+                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE class_id = :class_id AND church_id = :church_id ");
                 
-                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item  ");
-
-                $stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+                $stmt -> bindParam(":class_id", $data["class_id"], PDO::PARAM_INT);   
+                $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);   
 
                 $stmt -> execute();
 
@@ -95,7 +95,9 @@ class ModelClassRoom{
             }else {
                 # code...
 
-                $stmt = Connection::connect()->prepare("SELECT * FROM $table ORDER BY class_id desc");
+                $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE church_id = :church_id ORDER BY class_id desc");
+
+                $stmt -> bindParam(":church_id", $data["church_id"], PDO::PARAM_INT);   
 
                 $stmt -> execute();
                 

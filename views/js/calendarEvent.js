@@ -35,8 +35,8 @@ $(document).ready(function() {
                         callback(events);
                         iziToast.show({
                             icon: 'fa fa-calendar',
-                            title: 'Event Calendar',
-                            message: 'Loading Completed!',
+                            title: 'Calendar',
+                            message: 'Event Loading Completed!',
                             theme: 'light',
                             position: 'topCenter',
                         });

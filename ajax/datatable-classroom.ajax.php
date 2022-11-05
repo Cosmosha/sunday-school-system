@@ -22,10 +22,9 @@ class ClassRoomTable{
 
     public static function showClassTable(){
 
-        $item = null;
-        $value = null;
+        $classid = null;
 
-        $classroom = ControllerClassRoom::ctrShowClassList($item, $value);
+        $classroom = ControllerClassRoom::ctrShowClassList($classid);
 
 
         $jsonData = '{
