@@ -1,5 +1,8 @@
 <?php
 
+if(!isset($_SESSION)){
+    session_start();
+}
 
 class ControllerEvent{
 
@@ -64,7 +67,7 @@ class ControllerEvent{
     public static function ctrShowEvent(){
        
         $table = "event_calendar";
-        $data = array('church_id'=> 1);
+        $data = array('church_id'=> $_SESSION["churchid"]);
 
         $result = ModelEvent::mdlShowEvent($table, $data);
 

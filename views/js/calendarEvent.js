@@ -30,17 +30,23 @@ $(document).ready(function() {
                             });
                             
                         }
-    
-                        //adding the callback
+                            
+                        //adding the callback          
                         callback(events);
-                        iziToast.show({
-                            icon: 'fa fa-calendar',
-                            title: 'Calendar',
-                            message: 'Event Loading Completed!',
-                            theme: 'light',
-                            position: 'topCenter',
-                        });
+
+                        if (data.length > 0) {
+    
+                            iziToast.show({
+                                icon: 'fa fa-calendar',
+                                title: 'Calendar',
+                                message: `Loading Month's Events Completed!`,
+                                theme: 'light',
+                                position: 'topCenter',
+                            });
+                        }
+
                     }
+                    
                 });
             },
             editable: true,

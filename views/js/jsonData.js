@@ -14,13 +14,24 @@ $(document).ready(function(){
 	//
 
 	$('.classroomTable').DataTable( {
+		
 	    "ajax":"./ajax/datatable-classroom.ajax.php",
-	    "deferRender": true,
+
+   		"deferRender": true,
 	    "retrieve": true,
 	    "processing": true ,
+		"serverSide": false,
+
 
 	} );
 
+
+	// "dataSrc": function(data){
+	// 	if(data.data == null){
+	// 		return [];
+	// 	} else {
+	// 		return data.data;
+	// 	}
 
 
 	//
