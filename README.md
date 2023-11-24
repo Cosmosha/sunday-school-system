@@ -54,10 +54,5 @@ If you'd like to contribute to the development of the Sunday School Church Syste
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
 
-Special thanks to [contributors](CONTRIBUTORS.md) who have helped shape and improve this project.
 
----
-
-**Note**: Replace placeholder images and details with actual information relevant to your project.
