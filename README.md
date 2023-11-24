@@ -1,6 +1,5 @@
 # Sunday School Church System
 
-
 ## Overview
 
 The Sunday School Church System is a web-based application developed in PHP, following the Model-View-Controller (MVC) architecture. This system is designed to streamline and manage various aspects of Sunday School operations within a church. It includes features for student registration, class management, attendance tracking, and more.
