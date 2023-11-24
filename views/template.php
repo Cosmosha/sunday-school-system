@@ -28,7 +28,7 @@ if(!isset($_SESSION)){
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/menosoft.png">
-    <title>MCM System | <?php echo ucwords( $_GET["root"]) ?> </title>
+    <title>CM System | <?php echo ucwords( $_GET["root"]) ?> </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
