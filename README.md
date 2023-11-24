@@ -1,6 +1,5 @@
 # Sunday School Church System
 
-![Logo](https://placekitten.com/200/100)
 
 ## Overview
 
@@ -28,7 +27,7 @@ The Sunday School Church System is a web-based application developed in PHP, fol
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/sunday-school-system.git
+    git clone https://github.com/cosmosha/sunday-school-system.git
     ```
 
 2. Create a MySQL database and import the provided SQL script to set up the database schema.
